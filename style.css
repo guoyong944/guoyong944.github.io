@@ -24,7 +24,7 @@ button {
 /* Larger screens */
 @media screen and (min-width: 601px) {
     body {
-        font-size: 18px;
+        font-size: 38px;
     }
 }
 
@@ -36,10 +36,10 @@ button {
 
     button {
         width: 90%;
-        font-size: 1.25rem;
+        font-size: 3.25rem;
     }
 
     #question {
-        font-size: 1.25rem;
+        font-size: 3.25rem;
     }
 }
