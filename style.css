@@ -17,6 +17,6 @@ button {
 /* 当屏幕宽度小于 600px 时 */
 @media (max-width: 600px) {
     button {
-        width: 100%;
+        width: 300%;
     }
 }
