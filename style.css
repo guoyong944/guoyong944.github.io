@@ -1,0 +1,22 @@
+/* 基本样式 */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#quiz-container {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+}
+
+/* 当屏幕宽度小于 600px 时 */
+@media (max-width: 600px) {
+    button {
+        width: 100%;
+    }
+}
