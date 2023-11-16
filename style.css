@@ -1,30 +1,45 @@
-/* 基本样式 */
+/* Basic Styles */
 body {
-    font-size: 50px; /* 或更大，如 18px */
-}
-
-#question {
-    font-size: 50px; /* 问题的字体更大 */
-}
-
-button {
-    font-size: 50px; /* 按钮文字的字体大小 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px; /* Base font size */
 }
 
 #quiz-container {
     width: 90%;
-    max-width: 1600px;
-    margin: auto;
+    max-width: 600px;
+    margin: 20px auto;
     text-align: center;
 }
 
 button {
-    margin: 50px;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
 }
 
-/* 当屏幕宽度小于 600px 时 */
-@media (max-width: 600px) {
+/* Responsive Styles */
+
+/* Larger screens */
+@media screen and (min-width: 601px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Smaller screens (like smartphones) */
+@media screen and (max-width: 600px) {
+    #quiz-container {
+        width: 100%;
+    }
+
     button {
-        width: 300%;
+        width: 90%;
+        font-size: 1.25rem;
+    }
+
+    #question {
+        font-size: 1.25rem;
     }
 }
