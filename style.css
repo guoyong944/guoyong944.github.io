@@ -1,14 +1,14 @@
 /* 基本样式 */
 body {
-    font-size: 26px; /* 或更大，如 18px */
+    font-size: 50px; /* 或更大，如 18px */
 }
 
 #question {
-    font-size: 30px; /* 问题的字体更大 */
+    font-size: 50px; /* 问题的字体更大 */
 }
 
 button {
-    font-size: 28px; /* 按钮文字的字体大小 */
+    font-size: 50px; /* 按钮文字的字体大小 */
 }
 
 #quiz-container {
@@ -19,7 +19,7 @@ button {
 }
 
 button {
-    margin: 10px;
+    margin: 50px;
 }
 
 /* 当屏幕宽度小于 600px 时 */
