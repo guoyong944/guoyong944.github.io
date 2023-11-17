@@ -3,19 +3,19 @@ body {
     background-color: #f0f0f0;
     color: #333;
 }
-#chat-container, #quiz-container {
+#image-container, #quiz-container {
     width: 100%;
     max-width: 100%;
     margin: auto;
     text-align: center;
 }
 
-#image-container img {
-    width: 100%;
-    height: auto;
+
+@media (min-width: 600px) {
+    #image-container, #quiz-container {
+        max-width: 500px; /* 或者是您想要的任何合适的最大宽度 */
+    }
 }
-
-
 #question {
     font-size: 20px;
     margin-bottom: 20px;
@@ -30,6 +30,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-align: center;
 }
 
 button:hover {
