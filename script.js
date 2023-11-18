@@ -5,7 +5,7 @@ let part = 1; // 部分 1
 
 // 第一部分的问题
 const part1Questions = [
-    { text: "问题 1: 地球是太阳系的中心。", answer: false },
+    { text: "问题 1: 地球是太阳系的中心？", answer: false },
     { text: "问题 2: 水的化学式是 H2O。", answer: true },
     { text: "问题 3: 人类的正常体温是 37°C。", answer: true },
     { text: "问题 4: 光速是每秒钟 300,000 公里。", answer: true },
