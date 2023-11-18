@@ -9,9 +9,17 @@
         <img src="chat-image.png" alt="Chat Interface">
     </div>
     <div id="quiz-container">
-        <div id="question"></div>
-        <button onclick="submitAnswer(true)">正确</button>
-        <button onclick="submitAnswer(false)">错误</button>
+        <div id="question">问题 1: 地球是太阳系的中心。</div>
+        <div id="part1-answers">
+            <button onclick="submitAnswer(true)">正确</button>
+            <button onclick="submitAnswer(false)">错误</button>
+        </div>
+        <div id="part2-answers" style="display:none;">
+            <button onclick="submitAnswer('A')">A</button>
+            <button onclick="submitAnswer('B')">B</button>
+            <button onclick="submitAnswer('C')">C</button>
+            <button onclick="submitAnswer('D')">D</button>
+        </div>
         <div id="feedback"></div>
         <button id="next-button" onclick="nextQuestion()" >下一题</button>
         
