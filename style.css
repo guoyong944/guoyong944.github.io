@@ -10,7 +10,10 @@ body {
     text-align: center;
 }
 
-
+#image-container img {
+    width: 100%; /* 图片宽度与容器相同 */
+    height: auto; /* 高度自动调整以保持图片比例 */
+}
 @media (min-width: 600px) {
     #image-container, #quiz-container {
         max-width: 500px; /* 或者是您想要的任何合适的最大宽度 */
@@ -33,13 +36,10 @@ button {
     text-align: center;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
 #feedback {
     font-size: 16px;
     margin: 20px 0;
+    text-align: center;
 }
 
 #score {
