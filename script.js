@@ -5,8 +5,8 @@ let part = 1; // 部分 1
 
 // 第一部分的问题
 const part1Questions = [
-    { text: "问题 1: 地球是太阳系的中心？？", answer: false },
-    { text: "问题 2: 水的化学式是 H2O？", answer: true },
+    { text: "问题 1: 地球是太阳系的中心。", answer: false },
+    { text: "问题 2: 水的化学式是 H2O。", answer: true },
     { text: "问题 3: 人类的正常体温是 37°C。", answer: true },
     { text: "问题 4: 光速是每秒钟 300,000 公里。", answer: true },
     { text: "问题 5: 音速比光速快。", answer: false },
@@ -80,12 +80,19 @@ function submitAnswer(answer) {
             score -= 10; // 错误答案减 10 分
         }
         document.getElementById('next-button').style.display = 'block';} 
-    // 其他设置保持不变
+        disableAnswerButtons()
+        // 其他设置保持不变
 }
-
+function disableAnswerButtons() {
+    let buttons = document.querySelectorAll('#part1-answers button, #part2-answers button');
+    buttons.forEach(function(button) {
+        button.disabled = true;
+    });
+}
 // 进入下一题的函数
 function nextQuestion() {
     currentQuestionIndex++;
+    enableAnswerButtons();
     if ((part === 1 && currentQuestionIndex < part1Questions.length) || (part === 2 && currentQuestionIndex < part1Questions.length + part2Questions.length)) {
         displayQuestion();
     } else if (part === 1) {
@@ -98,7 +105,12 @@ function nextQuestion() {
         showResults();
     }
 }
-
+function enableAnswerButtons() {
+    let buttons = document.querySelectorAll('#part1-answers button, #part2-answers button');
+    buttons.forEach(function(button) {
+        button.disabled = false;
+    });
+}
 // 显示结果的函数
 function showResults() {
     let evaluation = "";
