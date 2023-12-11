@@ -1,48 +1,50 @@
 
 body {
-    width: 393px;
-    height: 852px;
+    width: 1170px;
+    height: 2532px;
     font-family: 'Avenir', sans-serif;
     background-color: #f0f0f0;
     color: #333;
     background-image: url('pic0.jpg');
-    background-size: auto; /* 覆盖整个页面 */
+    background-size: 100%; /* 覆盖整个页面 */
     background-repeat: no-repeat; /* 不重复背景图像 */
     /*background-position: center top; /* 图片居中 */
 }
+
+
 #question {
     position: absolute;
-    top: 91px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 6px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 381px;
-    height: 852px;
+    top: 373px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 18px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 1143px;
+    height: 2532px;
     margin: auto;
     text-align: left;
-    font-size: 40px;
+    font-size: 120px;
 }
 
 #buttonJa {
     position: absolute;
-    top: 705px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 22px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 147px;
-    height: 76px;
-    font-size: 25px;
+    top: 2115px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 66px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 441px;
+    height: 228px;
+    font-size: 75px;
     margin: auto;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-align: center;
 }
 #buttonNein {
     position: absolute;
-    top: 705px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 224px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 147px;
-    height: 76px;
-    font-size: 25px;
+    top: 2115px; /* 距离最近的已定位祖先元素顶部 50px */
+    right: 66px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 441px;
+    height: 228px;
+    font-size: 75px;
     margin: auto;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-align: center;
