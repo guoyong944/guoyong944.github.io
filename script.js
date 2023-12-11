@@ -5,25 +5,30 @@ let part = 1; // 部分 1
 
 // 第一部分的问题
 const part1Questions = [
-    { text: "问题 1: 地球是太阳系的中心。", answer: false },
-    { text: "问题 2: 水的化学式是 H2O。", answer: true },
-    { text: "问题 3: 人类的正常体温是 37°C。", answer: true },
-    { text: "问题 4: 光速是每秒钟 300,000 公里。", answer: true },
-    { text: "问题 5: 音速比光速快。", answer: false },
-    { text: "问题 6: 地球是太阳系中唯一有生命的行星。", answer: false },
-    { text: "问题 7: 摩尔定律是关于电脑处理能力的。", answer: true },
-    { text: "问题 8: 金星是太阳系中最热的行星。", answer: true },
-    { text: "问题 9: 人体内最大的器官是肝脏。", answer: false },
-    { text: "问题 10: 邓老三是HON头号恶霸。", answer: true },
+    { text: "Glauben Sie an Ihr Recht, ein glückliches und erfülltes Leben zu führen, unabhängig von Ihrer sexuellen Orientierung?", answer: true },
+    { text: "Glauben Sie, dass es für die persönliche Entwicklung wichtig ist, seine sexuelle Orientierung zu kennen und zu akzeptieren?", answer: true },
+    { text: "Glauben Sie, dass jeder Mensch es verdient, geliebt zu werden, unabhängig von seiner sexuellen Orientierung?", answer: true },
+    { text: "Glauben Sie, dass ein Coming-out eine Erfahrung sein kann, die das Selbstvertrauen und den persönlichen Wert stärkt?", answer: true },
+    { text: "Glauben Sie, dass Sie sich durch Ihr Coming-out freier und echter in Ihrem Leben fühlen?", answer: true },
+    { text: "Glauben Sie, dass Sie durch Ihr Coming-out andere inspirieren und unterstützen können?", answer: true },
+    { text: "Sind Sie bereit, sich der Herausforderung zu stellen, die verschiedenen möglichen Reaktionen und Ergebnisse Ihres Coming-outs zu erkunden?", answer: true },
+
 ];
 
 // 第二部分的问题
 const part2Questions = [
-    { text: "问题 11: 下列哪种动物是哺乳动物？", options: ['A. 蛇', 'B. 鲨鱼', 'C. 鲸鱼', 'D. 鳄鱼'], answer: 'C', explanation: '鲸鱼是哺乳动物，因为它们哺乳并生活在水中。' },
-    { text: "问题 12: 哪个国家被称为“太阳升起的国家”？", options: ['A. 中国', 'B. 日本', 'C. 泰国', 'D. 龙宫'], answer: 'B', explanation: '日本被称为“太阳升起的国家”，因为它的名字意味着“日本”的来源。' },
-    { text: "问题 13: 世界上最长的河流是？", options: ['A. 尼罗河', 'B. 亚马逊河', 'C. 黄河', 'D. 密西西比河'], answer: 'A', explanation: '尼罗河是世界上最长的河流，流经东非多个国家。' },
-    { text: "问题 14: 哪种金属的化学符号是 Fe？", options: ['A. 金', 'B. 银', 'C. 铜', 'D. 铁'], answer: 'D', explanation: '铁的化学符号是 Fe，来自其拉丁名“Ferrum”。' },
-    { text: "问题 15: 邓老三常常被人所知的称号是？", options: ['A. 语言学家', 'B. 积分大王', 'C. HON头号恶霸', 'D. 不敢说'], answer: 'D', explanation: '说了的话命就没了' }
+    { text: "Ich glaube nicht, wie ist das möglich, wie kannst du ein Schwuler sein?", 
+    options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'], 
+    answer_kid: { "A": "Ich bin immer schwul, ich habe es euch nur vorher nicht gesagt.","B": "Warum kann ich nicht schwul sein? Ist es falsch, schwul zu sein?", "C": "Mama und Papa, ich meine es ernst. Ich bin schwul. Ich lüge nicht.", "D": "Ich weiß selber nicht, warum ich Männer mag."},
+    answer_papa: { "A": "...","B": "Wie sprichst du mit Mama und Papa! Ich glaube, du bist echt krank!", "C": "...", "D": "Was denkst du dir eigentlich? Willst du uns verarschen?"  }},
+    { text: "Wie kann es Liebe zwischen Männern geben? Hast du dich geirrt??", 
+    options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe und Freundschaft.'], 
+    answer_kid: { "A": "Ich weiß nicht, ob das Liebe oder Freundschaft ist, und ich bin verwirrt...","B": "Ich bin mir sicher, dass es Liebe ist. Es ist das Gefühl, mein Herzschlag setzte für einen Moment aus. ", "C": "Vielleicht. Vielleicht geht es nur um eine Freundschaft. ", "D": "Mama und Papa, ich bin ein Erwachsener, ich kann zwischen Liebe und Freundschaft unterscheiden."},
+    answer_papa: { "A": "Glaub Mama, du musst dich irren!","B": "...", "C": "Glaub Papa, du musst dich irren!", "D": "..."  }},  
+    { text: "Wie weißt du, dass du keine Frauen magst, wenn du noch nie mit einer zusammen warst?", 
+    options: [' Ich mag Jungs schon seit der Mittelschule', ' Ich fühle mich nur von Jungs angezogen.?', ' Vielleicht könnte ich auch Frauen mögen?', ' Warum sollte ich Frauen mögen?'], 
+    answer_kid: { "A": "Als ich in der Mittelschule war, wurde mir klar, dass ich Jungs mag. Ich habe keine Gefühle für Mädchen, egal wie hübsch, wie süß sie waren. ","B": "Seit meiner Kindheit fühle ich mich nur zu Jungs hingezogen. Ich interessiere mich nur für gutaussehende Männer, nicht für Mädchen.", "C": "Vielleicht, vielleicht möge ich auch Mädchen?", "D": "Ich bin schwul, warum sollte ich mit einer Frau zusammen sein?"},
+    answer_papa: { "A": "...","B": "...", "C": "Ja, das ist die richtige Denkweise! Männer sollen Frauen mögen.", "D": "Du sagst, du bist schwul, aber du hast es noch nie versucht, woher weißt du, dass du keine Frauen magst?"  }},  
 ];
 
 // 显示问题的函数
@@ -38,21 +43,21 @@ function displayQuestion() {
         document.getElementById('part2-answers').style.display = 'none';
     } else {
         question = part2Questions[currentQuestionIndex - part1Questions.length];
-        //显示问题和选项
-
+        //显示问题和选
          questionHtml = question.text + "<br>";
-
         // 循环遍历每个选项并创建一个单选按钮
-        for (let i = 0; i < question.options.length; i++) {
-            questionHtml += "<div>" + question.options[i] + "</div>";
-        }
-        
+
         document.getElementById('question').innerHTML  = questionHtml;
         document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2-answers').style.display = 'block';
+        document.getElementById('buttonA').textContent = question.options[0];
+        document.getElementById('buttonB').textContent = question.options[1];
+        document.getElementById('buttonC').textContent = question.options[2];
+        document.getElementById('buttonD').textContent = question.options[3];
+        document.getElementById('answer_kid').textContent = "";
+        document.getElementById('answer_papa').textContent = "";
+
     }
-
-
     // 隐藏反馈和下一题按钮，直到答案被提交
     document.getElementById('feedback').textContent = '';
     document.getElementById('next-button').style.display = 'none';
@@ -65,23 +70,35 @@ function submitAnswer(answer) {
         question = part1Questions[currentQuestionIndex];
         if (answer === question.answer) {
             document.getElementById('feedback').textContent = '正确！+10';
-            score += 10; // 正确答案加 10 分
+            score += 1; // 正确答案加 10 分
         } else {
             document.getElementById('feedback').textContent = '错误！+0';
         }
-        document.getElementById('next-button').style.display = 'block';} 
+        
+    nextQuestion();    
+    } 
+        
     else {
         question = part2Questions[currentQuestionIndex - part1Questions.length];
-        if (answer === question.answer) {
-            document.getElementById('feedback').textContent = '正确！+10';
-            score += 10; // 正确答案加 10 分
-        } else {
-            document.getElementById('feedback').textContent = '错误！-10       '+question.explanation;
-            score -= 10; // 错误答案减 10 分
-        }
-        document.getElementById('next-button').style.display = 'block';} 
-        disableAnswerButtons()
+        document.getElementById('answer_kid').textContent = question.answer_kid[answer];
+        document.getElementById('answer_papa').textContent = question.answer_papa[answer];
+        if (question.answer_papa[answer] === "...") {
+            score += 1; // 正确答案加 10 分
+        } 
+        document.getElementById('next-button').style.display = 'block';}
         // 其他设置保持不变
+    
+    if (score === 0) {
+        document.body.style.backgroundImage = "url('pic0.jpg')";
+    } else if (score === 1) {
+        document.body.style.backgroundImage = "url('pic1.jpg')";
+    } else if (score === 2) {
+        document.body.style.backgroundImage = "url('pic2.jpg')";
+    } else {
+        document.body.style.backgroundImage = "url('pic3.jpg')";
+    }    
+    
+
 }
 function disableAnswerButtons() {
     let buttons = document.querySelectorAll('#part1-answers button, #part2-answers button');
@@ -98,6 +115,8 @@ function nextQuestion() {
     } else if (part === 1) {
         // 第一部分结束
         part = 2;
+        score=0;
+        document.body.style.backgroundImage = "url('pic0.jpg')";
         currentQuestionIndex = part1Questions.length;
         displayQuestion();
     } else {
