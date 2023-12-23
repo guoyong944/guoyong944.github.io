@@ -11,13 +11,13 @@ body {
 }
 #question {
     position: absolute;
-    top: 91px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 40px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 6px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
     height: 852px;
     margin: auto;
     text-align: left;
-    font-size: 50px;
+    font-size: 40px;
 
 
 }
@@ -26,7 +26,7 @@ body {
 
 #buttonJa {
     position: absolute;
-    top: 705px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 550px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
@@ -42,7 +42,7 @@ body {
 }
 #buttonNein {
     position: absolute;
-    top: 705px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 550px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 224px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
