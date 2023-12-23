@@ -50,22 +50,19 @@ function show_questions(text) {
 }
 
 function show_text(question, kid, papa) {
-    var fullText = question + "<br><br>" + kid + "<br><br>" + papa; // 组合整个文本
+    var fullText = question + kid + papa; // 组合整个文本
     var num_q = question.length; // question文本的长度
-    var num_k = num_q + 8 + kid.length; // kid文本结束的位置
-    var i = num_q+8; // 从文本的第一个字符开始
+    var num_k = num_q + kid.length; // kid文本结束的位置
+    var i = num_q; // 从文本的第一个字符开始
     var currentText = ''; // 当前逐字显示的文本
 
     function show() {
         if (i < num_k) {
             // 如果当前索引在 question 与 kid 之间
-            currentText = question + "<br><br>" + fullText.substring(num_q + 8, i);
-        } else if (i === num_k) {
-            i = i + 8;
-            currentText = question + "<br><br>" + kid + "<br><br>" + fullText.substring(num_k + 8, i);
+            currentText = "<span style='color:#D5D5D5'>"+question +"</span>"+ "<br><br>" + fullText.substring(num_q, i);
         } else {  
             // 如果当前索引在 kid 与 papa 之间或之后
-            currentText = question + "<br><br>" + kid + "<br><br>" + fullText.substring(num_k + 8, i);
+            currentText = "<span style='color:#D5D5D5'>"+question + "<br><br>" + kid + "<br><br>" +"</span>"+ fullText.substring(num_k, i);
         }
         document.getElementById("question").innerHTML = currentText;
         i++; // 移动到下一个字符
@@ -86,12 +83,13 @@ function displayQuestion() {
 
     if (part === 1) {
         question = part1Questions[currentQuestionIndex];
-        //show_words(question.text,"question");
         document.getElementById('question').textContent = question.text;
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
     } else {
         question = part2Questions[currentQuestionIndex - part1Questions.length];
+        document.getElementById('question').style.fontSize = "30px";
+
         //显示问题和选
         disableAnswerButtons();
         show_questions(question.text);
