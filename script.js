@@ -17,6 +17,7 @@ const part1Questions = [
 
 // 第二部分的问题
 const part2Questions = [
+
     { text: "Ich glaube nicht, wie ist das möglich, wie kannst du ein Schwuler sein?", 
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'], 
     answer_kid: { "A": "Ich bin immer schwul, ich habe es euch nur vorher nicht gesagt.","B": "Warum kann ich nicht schwul sein? Ist es falsch, schwul zu sein?", "C": "Mama und Papa, ich meine es ernst. Ich bin schwul. Ich lüge nicht.", "D": "Ich weiß selber nicht, warum ich Männer mag."},
@@ -31,6 +32,53 @@ const part2Questions = [
     answer_papa: { "A": "...","B": "...", "C": "Ja, das ist die richtige Denkweise! Männer sollen Frauen mögen.", "D": "Du sagst, du bist schwul, aber du hast es noch nie versucht, woher weißt du, dass du keine Frauen magst?"  }},  
 ];
 
+
+
+function show_questions(text) {
+    var num = text.length;
+    var i =0;
+    function show() {
+        var shower = text.substr (0,i);
+        document.getElementById ("question").innerHTML = shower;
+        i++;
+        if(i > num) {
+            clearInterval (done);
+            enableAnswerButtons();
+        }
+    }
+    var done=setInterval (show,50);
+}
+
+function show_text(question, kid, papa) {
+    var fullText = question + "<br><br>" + kid + "<br><br>" + papa; // 组合整个文本
+    var num_q = question.length; // question文本的长度
+    var num_k = num_q + 8 + kid.length; // kid文本结束的位置
+    var i = num_q+8; // 从文本的第一个字符开始
+    var currentText = ''; // 当前逐字显示的文本
+
+    function show() {
+        if (i < num_k) {
+            // 如果当前索引在 question 与 kid 之间
+            currentText = question + "<br><br>" + fullText.substring(num_q + 8, i);
+        } else if (i === num_k) {
+            i = i + 8;
+            currentText = question + "<br><br>" + kid + "<br><br>" + fullText.substring(num_k + 8, i);
+        } else {  
+            // 如果当前索引在 kid 与 papa 之间或之后
+            currentText = question + "<br><br>" + kid + "<br><br>" + fullText.substring(num_k + 8, i);
+        }
+        document.getElementById("question").innerHTML = currentText;
+        i++; // 移动到下一个字符
+        if (i > fullText.length) { // 如果已经显示了所有文本
+            clearInterval(done);
+            show_score();
+            setTimeout(nextQuestion, 3000);   
+        }
+    }
+    
+    var done = setInterval(show, 50); // 每100毫秒显示下一个字符
+}
+
 // 显示问题的函数
 function displayQuestion() {
     let question;
@@ -38,18 +86,19 @@ function displayQuestion() {
 
     if (part === 1) {
         question = part1Questions[currentQuestionIndex];
+        //show_words(question.text,"question");
         document.getElementById('question').textContent = question.text;
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
     } else {
         question = part2Questions[currentQuestionIndex - part1Questions.length];
         //显示问题和选
-         questionHtml = question.text + "<br>";
-        // 循环遍历每个选项并创建一个单选按钮
-
-        document.getElementById('question').innerHTML  = questionHtml;
+        disableAnswerButtons();
+        show_questions(question.text);
+        //document.getElementById('question').innerHTML  = questionHtml;
         document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2-answers').style.display = 'block';
+        set_button_color();
         document.getElementById('buttonA').textContent = question.options[0];
         document.getElementById('buttonB').textContent = question.options[1];
         document.getElementById('buttonC').textContent = question.options[2];
@@ -68,48 +117,78 @@ function submitAnswer(answer) {
     let question;
     if (part === 1) {
         question = part1Questions[currentQuestionIndex];
-        if (answer === question.answer) {
-            document.getElementById('feedback').textContent = '正确！+10';
+        if (answer === true) {
             score += 1; // 正确答案加 10 分
+            document.getElementById('feedback').textContent = score;
+
         } else {
-            document.getElementById('feedback').textContent = '错误！+0';
+            document.getElementById('feedback').textContent = score;
         }
-        
+    show_score();
     nextQuestion();    
     } 
         
     else {
+        button = document.getElementById('button'+answer);
+        button.style.backgroundColor = '#33A9FF';
+        button.style.color = '#FFFFFF';
+        disableAnswerButtons();
         question = part2Questions[currentQuestionIndex - part1Questions.length];
-        document.getElementById('answer_kid').textContent = question.answer_kid[answer];
-        document.getElementById('answer_papa').textContent = question.answer_papa[answer];
-        if (question.answer_papa[answer] === "...") {
+        kid=question.answer_kid[answer];
+        papa=question.answer_papa[answer];
+        if (papa === "...") {
             score += 1; // 正确答案加 10 分
-        } 
-        document.getElementById('next-button').style.display = 'block';}
-        // 其他设置保持不变
-    
-    if (score === 0) {
-        document.body.style.backgroundImage = "url('pic0.jpg')";
-    } else if (score === 1) {
-        document.body.style.backgroundImage = "url('pic1.jpg')";
-    } else if (score === 2) {
-        document.body.style.backgroundImage = "url('pic2.jpg')";
-    } else {
-        document.body.style.backgroundImage = "url('pic3.jpg')";
-    }    
-    
+        }
+        show_text(question.text,kid,papa);
 
+        
+    }
+   
 }
+
+function show_score() {    
+    if (score === 0) {
+    document.body.style.backgroundImage = "url('pic0.jpg')";
+} else if (score === 1) {
+    document.body.style.backgroundImage = "url('pic1.jpg')";
+} else if (score === 2) {
+    document.body.style.backgroundImage = "url('pic2.jpg')";
+} else {
+    document.body.style.backgroundImage = "url('pic3.jpg')";
+} }
+
+function set_button_color() {
+    var part2ButtonsContainer = document.getElementById("part2_button");
+    // 获取这个容器下的所有按钮
+    var buttons = part2ButtonsContainer.getElementsByTagName("button");
+    // 遍历这些按钮并设置它们的颜色
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = "white"; // 设置背景颜色
+        buttons[i].style.color = "black"; // 设置文本颜色
+    }}
+
 function disableAnswerButtons() {
-    let buttons = document.querySelectorAll('#part1-answers button, #part2-answers button');
-    buttons.forEach(function(button) {
-        button.disabled = true;
-    });
-}
+    var part2ButtonsContainer = document.getElementById("part2_button");
+    // 获取这个容器下的所有按钮
+    var buttons = part2ButtonsContainer.getElementsByTagName("button");
+    // 遍历这些按钮并设置它们的颜色
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true
+    }}
+
+function enableAnswerButtons() {
+    var part2ButtonsContainer = document.getElementById("part2_button");
+    // 获取这个容器下的所有按钮
+    var buttons = part2ButtonsContainer.getElementsByTagName("button");
+    // 遍历这些按钮并设置它们的颜色
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false
+    }}
+
+
 // 进入下一题的函数
 function nextQuestion() {
     currentQuestionIndex++;
-    enableAnswerButtons();
     if ((part === 1 && currentQuestionIndex < part1Questions.length) || (part === 2 && currentQuestionIndex < part1Questions.length + part2Questions.length)) {
         displayQuestion();
     } else if (part === 1) {
@@ -124,12 +203,7 @@ function nextQuestion() {
         showResults();
     }
 }
-function enableAnswerButtons() {
-    let buttons = document.querySelectorAll('#part1-answers button, #part2-answers button');
-    buttons.forEach(function(button) {
-        button.disabled = false;
-    });
-}
+
 // 显示结果的函数
 function showResults() {
     let evaluation = "";
