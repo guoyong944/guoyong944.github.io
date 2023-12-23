@@ -12,7 +12,7 @@ body {
 #question {
     position: absolute;
     top: 40px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 6px; /* 距离最近的已定位祖先元素右边 30px */
+    left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
     height: 852px;
     margin: auto;
