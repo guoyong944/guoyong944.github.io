@@ -1,8 +1,5 @@
 
-
-
 body {
-
     font-family: 'Avenir', sans-serif;
     color: #503A00;
     background-image: url('pic0.jpg');
@@ -12,7 +9,7 @@ body {
 }
 #question {
     position: absolute;
-    top: 113px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 70px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 13px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
     height: 700px;
@@ -24,7 +21,6 @@ body {
     white-space: pre-line;
     line-height: 35px;
     font-family: Avenir;
-
 }
 #part2_text {
     position: absolute;
@@ -47,7 +43,7 @@ body {
     letter-spacing: -0.03em;
     color: #FFFFFF;
     position: absolute;
-    top: 666px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 600px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
@@ -67,7 +63,7 @@ body {
     letter-spacing: -0.03em;
     color: #FFC300;
     position: absolute;
-    top: 666px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 600px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 224px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
