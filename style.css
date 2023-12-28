@@ -1,9 +1,10 @@
 
+
+
 body {
 
     font-family: 'Avenir', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    color: #503A00;
     background-image: url('pic0.jpg');
     background-size: auto; /* 覆盖整个页面 */
     background-repeat: no-repeat; /* 不重复背景图像 */
@@ -11,14 +12,18 @@ body {
 }
 #question {
     position: absolute;
-    top: 40px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 22px; /* 距离最近的已定位祖先元素右边 30px */
+    top: 113px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 13px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
     height: 700px;
     margin: auto;
     text-align: left;
-    font-size: 40px;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     white-space: pre-line;
+    line-height: 35px;
+    font-family: Avenir;
 
 }
 #part2_text {
@@ -35,35 +40,44 @@ body {
 }
 
 #buttonJa {
+    font-family: Avenir;
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 40px;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
     position: absolute;
-    top: 550px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 666px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
-    font-size: 25px;
     margin: auto;
-    border-color: black;
-    border-radius: 25px;
-    color: black;
-
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background: #FFC300;
+    box-shadow: 0px 2px 6px 0px #674B004D;
     text-align: center;
+    border:0;
+    border-radius: 27px
+
 }
 #buttonNein {
+    font-family: Avenir;
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 40px;
+    letter-spacing: -0.03em;
+    color: #FFC300;
     position: absolute;
-    top: 550px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 666px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 224px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
-    font-size: 25px;
-    color: black;
     margin: auto;
-    border-color: black;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px 0px #674B004D;
+    border-radius: 27px;
     text-align: center;
+    border:0;
+    border-radius: 27px
 }
 
 

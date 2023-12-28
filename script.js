@@ -5,11 +5,11 @@ let part = 1; // 部分 1
 
 // 第一部分的问题
 const part1Questions = [
-    { text: "Glauben Sie an Ihr Recht, ein glückliches und erfülltes Leben zu führen, unabhängig von Ihrer sexuellen Orientierung?", answer: true },
-    { text: "Glauben Sie, dass es für die persönliche Entwicklung wichtig ist, seine sexuelle Orientierung zu kennen und zu akzeptieren?", answer: true },
+    { text: "1Glauben Sie an Ihr \nRecht, ein glückliches \nund erfülltes Leben zu \nführen, unabhängig \nvon Ihrer sexuellen \nOrientierung?", answer: true },
+    { text: "Glauben Sie, dass es \nfür die persönliche \nEntwicklung wichtig ist, \nseine sexuelle Orien-\ntierung zu kennen und \nzu akzeptieren?", answer: true },
     { text: "Glauben Sie, dass jeder Mensch es verdient, geliebt zu werden, unabhängig von seiner sexuellen Orientierung?", answer: true },
     { text: "Glauben Sie, dass ein Coming-out eine Erfahrung sein kann, die das Selbstvertrauen und den persönlichen Wert stärkt?", answer: true },
-    { text: "Glauben Sie, dass Sie sich durch Ihr Coming-out freier und echter in Ihrem Leben fühlen?", answer: true },
+    { text: "Glauben Sie, dass Sie \nsich durch Ihr Coming-\nout freier und echter in \nIhrem Leben fühlen?", answer: true },
     { text: "Glauben Sie, dass Sie durch Ihr Coming-out andere inspirieren und unterstützen können?", answer: true },
     { text: "Sind Sie bereit, sich der Herausforderung zu stellen, die verschiedenen möglichen Reaktionen und Ergebnisse Ihres Coming-outs zu erkunden?", answer: true },
 
@@ -25,7 +25,7 @@ const part2Questions = [
     answer_papa: { "A": "...","B": "Wie sprichst du \nmit Mama und Papa! \nIch glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir \neigentlich? Willst \ndu uns verarschen?"  }},
     { text: "Wie kann es Liebe \nzwischen Männern geben? \nHast du dich geirrt??", 
     options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe und Freundschaft.'], 
-    answer_kid: { "A": "&Ich weiß nicht, \n&ob das Liebe oder \n&Freundschaft ist, und \n&ich bin verwirrt...","B": "&Ich bin mir sicher, \n&dass es Liebe ist. \n&Es ist das Gefühl, \n&mein Herzschlag setzte \n&für einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht \n&es nur um eine Freundschaft. ", "D": "&Mama und Papa, \n&ich bin ein Erwachsener, \n&ich kann zwischen Liebe \n&und Freundschaft unterscheiden."},
+    answer_kid: { "A": "&Ich weiß nicht, \n&ob das Liebe oder \n&Freundschaft ist, und \n&ich bin verwirrt...","B": "&Ich bin mir sicher, \n&dass es Liebe ist. \n&Es ist das Gefühl, \n&mein Herzschlag setzte \n&für einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht \n&es nur um eine \n&Freundschaft. ", "D": "&Mama und Papa, \n&ich bin ein Erwachsener, \n&ich kann zwischen Liebe \n&und Freundschaft unterscheiden."},
     answer_papa: { "A": "Glaub Mama, du \nmusst dich irren!","B": "...", "C": "Glaub Papa, du \nmusst dich irren!", "D": "..."  }},  
     { text: "Wie weißt du, dass \ndu keine Frauen magst, \nwenn du noch nie \nmit einer zusammen warst?", 
     options: [' Ich mag Jungs schon seit der Mittelschule', ' Ich fühle mich nur von Jungs angezogen.?', ' Vielleicht könnte ich auch Frauen mögen?', ' Warum sollte ich Frauen mögen?'], 
