@@ -12,17 +12,27 @@ body {
 #question {
     position: absolute;
     top: 40px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 6px; /* 距离最近的已定位祖先元素右边 30px */
+    left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
-    height: 852px;
+    height: 700px;
     margin: auto;
     text-align: left;
     font-size: 40px;
-
+    white-space: pre-line;
 
 }
+#part2_text {
+    position: absolute;
+    top: 40px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 22px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 381px;
+    height: 900px;
+    margin: auto;
+    text-align: left;
+    font-size: 30px;
+    white-space: pre-line;
 
-
+}
 
 #buttonJa {
     position: absolute;
@@ -61,7 +71,7 @@ body {
     top: 291px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 6px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
-    height: 852px;
+    height: 700px;
     margin: auto;
     text-align: left;
     font-size: 40px;
@@ -72,7 +82,7 @@ body {
     top: 491px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 6px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
-    height: 852px;
+    height: 700px;
     margin: auto;
     text-align: left;
     font-size: 40px;
@@ -81,7 +91,7 @@ body {
 
 #buttonA {
     position: absolute;
-    top: 568px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 418px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 20px; /* 距离最近的已定位祖先元素右边 30px */
     width: 351px;
     height: 51px;
@@ -96,7 +106,7 @@ body {
 }
 #buttonB {
     position: absolute;
-    top: 627px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 477px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 20px; /* 距离最近的已定位祖先元素右边 30px */
     width: 351px;
     height: 51px;
@@ -111,7 +121,7 @@ body {
 }
 #buttonC {
     position: absolute;
-    top: 686px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 536px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 20px; /* 距离最近的已定位祖先元素右边 30px */
     width: 351px;
     height: 51px;
@@ -126,7 +136,7 @@ body {
 }
 #buttonD {
     position: absolute;
-    top: 745px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 595px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 20px; /* 距离最近的已定位祖先元素右边 30px */
     width: 351px;
     height: 51px;

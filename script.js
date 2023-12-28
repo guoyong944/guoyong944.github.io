@@ -17,7 +17,8 @@ const part1Questions = [
 
 // 第二部分的问题
 const part2Questions = [
-
+    { test:"Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...",
+    text: "Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...\nEs ist ein Geheimnis, \ndas seit vielen Jahren \nin meinem Herzen \nverborgen ist...\n\n&Was ist denn los, \n&mein Sohn?\n\nIch habe mich immer \nan eure Liebe und \nUnterstützung erinnert\n, seit ich ein Kind war...\n\nIch bin sehr glücklich, \nin dieser Familie zu \nleben. Ich werde euch \nund unsere Familie \nimmer lieben, und Ich \nweiß auch, dass ihr \nwollt, dass ich \nglücklich bin. Also...\n\n&Na und? \n&Mach dir keine Sorgen, \n&mein Sohn, sprich mit \n&Mama und Papa.\n\nAlso...Ich will euch mal was \nklar machen... \nIhr habt euch immer \nSorgen gemacht, \nwann ich eine Freundin\n habe. Wann ich heirate...\n\nIch habe sie mit \nverschiedenen Ausreden \ngemieden. \nAber ich möchte \neuren Fragen nicht \nmehr ausweichen.\n\nEs ist wahr, dass ich \nkeine Freundin haben \nwerde und ich will nicht \nheiraten, weil ich schwul \nbin und Männer mag."},
     { text: "Ich glaube nicht, wie ist das möglich, wie kannst du ein Schwuler sein?", 
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'], 
     answer_kid: { "A": "Ich bin immer schwul, ich habe es euch nur vorher nicht gesagt.","B": "Warum kann ich nicht schwul sein? Ist es falsch, schwul zu sein?", "C": "Mama und Papa, ich meine es ernst. Ich bin schwul. Ich lüge nicht.", "D": "Ich weiß selber nicht, warum ich Männer mag."},
@@ -48,7 +49,38 @@ function show_questions(text) {
     }
     var done=setInterval (show,50);
 }
+function show_part2_text(text) {
+    var container = document.getElementById('part2_text');
+    var i = 0;
+    var currentText = '';
+    document.getElementById('part2_text').style.display = 'block';
+    document.getElementById('question').style.display = 'none';
 
+    function showNextChar() {
+        if (i < text.length) {
+            if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp";i++;}
+            currentText += text.charAt(i);
+            currentText=currentText.split("\n").slice(-15).join("\n");
+            var currentText_list=currentText.split("\n\n");
+            var para_num=currentText_list.length;
+            if (para_num>1){
+            var currentText1=currentText_list.slice(0,para_num-1).join("\n\n");
+            var currentText2=currentText_list.slice(-1).join("\n\n");
+            container.innerHTML="<span style='color:#D5D5D5'>"+currentText1+"</span>"+"\n\n"+currentText2;
+            }
+            else{container.innerHTML=currentText;}
+
+            i++;
+            setTimeout(showNextChar, 50); // 调整速度
+        }
+        else { // 如果已经显示了所有文本
+            setTimeout(nextQuestion, 3000);   
+
+        }
+    }
+
+    showNextChar();
+}
 function show_text(question, kid, papa) {
     var fullText = question + kid + papa; // 组合整个文本
     var num_q = question.length; // question文本的长度
@@ -86,7 +118,15 @@ function displayQuestion() {
         document.getElementById('question').textContent = question.text;
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
-    } else {
+    } 
+    else if(currentQuestionIndex===part1Questions.length) {
+        show_part2_text(part2Questions[0].text); 
+        document.getElementById('question').style.display = 'none';       
+        document.getElementById('part1-answers').style.display = 'none';
+    }
+    else {
+        document.getElementById('part2_text').style.display = 'none';
+        document.getElementById('question').style.display = 'block';
         question = part2Questions[currentQuestionIndex - part1Questions.length];
         document.getElementById('question').style.fontSize = "30px";
 
@@ -94,7 +134,7 @@ function displayQuestion() {
         disableAnswerButtons();
         show_questions(question.text);
         //document.getElementById('question').innerHTML  = questionHtml;
-        document.getElementById('part1-answers').style.display = 'none';
+
         document.getElementById('part2-answers').style.display = 'block';
         set_button_color();
         document.getElementById('buttonA').textContent = question.options[0];
