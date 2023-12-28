@@ -9,7 +9,7 @@ body {
 }
 #question {
     position: absolute;
-    top: 70px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 35px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 13px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
     height: 700px;
@@ -43,7 +43,7 @@ body {
     letter-spacing: -0.03em;
     color: #FFFFFF;
     position: absolute;
-    top: 600px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 500px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
@@ -63,7 +63,7 @@ body {
     letter-spacing: -0.03em;
     color: #FFC300;
     position: absolute;
-    top: 600px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 500px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 224px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
