@@ -58,7 +58,7 @@ function show_part2_text(text) {
         if (i < text.length) {
             if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp";i++;}
             currentText += text.charAt(i);
-            currentText=currentText.split("\n").slice(-18).join("\n");
+            currentText=currentText.split("\n").slice(-12).join("\n");
             var currentText_list=currentText.split("\n\n");
             var para_num=currentText_list.length;
             if (para_num>1){
