@@ -128,7 +128,21 @@ body {
     text-align: left;
 }
 
-
+#buttonNextQustion {
+    position: absolute;
+    top: 660px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 200px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 120px;
+    height: 51px;
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    margin: auto;
+    border-color: black;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: left;
+}
 #feedback {
     font-size: 16px;
     margin: 20px 0;

@@ -1,5 +1,5 @@
 // 全局变量
-let currentQuestionIndex = 6;
+let currentQuestionIndex = 0;
 let score = 0;
 let part = 1; // 部分 1
 
@@ -17,18 +17,20 @@ const part1Questions = [
 
 // 第二部分的问题
 const part2Questions = [
-{ text: "Ich glaube nicht, \nwie ist das möglich, \nwie kannst du ein \nSchwuler sein?", 
+    { test:"Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...",
+    text: "Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...\nEs ist ein Geheimnis, \ndas seit vielen Jahren \nin meinem Herzen \nverborgen ist...\n\n&Was ist denn los, \n&mein Sohn?\n\nIch habe mich immer \nan eure Liebe und \nUnterstützung erinnert\n, seit ich ein Kind war...\n\nIch bin sehr glücklich, \nin dieser Familie zu \nleben. Ich werde euch \nund unsere Familie \nimmer lieben, und Ich \nweiß auch, dass ihr \nwollt, dass ich \nglücklich bin. Also...\n\n&Na und? \n&Mach dir keine Sorgen, \n&mein Sohn, sprich mit \n&Mama und Papa.\n\nAlso...Ich will euch mal was \nklar machen... \nIhr habt euch immer \nSorgen gemacht, \nwann ich eine Freundin\n habe. Wann ich heirate...\n\nIch habe sie mit \nverschiedenen Ausreden \ngemieden. \nAber ich möchte \neuren Fragen nicht \nmehr ausweichen.\n\nEs ist wahr, dass ich \nkeine Freundin haben \nwerde und ich will nicht \nheiraten, weil ich schwul \nbin und Männer mag."},
+    { text: "Ich glaube nicht, \nwie ist das möglich, \nwie kannst du ein \nSchwuler sein?", 
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'], 
     answer_kid: { "A": "&Ich bin immer schwul, \n&ich habe es euch nur \n&vorher nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es \n&falsch, schwul zu sein?", "C": "Mama und Papa, \n&ich meine es ernst. \n&Ich bin schwul. \n&Ich lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
     answer_papa: { "A": "...","B": "Wie sprichst du \nmit Mama und Papa! \nIch glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir \neigentlich? Willst \ndu uns verarschen?"  }},
-    { text: "Wie kann es Liebe zwischen Männern geben? Hast du dich geirrt??", 
+    { text: "Wie kann es Liebe \nzwischen Männern geben? \nHast du dich geirrt??", 
     options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe und Freundschaft.'], 
-    answer_kid: { "A": "Ich weiß nicht, ob das Liebe oder Freundschaft ist, und ich bin verwirrt...","B": "Ich bin mir sicher, dass es Liebe ist. Es ist das Gefühl, mein Herzschlag setzte für einen Moment aus. ", "C": "Vielleicht. Vielleicht geht es nur um eine Freundschaft. ", "D": "Mama und Papa, ich bin ein Erwachsener, ich kann zwischen Liebe und Freundschaft unterscheiden."},
-    answer_papa: { "A": "Glaub Mama, du musst dich irren!","B": "...", "C": "Glaub Papa, du musst dich irren!", "D": "..."  }},  
-    { text: "Wie weißt du, dass du keine Frauen magst, wenn du noch nie mit einer zusammen warst?", 
+    answer_kid: { "A": "&Ich weiß nicht, \n&ob das Liebe oder \n&Freundschaft ist, und \n&ich bin verwirrt...","B": "&Ich bin mir sicher, \n&dass es Liebe ist. \n&Es ist das Gefühl, \n&mein Herzschlag setzte \n&für einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht \n&es nur um eine Freundschaft. ", "D": "&Mama und Papa, \n&ich bin ein Erwachsener, \n&ich kann zwischen Liebe \n&und Freundschaft unterscheiden."},
+    answer_papa: { "A": "Glaub Mama, du \nmusst dich irren!","B": "...", "C": "Glaub Papa, du \nmusst dich irren!", "D": "..."  }},  
+    { text: "Wie weißt du, dass \ndu keine Frauen magst, \nwenn du noch nie \nmit einer zusammen warst?", 
     options: [' Ich mag Jungs schon seit der Mittelschule', ' Ich fühle mich nur von Jungs angezogen.?', ' Vielleicht könnte ich auch Frauen mögen?', ' Warum sollte ich Frauen mögen?'], 
-    answer_kid: { "A": "Als ich in der Mittelschule war, wurde mir klar, dass ich Jungs mag. Ich habe keine Gefühle für Mädchen, egal wie hübsch, wie süß sie waren. ","B": "Seit meiner Kindheit fühle ich mich nur zu Jungs hingezogen. Ich interessiere mich nur für gutaussehende Männer, nicht für Mädchen.", "C": "Vielleicht, vielleicht möge ich auch Mädchen?", "D": "Ich bin schwul, warum sollte ich mit einer Frau zusammen sein?"},
-    answer_papa: { "A": "...","B": "...", "C": "Ja, das ist die richtige Denkweise! Männer sollen Frauen mögen.", "D": "Du sagst, du bist schwul, aber du hast es noch nie versucht, woher weißt du, dass du keine Frauen magst?"  }},  
+    answer_kid: { "A": "&Als ich in der \n&Mittelschule war, wurde \n&mir klar, dass ich \n&Jungs mag. Ich habe \n&keine Gefühle für Mädchen, \n&egal wie hübsch, wie \n&süß sie waren. ","B": "&Seit meiner Kindheit \n&fühle ich mich nur \n&zu Jungs hingezogen. \n&Ich interessiere mich nur \n&für gutaussehende Männer, \n&nicht für Mädchen.", "C": "&Vielleicht, vielleicht möge \n&ich auch Mädchen?", "D": "&Ich bin schwul, warum \n&sollte ich mit einer \n&Frau zusammen sein?"},
+    answer_papa: { "A": "...","B": "...", "C": "Ja, das ist die \nrichtige Denkweise! Männer \nsollen Frauen mögen.", "D": "Du sagst, du bist schwul, \naber du hast es noch \nnie versucht, woher weißt \ndu, dass du keine \nFrauen magst?"  }},  
 ];
 
 
@@ -117,8 +119,14 @@ function displayQuestion() {
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
     } 
-    else {
+    else if(currentQuestionIndex===part1Questions.length) {
+        document.getElementById('buttonNextQustion').style.display = 'block';       
+        show_part2_text(part2Questions[0].text); 
+        document.getElementById('question').style.display = 'none';       
         document.getElementById('part1-answers').style.display = 'none';
+    }
+    else {
+        document.getElementById('buttonNextQustion').style.display = 'none';       
         document.getElementById('part2_text').style.display = 'none';
         document.getElementById('question').style.display = 'block';
         question = part2Questions[currentQuestionIndex - part1Questions.length];
