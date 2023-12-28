@@ -1,5 +1,5 @@
 // 全局变量
-let currentQuestionIndex = 0;
+let currentQuestionIndex = 6;
 let score = 0;
 let part = 1; // 部分 1
 
@@ -17,12 +17,10 @@ const part1Questions = [
 
 // 第二部分的问题
 const part2Questions = [
-    { test:"Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...",
-    text: "Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...\nEs ist ein Geheimnis, \ndas seit vielen Jahren \nin meinem Herzen \nverborgen ist...\n\n&Was ist denn los, \n&mein Sohn?\n\nIch habe mich immer \nan eure Liebe und \nUnterstützung erinnert\n, seit ich ein Kind war...\n\nIch bin sehr glücklich, \nin dieser Familie zu \nleben. Ich werde euch \nund unsere Familie \nimmer lieben, und Ich \nweiß auch, dass ihr \nwollt, dass ich \nglücklich bin. Also...\n\n&Na und? \n&Mach dir keine Sorgen, \n&mein Sohn, sprich mit \n&Mama und Papa.\n\nAlso...Ich will euch mal was \nklar machen... \nIhr habt euch immer \nSorgen gemacht, \nwann ich eine Freundin\n habe. Wann ich heirate...\n\nIch habe sie mit \nverschiedenen Ausreden \ngemieden. \nAber ich möchte \neuren Fragen nicht \nmehr ausweichen.\n\nEs ist wahr, dass ich \nkeine Freundin haben \nwerde und ich will nicht \nheiraten, weil ich schwul \nbin und Männer mag."},
-    { text: "Ich glaube nicht, wie ist das möglich, wie kannst du ein Schwuler sein?", 
+{ text: "Ich glaube nicht, \nwie ist das möglich, \nwie kannst du ein \nSchwuler sein?", 
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'], 
-    answer_kid: { "A": "Ich bin immer schwul, ich habe es euch nur vorher nicht gesagt.","B": "Warum kann ich nicht schwul sein? Ist es falsch, schwul zu sein?", "C": "Mama und Papa, ich meine es ernst. Ich bin schwul. Ich lüge nicht.", "D": "Ich weiß selber nicht, warum ich Männer mag."},
-    answer_papa: { "A": "...","B": "Wie sprichst du mit Mama und Papa! Ich glaube, du bist echt krank!", "C": "...", "D": "Was denkst du dir eigentlich? Willst du uns verarschen?"  }},
+    answer_kid: { "A": "&Ich bin immer schwul, \n&ich habe es euch nur \n&vorher nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es \n&falsch, schwul zu sein?", "C": "Mama und Papa, \n&ich meine es ernst. \n&Ich bin schwul. \n&Ich lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
+    answer_papa: { "A": "...","B": "Wie sprichst du \nmit Mama und Papa! \nIch glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir \neigentlich? Willst \ndu uns verarschen?"  }},
     { text: "Wie kann es Liebe zwischen Männern geben? Hast du dich geirrt??", 
     options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe und Freundschaft.'], 
     answer_kid: { "A": "Ich weiß nicht, ob das Liebe oder Freundschaft ist, und ich bin verwirrt...","B": "Ich bin mir sicher, dass es Liebe ist. Es ist das Gefühl, mein Herzschlag setzte für einen Moment aus. ", "C": "Vielleicht. Vielleicht geht es nur um eine Freundschaft. ", "D": "Mama und Papa, ich bin ein Erwachsener, ich kann zwischen Liebe und Freundschaft unterscheiden."},
@@ -82,23 +80,23 @@ function show_part2_text(text) {
     showNextChar();
 }
 function show_text(question, kid, papa) {
-    var fullText = question + kid + papa; // 组合整个文本
+    var fullText = question + kid +"\n\n"+ papa; // 组合整个文本
     var num_q = question.length; // question文本的长度
     var num_k = num_q + kid.length; // kid文本结束的位置
     var i = num_q; // 从文本的第一个字符开始
-    var currentText = ''; // 当前逐字显示的文本
+    var currentText = question +"\n\n"; // 当前逐字显示的文本
 
     function show() {
-        if (i < num_k) {
+        if (i < fullText.length) {
             // 如果当前索引在 question 与 kid 之间
-            currentText = "<span style='color:#D5D5D5'>"+question +"</span>"+ "<br><br>" + fullText.substring(num_q, i);
-        } else {  
-            // 如果当前索引在 kid 与 papa 之间或之后
-            currentText = "<span style='color:#D5D5D5'>"+question + "<br><br>" + kid + "<br><br>" +"</span>"+ fullText.substring(num_k, i);
+            if(fullText.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp";i++;}
+            currentText += fullText.charAt(i);
+            currentText=currentText.split("\n").slice(-10).join("\n");
+        
         }
         document.getElementById("question").innerHTML = currentText;
         i++; // 移动到下一个字符
-        if (i > fullText.length) { // 如果已经显示了所有文本
+        if (i >= fullText.length) { // 如果已经显示了所有文本
             clearInterval(done);
             show_score();
             setTimeout(nextQuestion, 3000);   
@@ -119,12 +117,8 @@ function displayQuestion() {
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
     } 
-    else if(currentQuestionIndex===part1Questions.length) {
-        show_part2_text(part2Questions[0].text); 
-        document.getElementById('question').style.display = 'none';       
-        document.getElementById('part1-answers').style.display = 'none';
-    }
     else {
+        document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2_text').style.display = 'none';
         document.getElementById('question').style.display = 'block';
         question = part2Questions[currentQuestionIndex - part1Questions.length];
