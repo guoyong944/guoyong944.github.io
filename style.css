@@ -26,7 +26,7 @@ body {
     top: 40px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
-    height: 900px;
+    height: 700px;
     margin: auto;
     text-align: left;
     font-size: 30px;
@@ -64,28 +64,6 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-align: center;
-}
-
-#answer_kid {
-    position: absolute;
-    top: 291px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 6px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 381px;
-    height: 700px;
-    margin: auto;
-    text-align: left;
-    font-size: 40px;
-}
-
-#answer_papa {
-    position: absolute;
-    top: 491px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 6px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 381px;
-    height: 700px;
-    margin: auto;
-    text-align: left;
-    font-size: 40px;
 }
 
 
