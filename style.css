@@ -130,7 +130,7 @@ body {
 
 #buttonNextQustion {
     position: absolute;
-    top: 660px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 640px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 200px; /* 距离最近的已定位祖先元素右边 30px */
     width: 120px;
     height: 51px;

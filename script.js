@@ -21,7 +21,7 @@ const part2Questions = [
     text: "Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...\nEs ist ein Geheimnis, \ndas seit vielen Jahren \nin meinem Herzen \nverborgen ist...\n\n&Was ist denn los, \n&mein Sohn?\n\nIch habe mich immer \nan eure Liebe und \nUnterstützung erinnert\n, seit ich ein Kind war...\n\nIch bin sehr glücklich, \nin dieser Familie zu \nleben. Ich werde euch \nund unsere Familie \nimmer lieben, und Ich \nweiß auch, dass ihr \nwollt, dass ich \nglücklich bin. Also...\n\n&Na und? \n&Mach dir keine Sorgen, \n&mein Sohn, sprich mit \n&Mama und Papa.\n\nAlso...Ich will euch mal was \nklar machen... \nIhr habt euch immer \nSorgen gemacht, \nwann ich eine Freundin\n habe. Wann ich heirate...\n\nIch habe sie mit \nverschiedenen Ausreden \ngemieden. \nAber ich möchte \neuren Fragen nicht \nmehr ausweichen.\n\nEs ist wahr, dass ich \nkeine Freundin haben \nwerde und ich will nicht \nheiraten, weil ich schwul \nbin und Männer mag."},
     { text: "Ich glaube nicht, \nwie ist das möglich, \nwie kannst du ein \nSchwuler sein?", 
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'], 
-    answer_kid: { "A": "&Ich bin immer schwul, \n&ich habe es euch nur \n&vorher nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es \n&falsch, schwul zu sein?", "C": "Mama und Papa, \n&ich meine es ernst. \n&Ich bin schwul. \n&Ich lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
+    answer_kid: { "A": "&Ich bin immer schwul, \n&ich habe es euch nur \n&vorher nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es \n&falsch, schwul zu sein?", "C": "&Mama und Papa, \n&ich meine es ernst. \n&Ich bin schwul. \n&Ich lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
     answer_papa: { "A": "...","B": "Wie sprichst du \nmit Mama und Papa! \nIch glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir \neigentlich? Willst \ndu uns verarschen?"  }},
     { text: "Wie kann es Liebe \nzwischen Männern geben? \nHast du dich geirrt??", 
     options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe und Freundschaft.'], 
@@ -29,7 +29,7 @@ const part2Questions = [
     answer_papa: { "A": "Glaub Mama, du \nmusst dich irren!","B": "...", "C": "Glaub Papa, du \nmusst dich irren!", "D": "..."  }},  
     { text: "Wie weißt du, dass \ndu keine Frauen magst, \nwenn du noch nie \nmit einer zusammen warst?", 
     options: [' Ich mag Jungs schon seit der Mittelschule', ' Ich fühle mich nur von Jungs angezogen.?', ' Vielleicht könnte ich auch Frauen mögen?', ' Warum sollte ich Frauen mögen?'], 
-    answer_kid: { "A": "&Als ich in der \n&Mittelschule war, wurde \n&mir klar, dass ich \n&Jungs mag. Ich habe \n&keine Gefühle für Mädchen, \n&egal wie hübsch, wie \n&süß sie waren. ","B": "&Seit meiner Kindheit \n&fühle ich mich nur \n&zu Jungs hingezogen. \n&Ich interessiere mich nur \n&für gutaussehende Männer, \n&nicht für Mädchen.", "C": "&Vielleicht, vielleicht möge \n&ich auch Mädchen?", "D": "&Ich bin schwul, warum \n&sollte ich mit einer \n&Frau zusammen sein?"},
+    answer_kid: { "A": "&Als ich in der \n&Mittelschule war, wurde \n&mir klar, dass ich \n&Jungs mag. Ich habe \n&keine Gefühle für \n&Mädchen, egal wie \n&hübsch, wie süß \n&sie waren. ","B": "&Seit meiner Kindheit \n&fühle ich mich nur \n&zu Jungs hingezogen. \n&Ich interessiere mich nur \n&für gutaussehende \n&Männer, nicht für \n&Mädchen.", "C": "&Vielleicht, vielleicht möge \n&ich auch Mädchen?", "D": "&Ich bin schwul, warum \n&sollte ich mit einer \n&Frau zusammen sein?"},
     answer_papa: { "A": "...","B": "...", "C": "Ja, das ist die \nrichtige Denkweise! Männer \nsollen Frauen mögen.", "D": "Du sagst, du bist schwul, \naber du hast es noch \nnie versucht, woher weißt \ndu, dass du keine \nFrauen magst?"  }},  
 ];
 
@@ -60,7 +60,7 @@ function show_part2_text(text) {
         if (i < text.length) {
             if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp";i++;}
             currentText += text.charAt(i);
-            currentText=currentText.split("\n").slice(-18).join("\n");
+            currentText=currentText.split("\n").slice(-15).join("\n");
             var currentText_list=currentText.split("\n\n");
             var para_num=currentText_list.length;
             if (para_num>1){
@@ -93,7 +93,7 @@ function show_text(question, kid, papa) {
             // 如果当前索引在 question 与 kid 之间
             if(fullText.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp";i++;}
             currentText += fullText.charAt(i);
-            currentText=currentText.split("\n").slice(-10).join("\n");
+            currentText=currentText.split("\n").slice(-8).join("\n");
         
         }
         document.getElementById("question").innerHTML = currentText;
