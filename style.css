@@ -1,18 +1,15 @@
 
-
-
 body {
-
     font-family: 'Avenir', sans-serif;
     color: #503A00;
-    background-image: url('pic0.jpg');
+    /*background-image: url('pic0.jpg');
     background-size: auto; /* 覆盖整个页面 */
-    background-repeat: no-repeat; /* 不重复背景图像 */
+    /*background-repeat: no-repeat; /* 不重复背景图像 */
     /*background-position: center top; /* 图片居中 */
 }
 #question {
     position: absolute;
-    top: 113px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 35px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 13px; /* 距离最近的已定位祖先元素右边 30px */
     width: 381px;
     height: 700px;
@@ -24,6 +21,7 @@ body {
     white-space: pre-line;
     line-height: 35px;
     font-family: Avenir;
+    z-index: 1;
 
 }
 #part2_text {
@@ -47,18 +45,21 @@ body {
     letter-spacing: -0.03em;
     color: #FFFFFF;
     position: absolute;
-    top: 666px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 500px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 22px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
     margin: auto;
     background: #FFC300;
-    box-shadow: 0px 2px 6px 0px #674B004D;
+    box-shadow: 0px 2px 6px 0px rgba(103, 75, 0, 0.3);
     text-align: center;
     border:0;
-    border-radius: 27px
+    border-radius: 27px;
+    z-index: 1;
 
 }
+
+
 #buttonNein {
     font-family: Avenir;
     font-size: 25px;
@@ -67,18 +68,23 @@ body {
     letter-spacing: -0.03em;
     color: #FFC300;
     position: absolute;
-    top: 666px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 500px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 224px; /* 距离最近的已定位祖先元素右边 30px */
     width: 147px;
     height: 76px;
     margin: auto;
     background: #FFFFFF;
-    box-shadow: 0px 2px 6px 0px #674B004D;
     border-radius: 27px;
     text-align: center;
     border:0;
-    border-radius: 27px
+    border-radius: 27px;
+    box-shadow: 0px 2px 6px 0px rgba(191, 139, 0, 0.1);
+    z-index: 1;
+
+
 }
+
+
 
 
 #buttonA {
@@ -95,6 +101,12 @@ body {
     border-radius: 25px;
     cursor: pointer;
     text-align: left;
+    z-index: 1;
+    border:0;
+    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
+
+
+
 }
 #buttonB {
     position: absolute;
@@ -110,6 +122,12 @@ body {
     border-radius: 25px;
     cursor: pointer;
     text-align: left;
+    z-index: 1;
+    border:0;
+    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
+
+
+
 }
 #buttonC {
     position: absolute;
@@ -125,6 +143,12 @@ body {
     border-radius: 25px;
     cursor: pointer;
     text-align: left;
+    z-index: 1;
+    border:0;
+    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
+
+
+
 }
 #buttonD {
     position: absolute;
@@ -140,6 +164,12 @@ body {
     border-radius: 25px;
     cursor: pointer;
     text-align: left;
+    z-index: 1;
+    border:0;
+    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
+
+
+
 }
 
 #buttonNextQustion {
