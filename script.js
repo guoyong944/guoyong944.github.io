@@ -6,7 +6,7 @@ let part = 1; // 部分 1
 
 // 第一部分的问题
 const part1Questions = [
-    { text: "Glauben Sie an Ihr \nRecht, ein glückliches \nund erfülltes Leben zu \nführen, unabhängig \nvon Ihrer sexuellen \nOrientierung?", answer: true },
+    { text: "Glauben Sie an Ihr Recht, ein glückliches und erfülltes Leben zu führen, unabhängig von Ihrer sexuellen Orientierung?", answer: true },
     { text: "Glauben Sie, dass es \nfür die persönliche \nEntwicklung wichtig ist, \nseine sexuelle Orien-\ntierung zu kennen und \nzu akzeptieren?", answer: true },
     { text: "Glauben Sie, dass jeder Mensch es verdient, geliebt zu werden, unabhängig von seiner sexuellen Orientierung?", answer: true },
     { text: "Glauben Sie, dass ein Coming-out eine Erfahrung sein kann, die das Selbstvertrauen und den persönlichen Wert stärkt?", answer: true },
