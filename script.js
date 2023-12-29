@@ -23,7 +23,7 @@ const part2Questions = [
     {text: "Ich glaube nicht, wie ist das  \nmöglich, wie kannst du ein \nSchwuler sein?",
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'],
   answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer \n&mag."},
-  answer_papa: { "A": "...","B": "Wie sprichst du mit Mama \nund Papa! Ich glaube, du \nbist echt \nkrank!", "C": "...", "D": "Was denkst du dir \neigentlich? Willst du uns  \nverarschen?"  }},
+  answer_papa: { "A": "...","B": "Wie sprichst du mit Mama \nund Papa! Ich glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir \neigentlich? Willst du uns  \nverarschen?"  }},
    { text: "Wie kann es Liebe zwischen \nMännern geben? Hast du \ndich geirrt??",
     options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe und Freundschaft.'],
     answer_kid: { "A": "&Ich weiß nicht, ob das \n&Liebe oder Freundschaft  \n&ist, und ich bin verwirrt...","B": "&Ich bin mir sicher, dass es \n&Liebe ist. Es ist das Gefühl, \n&mein Herzschlag setzte für \n&einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht es \n&nur um eine \n&Freundschaft. ", "D": "&Mama und Papa, ich bin ein \n&Erwachsener, ich kann zwi- \n&schen Liebe und Freund- \n&schaft unterscheiden."},
@@ -160,7 +160,7 @@ function show_text(question, kid, papa) {
     function show() {
         if (i < fullText.length) {
             // 如果当前索引在 question 与 kid 之间
-            if(fullText.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp";i++;}
+            if(fullText.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";i++;}
             else if(i===num_k){currentText +='<span style="line-height: 20px;font-size: 15px;"><br><br></span>'}
             currentText += fullText.charAt(i);
             currentText=currentText.split("\n").slice(-8).join("\n");
