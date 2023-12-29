@@ -235,7 +235,7 @@ function displayQuestion() {
     else if(currentQuestionIndex===part1Questions.length) {
         document.getElementById('score').style.display = 'none';       
         document.getElementById('buttonNextQustion').style.display = 'block';       
-        show_part2_text(part2Questions[0].test); 
+        show_part2_text(part2Questions[0].text); 
         document.getElementById('question').style.display = 'none';       
         document.getElementById('part1-answers').style.display = 'none';
     }
@@ -245,7 +245,6 @@ function displayQuestion() {
         document.getElementById('part2_text').style.display = 'none';
         document.getElementById('question').style.display = 'block';
         question = current_part[currentPartQuestionIndex];
-        document.getElementById('question').style.fontSize = "30px";
 
         //显示问题和选
         disableAnswerButtons();
