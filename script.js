@@ -363,38 +363,47 @@ function show_score() {
     document.getElementById('img2').src = 'Union2.png';
     document.getElementById('img3').src = 'Union3.png';
     document.getElementById('img4').src = 'Union4.png';
+    document.getElementById('img5').src = 'Union5.png';
+
 
 } else if (part === 2) {
     document.getElementById('img1').src = 'blue1.png';
     document.getElementById('img2').src = 'blue2.png';
     document.getElementById('img3').src = 'blue3.png';
-    document.getElementById('img4').src = 'blue4.png';} 
+    document.getElementById('img4').src = 'blue4.png';
+    document.getElementById('img5').src = 'blue5.png';} 
  else if (part === 3) {
     document.getElementById('img1').src = 'red1.png';
     document.getElementById('img2').src = 'red2.png';
     document.getElementById('img3').src = 'red3.png';
-    document.getElementById('img4').src = 'red4.png';} 
+    document.getElementById('img4').src = 'red4.png';
+    document.getElementById('img5').src = 'red5.png';} 
 else if (part === 4) {
     document.getElementById('img1').src = 'green1.png';
     document.getElementById('img2').src = 'green2.png';
     document.getElementById('img3').src = 'green3.png';
-    document.getElementById('img4').src = 'green4.png';}
+    document.getElementById('img4').src = 'green4.png';
+    document.getElementById('img5').src = 'green5.png';}
 else if (part === 5) {
     document.getElementById('img1').src = 'lila1.png';
     document.getElementById('img2').src = 'lila2.png';
     document.getElementById('img3').src = 'lila3.png';
-    document.getElementById('img4').src = 'lila4.png';}
+    document.getElementById('img4').src = 'lila4.png';
+    document.getElementById('img5').src = 'lila5.png';}
 else {
     document.getElementById('img1').src = 'orange1.png';
     document.getElementById('img2').src = 'orange2.png';
     document.getElementById('img3').src = 'orange3.png';
     document.getElementById('img4').src = 'orange4.png';
+    document.getElementById('img5').src = 'orange5.png';
+
     };
     if (score === 0) {
     document.getElementById('img1').style.display = 'block';
     document.getElementById('img2').style.display = 'none';
     document.getElementById('img3').style.display = 'none';
     document.getElementById('img4').style.display = 'none';
+    document.getElementById('img5').style.display = 'none';
 
 } else if (score === 1) {
     document.getElementById('img2').style.display = 'block';
@@ -402,6 +411,8 @@ else {
     document.getElementById('img3').style.display = 'block';
 } else {
     document.getElementById('img4').style.display = 'block';
+    document.getElementById('img5').style.display = 'block';
+
 } }
 
 function set_button_color() {
