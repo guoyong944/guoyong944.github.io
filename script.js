@@ -7,10 +7,10 @@ let part = 1; // 部分 1
 // 第一部分的问题
 const part1Questions = [
     { text: "Glauben Sie an Ihr Recht, ein glückliches und erfülltes Leben zu führen, unabhängig von Ihrer sexuellen Orientierung?", answer: true },
-    { text: "Glauben Sie, dass es \nfür die persönliche \nEntwicklung wichtig ist, \nseine sexuelle Orien-\ntierung zu kennen und \nzu akzeptieren?", answer: true },
+    { text: "Glauben Sie, dass es für die persönliche Entwicklung wichtig ist, seine sexuelle Orientierung zu kennen und zu akzeptieren?", answer: true },
     { text: "Glauben Sie, dass jeder Mensch es verdient, geliebt zu werden, unabhängig von seiner sexuellen Orientierung?", answer: true },
     { text: "Glauben Sie, dass ein Coming-out eine Erfahrung sein kann, die das Selbstvertrauen und den persönlichen Wert stärkt?", answer: true },
-    { text: "Glauben Sie, dass Sie \nsich durch Ihr Coming-\nout freier und echter in \nIhrem Leben fühlen?", answer: true },
+    { text: "Glauben Sie, dass Sie sich durch Ihr Coming-out freier und echter in Ihrem Leben fühlen?", answer: true },
     { text: "Glauben Sie, dass Sie durch Ihr Coming-out andere inspirieren und unterstützen können?", answer: true },
     { text: "Sind Sie bereit, sich der Herausforderung zu stellen, die verschiedenen möglichen Reaktionen und Ergebnisse Ihres Coming-outs zu erkunden?", answer: true },
 
@@ -19,7 +19,7 @@ const part1Questions = [
 // 第二部分的问题
 const part2Questions = [
     { test:"Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...",
-    text: "Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...\nEs ist ein Geheimnis, \ndas seit vielen Jahren \nin meinem Herzen \nverborgen ist...\n\n&Was ist denn los, \n&mein Sohn?\n\nIch habe mich immer \nan eure Liebe und \nUnterstützung erinnert\n, seit ich ein Kind war...\n\nIch bin sehr glücklich, \nin dieser Familie zu \nleben. Ich werde euch \nund unsere Familie \nimmer lieben, und Ich \nweiß auch, dass ihr \nwollt, dass ich \nglücklich bin. Also...\n\n&Na und? \n&Mach dir keine Sorgen, \n&mein Sohn, sprich mit \n&Mama und Papa.\n\nAlso...Ich will euch mal was \nklar machen... \nIhr habt euch immer \nSorgen gemacht, \nwann ich eine Freundin\n habe. Wann ich heirate...\n\nIch habe sie mit \nverschiedenen Ausreden \ngemieden. \nAber ich möchte \neuren Fragen nicht \nmehr ausweichen.\n\nEs ist wahr, dass ich \nkeine Freundin haben \nwerde und ich will nicht \nheiraten, weil ich schwul \nbin und Männer mag."},
+    text: "&Papa, Mama...\n&Ich habe euch etwas \n&Wichtiges zu sagen...Es ist \n&ein Geheimnis, das seit \n&vielen Jahren in meinem \n&Herzen verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unter-\n&stützung erinnert, seit ich \n&ein Kind war...\n&Ich bin sehr glücklich, in \n&dieser Familie zu leben. \n&Ich werde euch und unsere \n&Familie immer lieben, \n&und Ich weiß auch, dass ihr \n&ollt, dass ich \n&glücklich bin. Also...\n\n&Na und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also...\n&Ich will euch mal was klar\n& machen... Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin\n&habe. Wann ich heirate...\n&Ich habe sie mit ver-\n&schiedenen Ausreden \n&gemieden. \n&Aber ich möchte euren \n&Fragen nicht mehr \n&ausweichen. Es ist wahr, \n&dass ich keine Freundin \n&haben werde und ich will \n&nicht heiraten, weil ich \n&schwul bin und Männer \n&mag."},
     {text: "Ich glaube nicht, wie ist das  \nmöglich, wie kannst du ein \nSchwuler sein?",
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'],
   answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer \n&mag."},
@@ -124,9 +124,9 @@ function show_part2_text(text) {
 
     function showNextChar() {
         if (i < text.length) {
-            if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp";i++;}
+            if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";i++;}
             currentText += text.charAt(i);
-            currentText=currentText.split("\n").slice(-15).join("\n");
+            currentText=currentText.split("\n").slice(-20).join("\n");
             var currentText_list=currentText.split("\n\n");
             var para_num=currentText_list.length;
             if (para_num>1){
