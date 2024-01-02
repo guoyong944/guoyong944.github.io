@@ -20,7 +20,7 @@ body {
     position: absolute;
     top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 15px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 363px;
+    width: 378px;
     height: 700px;
     margin: auto;
     text-align: left;
