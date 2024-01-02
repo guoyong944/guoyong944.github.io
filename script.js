@@ -6,20 +6,17 @@ let part = 1; // 部分 1
 
 // 第一部分的问题
 const part1Questions = [
-    { text: "Glauben Sie an Ihr Recht, ein glückliches und erfülltes Leben zu führen, unabhängig von Ihrer sexuellen Orientierung?", answer: true },
-    { text: "Glauben Sie, dass es für die persönliche Entwicklung wichtig ist, seine sexuelle Orientierung zu kennen und zu akzeptieren?", answer: true },
-    { text: "Glauben Sie, dass jeder Mensch es verdient, geliebt zu werden, unabhängig von seiner sexuellen Orientierung?", answer: true },
-    { text: "Glauben Sie, dass ein Coming-out eine Erfahrung sein kann, die das Selbstvertrauen und den persönlichen Wert stärkt?", answer: true },
-    { text: "Glauben Sie, dass Sie sich durch Ihr Coming-out freier und echter in Ihrem Leben fühlen?", answer: true },
-    { text: "Glauben Sie, dass Sie durch Ihr Coming-out andere inspirieren und unterstützen können?", answer: true },
-    { text: "Sind Sie bereit, sich der Herausforderung zu stellen, die verschiedenen möglichen Reaktionen und Ergebnisse Ihres Coming-outs zu erkunden?", answer: true },
+{text: "Glauben Sie, dass Sie unab- \nhängig von Ihrer sexuellen \nOrientierung das Recht \nhaben, ein glückliches und \nerfülltes Leben zu führen?", },
+{text: "Glauben Sie, dass es für die \npersönliche Entwicklung \nwichtig ist, seine sexuelle \nOrientierung zu kennen \nund zu akzeptieren?", },
+{text: "Glauben Sie, dass Sie sich \ndurch Ihr Coming-out freier \nund echter in Ihrem Leben \nfühlen?", },
+{text: "Sind Sie bereit, sich der \nHerausforderung zu stellen, \ndie verschiedenen mög- \nlichen Reaktionen und \nErgebnisse Ihres Coming- \nouts zu erkunden?", },
+]; 
 
-];
 
 // 第二部分的问题
 const part2Questions = [
     { test:"Papa, Mama...\nIch habe euch etwas \nWichtiges zu sagen...",
-    text: "&Papa, Mama...\n&Ich habe euch etwas \n&Wichtiges zu sagen...Es ist \n&ein Geheimnis, das seit \n&vielen Jahren in meinem \n&Herzen verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unter-\n&stützung erinnert, seit ich \n&ein Kind war...\n&Ich bin sehr glücklich, in \n&dieser Familie zu leben. \n&Ich werde euch und unsere \n&Familie immer lieben, \n&und Ich weiß auch, dass ihr \n&wollt, dass ich glücklich bin. \n&Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also...\n&Ich will euch mal was klar\n& machen... Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin\n&habe. Wann ich heirate...\n&Ich habe sie mit ver-\n&schiedenen Ausreden \n&gemieden. \n&Aber ich möchte euren \n&Fragen nicht mehr \n&ausweichen. Es ist wahr, \n&dass ich keine Freundin \n&haben werde und ich will \n&nicht heiraten, weil ich \n&schwul bin und Männer \n&mag."},
+    text: "&Papa, Mama... \n&Ich habe euch etwas Wich- \n&tiges zu sagen. Es ist ein \n&Geheimnis, das seit vielen \n&Jahren in meinem Herzen \n&verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unterstüt- \n&zung erinnert, seit ich ein \n&Kind war... Ich bin sehr \n&glücklich, in dieser Familie \n&zu leben. Ich werde euch \n&und unsere Familie immer \n&lieben, und Ich weiß auch, \n&dass ihr wollt, dass ich \n&glücklich bin. Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also, Ich will euch mal was \n&klar machen. Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin \n&habe, wann ich heirate. Ich \n&habe sie mit verschiedenen \n&Ausreden gemieden. Aber \n&ich möchte euren Fragen \n&nicht mehr ausweichen. Es \n&ist wahr, dass ich nun keine \n&Freundin haben werde und \n&ich will nicht heiraten, weil \n&ich schwul bin und Männer \n&mag.\n\n..."},
     {text: "Ich glaube nicht, wie ist das \nmöglich, wie kannst du ein \nSchwuler sein?",
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'],
   answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
