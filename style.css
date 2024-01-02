@@ -2,15 +2,11 @@
 body {
     font-family: 'Avenir', sans-serif;
     color: #503A00;
-    /*background-image: url('pic0.jpg');
-    background-size: auto; /* 覆盖整个页面 */
-    /*background-repeat: no-repeat; /* 不重复背景图像 */
-    /*background-position: center top; /* 图片居中 */
 }
 #quit {
     position: absolute;
-    top: 20px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 15px; /* 距离最近的已定位祖先元素右边 30px */
+    top: 20px; 
+    left: 15px; 
     width: 11px;
     height: 20px;
     margin: auto;
@@ -18,8 +14,8 @@ body {
 }
 #question {
     position: absolute;
-    top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 15px; /* 距离最近的已定位祖先元素右边 30px */
+    top: 60px; 
+    left: 15px; 
     width: 378px;
     height: 700px;
     margin: auto;
@@ -34,8 +30,8 @@ body {
 }
 #part2_text {
     position: absolute;
-    top: 40px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 13px; /* 距离最近的已定位祖先元素右边 30px */
+    top: 40px; 
+    left: 13px;
     width: 400px;
     height: 610px;
     margin: auto;
@@ -58,8 +54,8 @@ body {
     letter-spacing: -0.03em;
     color: #FFFFFF;
     position: absolute;
-    top: 497px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 36px; /* 距离最近的已定位祖先元素右边 30px */
+    top: 497px; 
+    left: 36px; 
     width: 135px;
     height: 77px;
     margin: auto;
