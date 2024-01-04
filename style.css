@@ -2,20 +2,24 @@
 body {
     font-family: 'Avenir', sans-serif;
     color: #503A00;
+    /*background-image: url('pic0.jpg');
+    background-size: auto; /* 覆盖整个页面 */
+    /*background-repeat: no-repeat; /* 不重复背景图像 */
+    /*background-position: center top; /* 图片居中 */
 }
 #quit {
     position: absolute;
-    top: 20px; 
-    left: 15px; 
+    top: 20px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 15px; /* 距离最近的已定位祖先元素右边 30px */
     width: 11px;
     height: 20px;
     margin: auto;
-    z-index: 2;
+    z-index: 7;
 }
 #question {
     position: absolute;
-    top: 60px; 
-    left: 15px; 
+    top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 15px; /* 距离最近的已定位祖先元素右边 30px */
     width: 378px;
     height: 700px;
     margin: auto;
@@ -26,12 +30,12 @@ body {
     white-space: pre-line;
     line-height: 30px;
     font-family: Avenir;
-    z-index: 1;
+    z-index: 6;
 }
 #part2_text {
     position: absolute;
-    top: 40px; 
-    left: 13px;
+    top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 13px; /* 距离最近的已定位祖先元素右边 30px */
     width: 400px;
     height: 610px;
     margin: auto;
@@ -54,8 +58,8 @@ body {
     letter-spacing: -0.03em;
     color: #FFFFFF;
     position: absolute;
-    top: 497px; 
-    left: 36px; 
+    top: 497px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 36px; /* 距离最近的已定位祖先元素右边 30px */
     width: 135px;
     height: 77px;
     margin: auto;
@@ -64,8 +68,7 @@ body {
     text-align: center;
     border:0;
     border-radius: 27px;
-    z-index: 1;
-
+    z-index: 6
 }
 
 
@@ -89,7 +92,7 @@ body {
     border:0;
     border-radius: 27px;
     box-shadow: 0px 2px 6px 0px rgba(191, 139, 0, 0.1);
-    z-index: 1;
+    z-index: 6;
 
 
 }
@@ -111,7 +114,7 @@ body {
     border-radius: 27px;
     cursor: pointer;
     text-align: left;
-    z-index: 1;
+    z-index: 6;
     border:0;
     box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
 
@@ -132,7 +135,7 @@ body {
     border-radius: 27px;
     cursor: pointer;
     text-align: left;
-    z-index: 1;
+    z-index: 6;
     border:0;
     box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
 
@@ -153,7 +156,7 @@ body {
     border-radius: 27px;
     cursor: pointer;
     text-align: left;
-    z-index: 1;
+    z-index: 6;
     border:0;
     box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
 
@@ -174,7 +177,7 @@ body {
     border-radius: 27px;
     cursor: pointer;
     text-align: left;
-    z-index: 1;
+    z-index: 6;
     border:0;
     box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
 
@@ -197,11 +200,15 @@ body {
     cursor: pointer;
     text-align: left;
 }
-#feedback {
+/*#feedback {
     font-size: 16px;
     margin: 20px 0;
     text-align: center;
-}
+    color: black;
+    position: absolute;
+    top: 20px; 
+    left: 115px;
+}*/
 
 #score {
     font-size: 18px;
