@@ -3,6 +3,8 @@ let currentQuestionIndex = 0;
 let currentPartQuestionIndex = 0;
 let score = 0;
 let part = 1; // 部分 1
+let total_score = 0;
+
 
 //第一部分问题 （ja nein frage）
 const part1Questions = [
@@ -12,83 +14,82 @@ const part1Questions = [
     {text: "Sind Sie bereit, sich der \nHerausforderung zu stellen, \ndie verschiedenen mög- \nlichen Reaktionen und \nErgebnisse Ihres Coming- \nouts zu erkunden?", },
     ]; 
     
-    
-    // 第二部分的问题 （第一组多选），灰色高亮部分为自动导言对话
-    const part2Questions = [
-        { text: "&Papa, Mama... \n&Ich habe euch etwas Wich- \n&tiges zu sagen. Es ist ein \n&Geheimnis, das seit vielen \n&Jahren in meinem Herzen \n&verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unterstüt- \n&zung erinnert, seit ich ein \n&Kind war... Ich bin sehr \n&glücklich, in dieser Familie \n&zu leben. Ich werde euch \n&und unsere Familie immer \n&lieben, und Ich weiß auch, \n&dass ihr wollt, dass ich \n&glücklich bin. Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also, Ich will euch mal was \n&klar machen. Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin \n&habe, wann ich heirate. Ich \n&habe sie mit verschiedenen \n&Ausreden gemieden. Aber \n&ich möchte euren Fragen \n&nicht mehr ausweichen. Es \n&ist wahr, dass ich nun keine \n&Freundin haben werde und \n&ich will nicht heiraten, weil \n&ich schwul bin und Männer \n&mag.\n\n..."},
-        {text: "Ich glaube nicht, wie ist das \nmöglich, wie kannst du ein \nSchwuler sein?",
-        options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'],
-      answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
-      answer_papa: { "A": "...","B": "Wie sprichst du mit Mama \nund Papa! Ich glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir eigent- \nlich? Willst du uns  \nverarschen?"  }},
-       { text: "Wie kann es Liebe zwischen \nMännern geben? Hast du \ndich geirrt?",
-        options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe \nund Freundschaft.'],
-        answer_kid: { "A": "&Ich weiß nicht, ob das \n&Liebe oder Freundschaft  \n&ist, und ich bin verwirrt...","B": "&Ich bin mir sicher, dass es \n&Liebe ist. Es ist das Gefühl, \n&mein Herzschlag setzte für \n&einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht es \n&nur um eine Freundschaft.", "D": "&Mama und Papa, ich bin ein \n&Erwachsener, ich kann zwi- \n&schen Liebe und Freund- \n&schaft unterscheiden."},
-        answer_papa: { "A": "Glaub Mama, du musst \ndich irren!","B": "...", "C": "Glaub Papa, du musst \ndich irren!", "D": "..."  }},  
-        { text: "Woher weißt du, dass du \nkeine Frauen magst, wenn \ndu noch nie mit einer \nzusammen warst?",
-        options: [' Ich mag Jungs schon seit der Mittelschule', ' Vielleicht könnte ich auch Frauen mögen?', ' Ich fühle mich nur von Jungs angezogen.?', ' Warum sollte ich Frauen mögen?'],
-        answer_kid: { "A": "&Als ich in der Mittelschule \n&war, wurdemir klar, dass  \n&ich Jungs mag. Ich habe \n&keine Gefühle für Mädchen, \n&egal wie hübsch, wie süß \n&sie waren. ","B": "&Vielleicht, vielleicht möge \n&ich auch Mädchen?", "C": "&Seit meiner Kindheit fühle \n&ich mich nur zu Jungs hin- \n&gezogen. Ich interessiere \n&mich nur für hübsche Män- \n&ner, nicht für Mädchen.", "D": "&Ich bin schwul, warum \n&sollte ich mit einer Frau \n&zusammen sein?"},
-        answer_papa: { "A": "...","B": "Ja, das ist die richtige \nDenkweise! Männer sollen \nFrauen mögen.", "C": "…", "D": "Du sagst, du bist schwul, \naber du hast es noch nie \nversucht, woher weißt du, \nob du Frauen magst?"  }}
-    ];
-    //第三部分问题（第二组多选）
-    const part3Questions = [
-        { text: "Du bist schwul, du wirst \nuns keine Nachkommen in \ndieser Familie hinterlassen. \nDu darfst nicht so egois- \ntisch sein!",
-        options: [' Ihre Wertvorstellungen sind so rückständig', ' Die sexuelle Orientierung ist meine Sache', ' Ich soll Frauen nicht betrügen', ' Es gibt viele Möglichkeiten, Nachkommen \nzu hinterlassen'],
-      answer_kid: { "A": "&Es ist das 21. Jahrhundert, \n&und diese rückständigen \n&Werte sind egoistisch. Wo- \n&für hältst du mich, nur für \n&ein Werkzeug, um Nach- \n&kommen zu hinterlassen?", "B": "&Papa, ob ich Männer oder \n&Frauen mag, ist meine \n&Sache, und ob ich Kinder \n&haben will oder nicht, ist \n&auch meine Sache. Du \n&hältst dich da einfach raus.", "C": "&Ich kann die Mädchen nicht \n&anlügen, indem ich so tue, \n&als würde ich sie mögen. \n&Ich kann nicht zulassen, \n&dass andere wegen mir ihr \n&Glück opfern.", "D": "&Wenn ich in der Zukunft \n&wirklich ein Kind haben \n&möchte, kann ich das durch \n&Adoption, reproduktions- \n&medizinische Verfahren \n&usw. erreichen. Eine Frau \n&zu heiraten, um ein Kind zu \n&bekommen, ist nicht der \n&einzige Weg."},
-       answer_papa: { "A": "Was ist das für eine Einste- \nllung? Auch im 21. Jahrhun- \ndert bist du immer noch ein \nTeil der Familie und musst \ndich an die Familienwerte \nhalten!","B": "Was sagst du denn da? \nDu denkst, du bist erwach- \nsen und kannst so mit uns \nreden?", "C": "...", "D": "..."  }},
-      { text: "Sprich mit Mama, bist du \ndurch diese verdorbenen \nwestlichen Ideen einer \nGehirnwäsche unterzogen \nworden. Denkst du, wir \nsind diejenigen, die dich \ngefesselt haben, und dann \ngehst du diesem schäbigen \nLeben nach?",
-        options: [' Das ist, was ich wirklich über mich weiß', ' Ich weiß nicht, was ich davon halte', ' Ich habe meine eigene Denkweise', ' Homosexuelle gibt es in jeder Zivilisation'],
-      answer_kid: { "A": "&Mama, das ist kein kulture- \n&ller Einfluss. Das ist es, was \n&ich wirklich über mich weiß. \n&Ich habe mein wahres Ich \n&kennengelernt und hatte \n&den Mut, mich zu äußern.","B": "&Ich weiß nicht... Ich denke \n&einfach, ich sollte mein \n&wahres Selbst finden, was \n&auch immer das ist.", "C": "&Das ist euer Vorurteil. Ich \n&habe mein eigenes Denken \n&und Streben nach meinem \n&zukünftigen Leben, ich \n&brauche euer Urteil nicht.", "D": "&Mama, Untersuchungen \n&zufolge machen Schwule \n&und Lesben etwa 5 % der \n&Bevölkerung aus, und sie \n&bestehen in allen Gesell- \n&schaftsschichten, in allen \n&Arten von Familien, in allen \n&Berufen, Ethnien, Religion- \n&en, Ländern und Rassen. \n&Das ist seit dem Altertum."},
-       answer_papa: { "A": "...","B": "Du willst deine Unreife und \nVerantwortungslosigkeit \nverbergen, indem du dein \nwahres Selbst findest", "C": "Wir machen uns Sorgen um \ndeine Zukunft und dein \nLeben, und das ist es, was \ndu von uns denkst? Du bist \nso geblendet von ihnen, \ndass du nichts sehen kannst!", "D": "..."  }},
-      { text: "Leugnest du es immer \nnoch? Mit wem hast du \ndich denn rumgetrieben, \num diesen Unsinn zu \nlernen? Mama und Papa \nhaben dich nicht zum \nSchwulsein erzogen!",
-        options: [' Meine Freunde sind alle super Leute', ' Es ist mein Recht, Freunde zu haben', ' Sie sind nur Leute, die mich verstehen', ' Die sexuelle Orientierung ist ein Ergebnis \nder Selbstentdeckung'],
-      answer_kid: { "A": "&Keine Sorge, Mama und \n&Papa, ich bin von großarti- \n&gen Menschen umgeben, \n&die sonnig, freundlich und \n&liebevoll sind. Ihr werdet \n&sie sicher auch liebhaben. \n&Meine sexuelle  Orientie- \n&rung ist nicht etwas, was \n&ich von irgendjemandem \n&gelernt habe, sie ist Teil \n&dessen, was ich bin.", "B": "&Es ist mein Recht, Freunde \n&zu finden, die ich mag, und \n&ich weiß, wer wirklich für \n&mich da ist.", "C": "&Ich hätte nicht gedacht, \n&dass ihr so viele Fragen \n&haben würdet, ich habe \n&einfach Leute gefunden, \n&die mir zuhören und ver- \n&stehen, wie ich mich fühle.", "D": "&Mama und Papa...\n&Ich verstehe eure Verwirr- \n&ung, aber bitte glaubt mir, \n&meine Sexualität ist nichts, \n&was ich von der Außenwelt \n&gelernt habe. Es ist etwas, \n&das ich in meinem Selbst- \n&verständnis entdeckt habe, \n&als ich aufgewachsen bin, \n&und es ist Teil dessen, was \n&ich bin."},
-       answer_papa: { "A": "...","B": "Sie lügen dich alle an! \nWir sind deine Eltern, und \nwir sind die einzigen, die \nwirklich das Beste für dich \nwollen!", "C": "Sie lügen dich alle an! \nWir sind deine Eltern, und \nwir sind die einzigen, die \nwirklich das Beste für dich \nwollen! ", "D": "..."  }}
-    ];
-    //第四部分问题
-    const part4Questions = [
-        { text: "Hör mir zu, lass uns jetzt \nzum Psychiater gehen und \nvon der Homosexualität \ngeheilt werden.",
-        options: [' OK, damit ihr mich besser versteht', ' Konversionstherapie für Schwule ist grausam', ' Ich bin gesund und brauche keine Therapie', ' Ich habe keine Krankheit, ich gehe nicht hin'],
-      answer_kid: { "A": "&Mama, ich gehe gerne mit \n&dir zu einem Psychiater, \n&aber nicht, um mich zu \n&ändern. Ich bin sicher, ein \n&Profi wird Ihnen erklären, \n&dass meine sexuelle Orien- \n&tierung natürlich ist und \n&keine Krankheit. Ich hoffe, \n&wir können bei dieser Gele- \n&genheit lernen, uns gegen- \n&seitig zu verstehen und zu \n&unterstützen.","B": '&Papa, Mama, habt ihr von \n&der so genannten Konver- \n&sionstherapie für Schwule \n&gehört? Bei dieser Thera-\n&pie wird versucht, die sex- \n&uelle Orientierung eines \n&Menschen durch extreme \n&Methoden wie Elektroscho- \n&cks und Erbrechen zu än- \n&dern. Anstatt Homosexua- \n&lität zu heilen, verursacht \n&diese Therapie ein tiefes \n&psychologisches Trauma \n&bei der Person.', "C": "&Mama, so ist es nicht. Seit \n&2001 ist Homosexualität in \n&China nicht eine Krankheit. \n&Homosexualität ist keine \n&Geisteskrankheit. Homo- \n&sexualität ist kein Problem, \n&kein Fehler, und sie muss \n&nicht behandelt werden. \n&Ich hoffe, wir suchen nicht \n&nach Veränderung, son- \n&dern nach Verständnis und \n&Akzeptanz, wenn wir zum \n&Psychiater gehen.", "D": "&Homosexualität ist keine \n&Krankheit, sie muss nicht \n&behandelt werden. Ihr seid \n&diejenigen, die zum Arzt \n&gehen müssen, um diese \n&Denkweise zu ändern."},
-       answer_papa: { "A": "...","B": "Wenn du eine Krankheit \nhast, müssen wir sie heilen, \nauch wenn es schwer ist. \nAls Eltern ist es unsere \nAufgabe, dir zu helfen, \nwiederein normales Leben \nzu führen.", "C": "...", "D": "Psychisch kranke Menschen \nsagen, sie seien nicht krank. \nHör zu, wir gehen zum Arzt \nund lass dich behandeln, \ndas ist richtig gut für deine \nZukunft. Jetzt verstehst du \nuns noch nicht, aber in der \nZukunft wirst du uns dank- \nbar sein." }},
+// 第二部分的问题 （第一组多选），灰色高亮部分为自动导言对话
+const part2Questions = [
+    { text: "&Papa, Mama... \n&Ich habe euch etwas Wich- \n&tiges zu sagen. Es ist ein \n&Geheimnis, das seit vielen \n&Jahren in meinem Herzen \n&verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unterstüt- \n&zung erinnert, seit ich ein \n&Kind war... Ich bin sehr \n&glücklich, in dieser Familie \n&zu leben. Ich werde euch \n&und unsere Familie immer \n&lieben, und Ich weiß auch, \n&dass ihr wollt, dass ich \n&glücklich bin. Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also, Ich will euch mal was \n&klar machen. Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin \n&habe, wann ich heirate. Ich \n&habe sie mit verschiedenen \n&Ausreden gemieden. Aber \n&ich möchte euren Fragen \n&nicht mehr ausweichen. Es \n&ist wahr, dass ich nun keine \n&Freundin haben werde und \n&ich will nicht heiraten, weil \n&ich schwul bin und Männer \n&mag.\n\n..."},
+    {text: "Ich glaube nicht, wie ist das \nmöglich, wie kannst du ein \nSchwuler sein?",
+    options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'],
+    answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
+    answer_papa: { "A": "...","B": "Wie sprichst du mit Mama \nund Papa! Ich glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir eigent- \nlich? Willst du uns  \nverarschen?"  }},
+    { text: "Wie kann es Liebe zwischen \nMännern geben? Hast du \ndich geirrt?",
+    options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe \nund Freundschaft.'],
+    answer_kid: { "A": "&Ich weiß nicht, ob das \n&Liebe oder Freundschaft  \n&ist, und ich bin verwirrt...","B": "&Ich bin mir sicher, dass es \n&Liebe ist. Es ist das Gefühl, \n&mein Herzschlag setzte für \n&einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht es \n&nur um eine Freundschaft.", "D": "&Mama und Papa, ich bin ein \n&Erwachsener, ich kann zwi- \n&schen Liebe und Freund- \n&schaft unterscheiden."},
+    answer_papa: { "A": "Glaub Mama, du musst \ndich irren!","B": "...", "C": "Glaub Papa, du musst \ndich irren!", "D": "..."  }},  
+    { text: "Woher weißt du, dass du \nkeine Frauen magst, wenn \ndu noch nie mit einer \nzusammen warst?",
+    options: [' Ich mag Jungs schon seit der Mittelschule', ' Vielleicht könnte ich auch Frauen mögen?', ' Ich fühle mich nur von Jungs angezogen.?', ' Warum sollte ich Frauen mögen?'],
+    answer_kid: { "A": "&Als ich in der Mittelschule \n&war, wurdemir klar, dass  \n&ich Jungs mag. Ich habe \n&keine Gefühle für Mädchen, \n&egal wie hübsch, wie süß \n&sie waren. ","B": "&Vielleicht, vielleicht möge \n&ich auch Mädchen?", "C": "&Seit meiner Kindheit fühle \n&ich mich nur zu Jungs hin- \n&gezogen. Ich interessiere \n&mich nur für hübsche Män- \n&ner, nicht für Mädchen.", "D": "&Ich bin schwul, warum \n&sollte ich mit einer Frau \n&zusammen sein?"},
+    answer_papa: { "A": "...","B": "Ja, das ist die richtige \nDenkweise! Männer sollen \nFrauen mögen.", "C": "…", "D": "Du sagst, du bist schwul, \naber du hast es noch nie \nversucht, woher weißt du, \nob du Frauen magst?"  }}
+];
+//第三部分问题（第二组多选）
+const part3Questions = [
+    { text: "Du bist schwul, du wirst \nuns keine Nachkommen in \ndieser Familie hinterlassen. \nDu darfst nicht so egois- \ntisch sein!",
+    options: [' Ihre Wertvorstellungen sind so rückständig', ' Die sexuelle Orientierung ist meine Sache', ' Ich soll Frauen nicht betrügen', ' Es gibt viele Möglichkeiten, Nachkommen \nzu hinterlassen'],
+    answer_kid: { "A": "&Es ist das 21. Jahrhundert, \n&und diese rückständigen \n&Werte sind egoistisch. Wo- \n&für hältst du mich, nur für \n&ein Werkzeug, um Nach- \n&kommen zu hinterlassen?", "B": "&Papa, ob ich Männer oder \n&Frauen mag, ist meine \n&Sache, und ob ich Kinder \n&haben will oder nicht, ist \n&auch meine Sache. Du \n&hältst dich da einfach raus.", "C": "&Ich kann die Mädchen nicht \n&anlügen, indem ich so tue, \n&als würde ich sie mögen. \n&Ich kann nicht zulassen, \n&dass andere wegen mir ihr \n&Glück opfern.", "D": "&Wenn ich in der Zukunft \n&wirklich ein Kind haben \n&möchte, kann ich das durch \n&Adoption, reproduktions- \n&medizinische Verfahren \n&usw. erreichen. Eine Frau \n&zu heiraten, um ein Kind zu \n&bekommen, ist nicht der \n&einzige Weg."},
+    answer_papa: { "A": "Was ist das für eine Einste- \nllung? Auch im 21. Jahrhun- \ndert bist du immer noch ein \nTeil der Familie und musst \ndich an die Familienwerte \nhalten!","B": "Was sagst du denn da? \nDu denkst, du bist erwach- \nsen und kannst so mit uns \nreden?", "C": "...", "D": "..."  }},
+    { text: "Sprich mit Mama, bist du \ndurch diese verdorbenen \nwestlichen Ideen einer \nGehirnwäsche unterzogen \nworden. Denkst du, wir \nsind diejenigen, die dich \ngefesselt haben, und dann \ngehst du diesem schäbigen \nLeben nach?",
+    options: [' Das ist, was ich wirklich über mich weiß', ' Ich weiß nicht, was ich davon halte', ' Ich habe meine eigene Denkweise', ' Homosexuelle gibt es in jeder Zivilisation'],
+    answer_kid: { "A": "&Mama, das ist kein kulture- \n&ller Einfluss. Das ist es, was \n&ich wirklich über mich weiß. \n&Ich habe mein wahres Ich \n&kennengelernt und hatte \n&den Mut, mich zu äußern.","B": "&Ich weiß nicht... Ich denke \n&einfach, ich sollte mein \n&wahres Selbst finden, was \n&auch immer das ist.", "C": "&Das ist euer Vorurteil. Ich \n&habe mein eigenes Denken \n&und Streben nach meinem \n&zukünftigen Leben, ich \n&brauche euer Urteil nicht.", "D": "&Mama, Untersuchungen \n&zufolge machen Schwule \n&und Lesben etwa 5 % der \n&Bevölkerung aus, und sie \n&bestehen in allen Gesell- \n&schaftsschichten, in allen \n&Arten von Familien, in allen \n&Berufen, Ethnien, Religion- \n&en, Ländern und Rassen. \n&Das ist seit dem Altertum."},
+    answer_papa: { "A": "...","B": "Du willst deine Unreife und \nVerantwortungslosigkeit \nverbergen, indem du dein \nwahres Selbst findest", "C": "Wir machen uns Sorgen um \ndeine Zukunft und dein \nLeben, und das ist es, was \ndu von uns denkst? Du bist \nso geblendet von ihnen, \ndass du nichts sehen kannst!", "D": "..."  }},
+    { text: "Leugnest du es immer \nnoch? Mit wem hast du \ndich denn rumgetrieben, \num diesen Unsinn zu \nlernen? Mama und Papa \nhaben dich nicht zum \nSchwulsein erzogen!",
+    options: [' Meine Freunde sind alle super Leute', ' Es ist mein Recht, Freunde zu haben', ' Sie sind nur Leute, die mich verstehen', ' Die sexuelle Orientierung ist ein Ergebnis \nder Selbstentdeckung'],
+    answer_kid: { "A": "&Keine Sorge, Mama und \n&Papa, ich bin von großarti- \n&gen Menschen umgeben, \n&die sonnig, freundlich und \n&liebevoll sind. Ihr werdet \n&sie sicher auch liebhaben. \n&Meine sexuelle  Orientie- \n&rung ist nicht etwas, was \n&ich von irgendjemandem \n&gelernt habe, sie ist Teil \n&dessen, was ich bin.", "B": "&Es ist mein Recht, Freunde \n&zu finden, die ich mag, und \n&ich weiß, wer wirklich für \n&mich da ist.", "C": "&Ich hätte nicht gedacht, \n&dass ihr so viele Fragen \n&haben würdet, ich habe \n&einfach Leute gefunden, \n&die mir zuhören und ver- \n&stehen, wie ich mich fühle.", "D": "&Mama und Papa...\n&Ich verstehe eure Verwirr- \n&ung, aber bitte glaubt mir, \n&meine Sexualität ist nichts, \n&was ich von der Außenwelt \n&gelernt habe. Es ist etwas, \n&das ich in meinem Selbst- \n&verständnis entdeckt habe, \n&als ich aufgewachsen bin, \n&und es ist Teil dessen, was \n&ich bin."},
+    answer_papa: { "A": "...","B": "Sie lügen dich alle an! \nWir sind deine Eltern, und \nwir sind die einzigen, die \nwirklich das Beste für dich \nwollen!", "C": "Sie lügen dich alle an! \nWir sind deine Eltern, und \nwir sind die einzigen, die \nwirklich das Beste für dich \nwollen! ", "D": "..."  }}
+];
+//第四部分问题
+const part4Questions = [
+    { text: "Hör mir zu, lass uns jetzt \nzum Psychiater gehen und \nvon der Homosexualität \ngeheilt werden.",
+    options: [' OK, damit ihr mich besser versteht', ' Konversionstherapie für Schwule ist grausam', ' Ich bin gesund und brauche keine Therapie', ' Ich habe keine Krankheit, ich gehe nicht hin'],
+    answer_kid: { "A": "&Mama, ich gehe gerne mit \n&dir zu einem Psychiater, \n&aber nicht, um mich zu \n&ändern. Ich bin sicher, ein \n&Profi wird Ihnen erklären, \n&dass meine sexuelle Orien- \n&tierung natürlich ist und \n&keine Krankheit. Ich hoffe, \n&wir können bei dieser Gele- \n&genheit lernen, uns gegen- \n&seitig zu verstehen und zu \n&unterstützen.","B": '&Papa, Mama, habt ihr von \n&der so genannten Konver- \n&sionstherapie für Schwule \n&gehört? Bei dieser Thera-\n&pie wird versucht, die sex- \n&uelle Orientierung eines \n&Menschen durch extreme \n&Methoden wie Elektroscho- \n&cks und Erbrechen zu än- \n&dern. Anstatt Homosexua- \n&lität zu heilen, verursacht \n&diese Therapie ein tiefes \n&psychologisches Trauma \n&bei der Person.', "C": "&Mama, so ist es nicht. Seit \n&2001 ist Homosexualität in \n&China nicht eine Krankheit. \n&Homosexualität ist keine \n&Geisteskrankheit. Homo- \n&sexualität ist kein Problem, \n&kein Fehler, und sie muss \n&nicht behandelt werden. \n&Ich hoffe, wir suchen nicht \n&nach Veränderung, son- \n&dern nach Verständnis und \n&Akzeptanz, wenn wir zum \n&Psychiater gehen.", "D": "&Homosexualität ist keine \n&Krankheit, sie muss nicht \n&behandelt werden. Ihr seid \n&diejenigen, die zum Arzt \n&gehen müssen, um diese \n&Denkweise zu ändern."},
+    answer_papa: { "A": "...","B": "Wenn du eine Krankheit \nhast, müssen wir sie heilen, \nauch wenn es schwer ist. \nAls Eltern ist es unsere \nAufgabe, dir zu helfen, \nwiederein normales Leben \nzu führen.", "C": "...", "D": "Psychisch kranke Menschen \nsagen, sie seien nicht krank. \nHör zu, wir gehen zum Arzt \nund lass dich behandeln, \ndas ist richtig gut für deine \nZukunft. Jetzt verstehst du \nuns noch nicht, aber in der \nZukunft wirst du uns dank- \nbar sein." }},
     { text: "Ich bitte dich, schau dir \nmehr Mädchen an. Falls du \nein Mädchen triffst, das dir \ngefällt, kann sich deine sex- \nuelle Orientierung ändern. \nWoher willst du wissen, \ndass du es nicht magst, \nwenn du es nicht auspro- \nbiert hast?",
-        options: [' Ich werde es für dich versuchen', ' Hat dir eine Frau jemals gefallen, Mama?', ' Ich werde mich nicht für euch ändern', ' Ich bin mir über meine sexuelle Orientier- \nung sicher.'],
-      answer_kid: { "A": "&Mama, ich will dich nicht \n&enttäuschen, also ich kann \n&es versuchen, mehr Mäd- \n&chen zu kennen, wenn dich \n&das wirklich zufrieden \n&macht.","B": "&Mama, würdest du dich in \n&deine weiblichen Freunde \n&und weiblichen Kolleginnen \n&verlieben? Wenn du das \n&nicht wollen, weil du hete- \n&rosexuell bist, dann magst \n&du das gleiche Geschlecht \n&nicht. Das ist genauso bei \n&mir: ich mag keine Frauen \n&und will mit einem Mann \n&zusammen.", "C": "&Ich werde mich nicht \n&ändern, um dir zu gefallen. \n&Wer ich bin und wen ich \n&mag, ist meine Sache und \n&nicht etwas, das ihr ändern \n&könnt, wenn ihr wollt.", "D": "&Mama, nach so vielen \n&Jahren bin ich mir ganz \n&sicher, was meine sexuelle \n&Orientierung angeht. Das \n&ist keine Alternative, die \n&man durch andere Ver-\n&suche ändern kann. Sonst \n&würde ich nicht mit euch \n&reden."},
-       answer_papa: { "A": "Das stimmt, es ist ganz \nnatürlich, dass sich Männer \nund Frauen aneinander- \nbinden. Ich bin sicher, du \nkannst dich ändern, mein \nSohn. ","B": "...", "C": "Wir tun das alles nur zu \ndeinem Besten! Denkst du, \ndu verstehst die Liebe? Wie \nkennst du, dass du keine \nFrauen magst, wenn du es \nnicht einmal versucht hast?", "D": "..."  }},
-      { text: "Aber wer kümmert sich \ndenn um das Familienleben, \nwenn keine Frau zu Hause \nist? Warum würdest du so \nmüde leben.",
-        options: [' Ich kann gut unabhängig leben', ' Ich bin wirklich müde. Ich weiß auch nicht', ' Das ist keine geschlechtsspezifische Aufgabe', ' Ich brauche eure Sorge um eigenen Angele- \ngenheiten nicht'],
-      answer_kid: { "A": "&Mama, ich lebe schon seit \n&so vielen Jahren allein, dass \n&ich gut selbstständig leben \n&kann. Keine Sorge, ich kann \n&selbst auf mich aufpassen.","B": "&Ich bin sehr müde, und ich \n&weiß nicht, wie mein zu- \n&künftiges Leben aussehen \n&wird, und Ich bezweifle, ob \n&ich das überhaupt schaffen \n&kann.", "C": "&Mama, für die Familie zu \n&sorgen, ist die Aufgabe \n&von allem, nicht nur der \n&Frauen. In Zukunft werden \n&mein Partner und ich die \n&Verantwortung für die \n&Familie gleichmäßig auf- \n&teilen. Fürsorge und Liebe \n&können von jedem Gesch- \n&lecht kommen.", "D": "&Ich brauche keine Frau, die \n&sich um mich kümmert, und \n&ihr brauchen euch nicht um \n&meine persönlichen Ange- \n&legenheiten zu kümmern. \n&Ich werde ein gutes Leben \n&führen."},
-       answer_papa: { "A": "...","B": "Hör zu, es muss immer noch \neine Frau in der Familie sein. \nSo ist das Leben für alle.", "C": "...", "D": "Brauchen wir uns nicht \ndarum zu sorgen? Wenn \ndu krank wirst und Hilfe \nbrauchst, merkst du, wie \nwichtig die Familie ist und \nwie wichtig die Pflege \ndurch eine Frau ist."  }}
-    ];
-    //第五部分问题 （第四组多选）
-    const part5Questions = [
-        { text: "Willst du die ganze Familie \nblamieren? Willst du, dass \nalle über uns lachen? Hast \ndu jemals darüber nach- \ngedacht, wie sich Mama \nund Papa fühlen?",
-        options: [' Würde hängt nicht von Vorurteilen ab', ' Ich bin eine Witzfigur in euren Augen', ' Es tut mir leid. Es ist meine Schuld', ' Liebe und Glück sind die wichtigsten Dinge'],
-      answer_kid: { "A": "&Mama und Papa, unsere \n&Würde wird nicht von den \n&Vorurteilen der anderen \n&bestimmt. Sie kommt eher \n&aus dem Verständnis und \n&der Unterstützung, die sich \n&unsere Familien gegen- \n&seitig geben. Wir sind in \n&uns selbst stark geworden, \n&und das ist es, was zählt.","B": "&Ich verstehe schon, ich bin \n&eine Witzfigur für euch, \n&und egal, was ich tue, es \n&wird euch nie zufrieden- \n&stellen.", "C": "&Mama und Papa, es tut mir \n&sehr leid, ich wollte meine \n&Familie nicht blamieren. Ich \n&will mich nicht mehr verste- \n&cken und habe Angst,  euch \n&zu enttäuschen.", "D": "&Mama und Papa...ich habe \n&mich geoutet, nicht um \n&euch Blamage zu bereiten, \n&sondern um wahre Liebe \n&und echtes Glück zu finden. \n&Ich glaube, wenn wir alle \n&unser Leben mit wahrem \n&Glück und Freude führen \n&können, ist es egal, was \n&andere denken."},
-       answer_papa: { "A": "...","B": "Ist das die Einstellung, mit \nder du mit Mama und Papa \nsprichst? Schämst du dich \nnicht?", "C": "Dachtest du nicht? Dann \ndenke jetzt darüber nach, \ndu musst deinen Fehler \nkorrigieren und mit diesem \nVerhalten aufhören.", "D": " ... " }},
+    options: [' Ich werde es für dich versuchen', ' Hat dir eine Frau jemals gefallen, Mama?', ' Ich werde mich nicht für euch ändern', ' Ich bin mir über meine sexuelle Orientier- \nung sicher.'],
+    answer_kid: { "A": "&Mama, ich will dich nicht \n&enttäuschen, also ich kann \n&es versuchen, mehr Mäd- \n&chen zu kennen, wenn dich \n&das wirklich zufrieden \n&macht.","B": "&Mama, würdest du dich in \n&deine weiblichen Freunde \n&und weiblichen Kolleginnen \n&verlieben? Wenn du das \n&nicht wollen, weil du hete- \n&rosexuell bist, dann magst \n&du das gleiche Geschlecht \n&nicht. Das ist genauso bei \n&mir: ich mag keine Frauen \n&und will mit einem Mann \n&zusammen.", "C": "&Ich werde mich nicht \n&ändern, um dir zu gefallen. \n&Wer ich bin und wen ich \n&mag, ist meine Sache und \n&nicht etwas, das ihr ändern \n&könnt, wenn ihr wollt.", "D": "&Mama, nach so vielen \n&Jahren bin ich mir ganz \n&sicher, was meine sexuelle \n&Orientierung angeht. Das \n&ist keine Alternative, die \n&man durch andere Ver-\n&suche ändern kann. Sonst \n&würde ich nicht mit euch \n&reden."},
+    answer_papa: { "A": "Das stimmt, es ist ganz \nnatürlich, dass sich Männer \nund Frauen aneinander- \nbinden. Ich bin sicher, du \nkannst dich ändern, mein \nSohn. ","B": "...", "C": "Wir tun das alles nur zu \ndeinem Besten! Denkst du, \ndu verstehst die Liebe? Wie \nkennst du, dass du keine \nFrauen magst, wenn du es \nnicht einmal versucht hast?", "D": "..."  }},
+    { text: "Aber wer kümmert sich \ndenn um das Familienleben, \nwenn keine Frau zu Hause \nist? Warum würdest du so \nmüde leben.",
+    options: [' Ich kann gut unabhängig leben', ' Ich bin wirklich müde. Ich weiß auch nicht', ' Das ist keine geschlechtsspezifische Aufgabe', ' Ich brauche eure Sorge um eigenen Angele- \ngenheiten nicht'],
+    answer_kid: { "A": "&Mama, ich lebe schon seit \n&so vielen Jahren allein, dass \n&ich gut selbstständig leben \n&kann. Keine Sorge, ich kann \n&selbst auf mich aufpassen.","B": "&Ich bin sehr müde, und ich \n&weiß nicht, wie mein zu- \n&künftiges Leben aussehen \n&wird, und Ich bezweifle, ob \n&ich das überhaupt schaffen \n&kann.", "C": "&Mama, für die Familie zu \n&sorgen, ist die Aufgabe \n&von allem, nicht nur der \n&Frauen. In Zukunft werden \n&mein Partner und ich die \n&Verantwortung für die \n&Familie gleichmäßig auf- \n&teilen. Fürsorge und Liebe \n&können von jedem Gesch- \n&lecht kommen.", "D": "&Ich brauche keine Frau, die \n&sich um mich kümmert, und \n&ihr brauchen euch nicht um \n&meine persönlichen Ange- \n&legenheiten zu kümmern. \n&Ich werde ein gutes Leben \n&führen."},
+    answer_papa: { "A": "...","B": "Hör zu, es muss immer noch \neine Frau in der Familie sein. \nSo ist das Leben für alle.", "C": "...", "D": "Brauchen wir uns nicht \ndarum zu sorgen? Wenn \ndu krank wirst und Hilfe \nbrauchst, merkst du, wie \nwichtig die Familie ist und \nwie wichtig die Pflege \ndurch eine Frau ist."  }}
+];
+//第五部分问题 （第四组多选）
+const part5Questions = [
+    { text: "Willst du die ganze Familie \nblamieren? Willst du, dass \nalle über uns lachen? Hast \ndu jemals darüber nach- \ngedacht, wie sich Mama \nund Papa fühlen?",
+    options: [' Würde hängt nicht von Vorurteilen ab', ' Ich bin eine Witzfigur in euren Augen', ' Es tut mir leid. Es ist meine Schuld', ' Liebe und Glück sind die wichtigsten Dinge'],
+    answer_kid: { "A": "&Mama und Papa, unsere \n&Würde wird nicht von den \n&Vorurteilen der anderen \n&bestimmt. Sie kommt eher \n&aus dem Verständnis und \n&der Unterstützung, die sich \n&unsere Familien gegen- \n&seitig geben. Wir sind in \n&uns selbst stark geworden, \n&und das ist es, was zählt.","B": "&Ich verstehe schon, ich bin \n&eine Witzfigur für euch, \n&und egal, was ich tue, es \n&wird euch nie zufrieden- \n&stellen.", "C": "&Mama und Papa, es tut mir \n&sehr leid, ich wollte meine \n&Familie nicht blamieren. Ich \n&will mich nicht mehr verste- \n&cken und habe Angst,  euch \n&zu enttäuschen.", "D": "&Mama und Papa...ich habe \n&mich geoutet, nicht um \n&euch Blamage zu bereiten, \n&sondern um wahre Liebe \n&und echtes Glück zu finden. \n&Ich glaube, wenn wir alle \n&unser Leben mit wahrem \n&Glück und Freude führen \n&können, ist es egal, was \n&andere denken."},
+    answer_papa: { "A": "...","B": "Ist das die Einstellung, mit \nder du mit Mama und Papa \nsprichst? Schämst du dich \nnicht?", "C": "Dachtest du nicht? Dann \ndenke jetzt darüber nach, \ndu musst deinen Fehler \nkorrigieren und mit diesem \nVerhalten aufhören.", "D": " ... " }},
     { text: "Es ist alles Mamas Schuld. \nIch bin nicht gut mit dir auf- \ngewachsen und habe dich \nnicht richtig erzogen.",
-        options: [' Mama, es ist nicht deine Schuld', ' Du entscheidest nicht über meine Sexualität', ' Du bist die beste Mutter der Welt', ' Mama, es tut mir wirklich leid'],
-      answer_kid: { "A": "&Mama, es ist nicht deine \n&Schuld. Ich hoffe, du weißt, \n&dass ich mich geoutet \n&habe, weil ich dir vertraue. \n&Ich weiß, du liebst mich, \n&egal ob ich Männer oder \n&Frauen mag. Wir können \n&zusammen die Homosexu- \n&alität besser verstehen, \n&und ich bin wie immer dein \n&toller Sohn.","B": "&Mama, du kannst nicht ent- \n&scheiden, wen ich mag. \n&Sexuelle Orientierung kann \n&man nicht lernen. Egal, wie \n&sehr du dich selbst fertig- \n&machst, ich bin schwul und \n&das kannst du nicht ändern.", "C": "&Du bist die beste Mutter \n&der Welt! Deine Liebe und \n&Akzeptanz haben es mir \n&ermöglicht, meine wahre \n&Identität gefunden und \n&akzeptiert zu haben. Sich \n&zu outen bedeutet nicht, \n&dass etwas nicht richtig ist, \n&es ist nur ein Weg, damit \n&du mich besser verstehst.", "D": "&Mama, es tut mir sehr leid \n&aber ich weiß nicht, was ich \n&sonst tun soll. mir ist egal, \n&ob mich irgendjemand auf \n&dieser Welt nicht akzep- \n&tiert. Ich will nur, dass du \n&und Papa mich akzeptieren."},
-       answer_papa: { "A": "...", "B": "Wie kannst du so mit Mama \nreden? Ich glaube, du hast \ngerade draußen schlechte \nDinge gelernt!", "C": "...", "D": "Meinst du, alles wird gut, \nsolange wir dich akzep- \ntieren? Aber hast du jemals \ndarüber nachgedacht, wie \nviel Druck und Scham das \nfür dich bedeuten wird?"  }},
-      { text: "Aber, mein Sohn, du bist ja \nso gut, ich war immer stolz \nauf dich, warum willst du \nschwul sein?",
-        options: [' Auch Schwule können so gut sein!', ' Als Schwuler wird einem alles verweigert?', ' Böse Jungs dürfen schwul sein?', ' Die sexuelle Orientierung ist nur ein Teil \nmeines Lebens'],
-      answer_kid: { "A": "&Mama, Schwule können \n&genauso gut sein. Der CEO \n&von Apple, Cook, und dein \n&Lieblingssänger aus Hong- \n&kong, der Schauspiele, \n&Leslie Cheung - sie sind alle \n&schwul. Ich werde  ihrem \n&Beispiel folgen und weiter \n&lernen und gut arbeiten.","B": "&Wegen dieser Kleinigkeit, \n&dass ich schwul bin, wollt \n&ihr ganz alles über mich \n&ablehnen?", "C": "&Wenn ich ein böser Junge \n&bin, kann ich also schwul \n&sein?", "D": "&Die sexuelle Orientierung \n&ist nur ein sehr kleiner Teil \n&meines Lebens. Ich habe so \n&viele andere Dinge zu tun, \n&meinen Job, mein tägliches \n&Leben, meine Hobbys. Am \n&wichtigsten ist, dass ich \n&immer das Kind bin, das \n&euch alle liebt."},
-       answer_papa: { "A": "...","B": "Wie kann das eine Kleinig- \nkeit sein! Es ist für dich die \nwichtigste Sache in deinem \nLeben. Es gibt nichts wich- \ntiger als das.", "C": "Wie kannst du so reden und \nMama und Papa verletzen? \nWir wollen nur, dass du ein \ngutes Leben hast.", "D": "..."  }}
-    ];
-    //第六部分问题 （第五组多选）
-    const part6Questions = [
-        { text: "Mein Sohn, du bist nur von \nder Sehnsucht überwältigt. \nEs gibt keine stabile Bezie- \nhung zwischen Männern. \nWas wirst du tun, wenn die \nLeidenschaft vorbei ist? \nWillst du weiterhin immer \nso bleiben?",
-        options: [' Ich habe auch Angst vor dem Alleinsein', ' Ich suche auch nach einer dauerhaften Liebe', ' Es ist mein eigenes Leben', ' Heterosexuelle haben auch instabile \nBeziehungen.'],
-      answer_kid: { "A": "&Ich habe auch Angst vor \n&dem Alleinsein. Manchmal \n&frage ich mich, ob mein \n&Gedanke nur ein Impuls ist, \n&und wenn die Leidenschaft \n&vorbei ist, ob ich wieder \n&allein sein werde, wie ihr \n&gesagt habt.","B": "&Mama und Papa, ich suche \n&auch nach einer dauerhaf- \n&ten Beziehung wie ihr. Ich \n&träume auch davon, eine \n&Familie und einen Partner \n&zu haben, der mich liebt  \n&und mit dem ich zusammen \n&sein kann. Das Geschlecht \n&ändert nichts an meinem \n&Streben nach Stabilität in \n&der Liebe.", "C": "&Ich brauche weder euer \n&Urteil noch eure Zustim- \n&mung für meine Liebe. Ich \n&führe mein eigenes Leben \n&und wen ich liebe und wen \n&nicht, das ist meine Sache.", "D": "&Mama und Papa, auch in \n&heterosexuellen Familien \n&gibt es Scheidungen, häus- \n&liche Gewalt, Fremdgehen \n&usw. Es ist also nicht so, \n&dass man glücklich wird, \n&wenn man eine heterosex- \n&uelle Partnerin findet und \n&heiratet. Und es bedeutet \n&auch nicht unbedingt, dass \n&eine Familie, die aus zwei \n&Personen des gleichen \n&Geschlechts besteht, un- \n&glücklich sein muss."},
-       answer_papa: { "A": "Dann nimm nicht diesen \nWeg! Versuch es mit einer \nnormalen Beziehung! Such \ndir eine Frau zum Daten, \nwäre das nicht stabiler? \nLebe wie ein normaler \nMensch. ","B": "...", "C": "Deine selbstgerechte Halt- \nung wird dir irgendwann \neine Lektion erteilen. Und \nwenn es so weit ist, wirst \ndu wissen, wer derjenige \n ist, der gut für dich ist.", "D": " ... " }},
+    options: [' Mama, es ist nicht deine Schuld', ' Du entscheidest nicht über meine Sexualität', ' Du bist die beste Mutter der Welt', ' Mama, es tut mir wirklich leid'],
+    answer_kid: { "A": "&Mama, es ist nicht deine \n&Schuld. Ich hoffe, du weißt, \n&dass ich mich geoutet \n&habe, weil ich dir vertraue. \n&Ich weiß, du liebst mich, \n&egal ob ich Männer oder \n&Frauen mag. Wir können \n&zusammen die Homosexu- \n&alität besser verstehen, \n&und ich bin wie immer dein \n&toller Sohn.","B": "&Mama, du kannst nicht ent- \n&scheiden, wen ich mag. \n&Sexuelle Orientierung kann \n&man nicht lernen. Egal, wie \n&sehr du dich selbst fertig- \n&machst, ich bin schwul und \n&das kannst du nicht ändern.", "C": "&Du bist die beste Mutter \n&der Welt! Deine Liebe und \n&Akzeptanz haben es mir \n&ermöglicht, meine wahre \n&Identität gefunden und \n&akzeptiert zu haben. Sich \n&zu outen bedeutet nicht, \n&dass etwas nicht richtig ist, \n&es ist nur ein Weg, damit \n&du mich besser verstehst.", "D": "&Mama, es tut mir sehr leid \n&aber ich weiß nicht, was ich \n&sonst tun soll. mir ist egal, \n&ob mich irgendjemand auf \n&dieser Welt nicht akzep- \n&tiert. Ich will nur, dass du \n&und Papa mich akzeptieren."},
+    answer_papa: { "A": "...", "B": "Wie kannst du so mit Mama \nreden? Ich glaube, du hast \ngerade draußen schlechte \nDinge gelernt!", "C": "...", "D": "Meinst du, alles wird gut, \nsolange wir dich akzep- \ntieren? Aber hast du jemals \ndarüber nachgedacht, wie \nviel Druck und Scham das \nfür dich bedeuten wird?"  }},
+    { text: "Aber, mein Sohn, du bist ja \nso gut, ich war immer stolz \nauf dich, warum willst du \nschwul sein?",
+    options: [' Auch Schwule können so gut sein!', ' Als Schwuler wird einem alles verweigert?', ' Böse Jungs dürfen schwul sein?', ' Die sexuelle Orientierung ist nur ein Teil \nmeines Lebens'],
+    answer_kid: { "A": "&Mama, Schwule können \n&genauso gut sein. Der CEO \n&von Apple, Cook, und dein \n&Lieblingssänger aus Hong- \n&kong, der Schauspiele, \n&Leslie Cheung - sie sind alle \n&schwul. Ich werde  ihrem \n&Beispiel folgen und weiter \n&lernen und gut arbeiten.","B": "&Wegen dieser Kleinigkeit, \n&dass ich schwul bin, wollt \n&ihr ganz alles über mich \n&ablehnen?", "C": "&Wenn ich ein böser Junge \n&bin, kann ich also schwul \n&sein?", "D": "&Die sexuelle Orientierung \n&ist nur ein sehr kleiner Teil \n&meines Lebens. Ich habe so \n&viele andere Dinge zu tun, \n&meinen Job, mein tägliches \n&Leben, meine Hobbys. Am \n&wichtigsten ist, dass ich \n&immer das Kind bin, das \n&euch alle liebt."},
+    answer_papa: { "A": "...","B": "Wie kann das eine Kleinig- \nkeit sein! Es ist für dich die \nwichtigste Sache in deinem \nLeben. Es gibt nichts wich- \ntiger als das.", "C": "Wie kannst du so reden und \nMama und Papa verletzen? \nWir wollen nur, dass du ein \ngutes Leben hast.", "D": "..."  }}
+];
+//第六部分问题 （第五组多选）
+const part6Questions = [
+    { text: "Mein Sohn, du bist nur von \nder Sehnsucht überwältigt. \nEs gibt keine stabile Bezie- \nhung zwischen Männern. \nWas wirst du tun, wenn die \nLeidenschaft vorbei ist? \nWillst du weiterhin immer \nso bleiben?",
+    options: [' Ich habe auch Angst vor dem Alleinsein', ' Ich suche auch nach einer dauerhaften Liebe', ' Es ist mein eigenes Leben', ' Heterosexuelle haben auch instabile \nBeziehungen.'],
+    answer_kid: { "A": "&Ich habe auch Angst vor \n&dem Alleinsein. Manchmal \n&frage ich mich, ob mein \n&Gedanke nur ein Impuls ist, \n&und wenn die Leidenschaft \n&vorbei ist, ob ich wieder \n&allein sein werde, wie ihr \n&gesagt habt.","B": "&Mama und Papa, ich suche \n&auch nach einer dauerhaf- \n&ten Beziehung wie ihr. Ich \n&träume auch davon, eine \n&Familie und einen Partner \n&zu haben, der mich liebt  \n&und mit dem ich zusammen \n&sein kann. Das Geschlecht \n&ändert nichts an meinem \n&Streben nach Stabilität in \n&der Liebe.", "C": "&Ich brauche weder euer \n&Urteil noch eure Zustim- \n&mung für meine Liebe. Ich \n&führe mein eigenes Leben \n&und wen ich liebe und wen \n&nicht, das ist meine Sache.", "D": "&Mama und Papa, auch in \n&heterosexuellen Familien \n&gibt es Scheidungen, häus- \n&liche Gewalt, Fremdgehen \n&usw. Es ist also nicht so, \n&dass man glücklich wird, \n&wenn man eine heterosex- \n&uelle Partnerin findet und \n&heiratet. Und es bedeutet \n&auch nicht unbedingt, dass \n&eine Familie, die aus zwei \n&Personen des gleichen \n&Geschlechts besteht, un- \n&glücklich sein muss."},
+    answer_papa: { "A": "Dann nimm nicht diesen \nWeg! Versuch es mit einer \nnormalen Beziehung! Such \ndir eine Frau zum Daten, \nwäre das nicht stabiler? \nLebe wie ein normaler \nMensch. ","B": "...", "C": "Deine selbstgerechte Halt- \nung wird dir irgendwann \neine Lektion erteilen. Und \nwenn es so weit ist, wirst \ndu wissen, wer derjenige \n ist, der gut für dich ist.", "D": "..." }},
     { text: "Ich habe es im Fernsehen \ngehört. dass Schwuler ein \nhohes HIV-Risiko haben. \nWas tun, wenn du infiziert \nbist? Das ist eine lebens- \nlange Sache.",
-        options: [' Ich bin mir dieses Themas voll bewusst', ' Das ist euer Vorurteil gegen Homosexualität', ' Ich will mich nicht anstecken', ' Das Risiko ist für alle gleich. Prävention ist \ndas Wichtigste.'],
-      answer_kid: { "A": "&Mama und Papa, ich bin \n&mir dessen voll bewusst: \n&HIV wird sexuell übertra- \n&gen, aber es entsteht nicht \n&ohne Grund. Solange man \n&mit seinem Partner Vor- \n&sichtsmaßnahmen trifft, \n&wird man sich nicht anste- \n&cken, egal wer es ist.","B": "&Es geht nur um eure Vor-\n&urteile gegen Schwule. \n&Homosexualität ist nicht \n&gleich HIV! Ich weiß, wie \n&ich mich schützen kann, \n&macht euch da keine \n&Sorgen.", "C": "&Ich habe auch Angst. Oft \n&denke ich, wenn ich nicht \n&schwul wäre, vielleicht \n&müsste ich mich nicht die- \n&sen Risiken aussetzen, Ich \n&habe Angst, dass ich euch \n&in Schwierigkeiten bringe, \n&und ich weiß nicht, was ich \n&dagegen tun soll.", "D": "&HIV ist nicht ein Problem \n&für eine bestimmte Gruppe \n&von Menschen, sondern \n&ein globales Gesundheits- \n&problem, und jeder kann \n&sich anstecken. Wichtig ist, \n&dass man Infektionen wirk- \n&sam vermeiden kann, wenn \n&man sicherheitsbewusst ist \n&und Vorsichtsmaßnahmen \n&trifft."},
-       answer_papa: { "A": "...", "B": "Wir machen uns Sorgen um \ndeine Gesundheit und du \ngibst uns die Schuld! Du \nglaubst, dass du weißt, wie \ndu dich schützen kannst, \naber du hast keine Ahnung, \nwie gefährlich die Welt da \ndraußen ist.", "C": "Du hast jetzt Angst? Das \nhättest du dir vor langer \nZeit überlegen müssen! Du \nhättest dich nicht für das \nSchwulsein entschieden, \nwenn du wirklich an uns \ngedacht hättest. Ändere \ndich jetzt sofort! ", "D": "..."  }},
-      { text: "Hast du schon darüber \nnachgedacht, was du tun \nwirst, wenn du alt bist? \nMama und Papa haben \ndich bei uns, aber was ist \nmit dir in der Zukunft?",
-        options: [' Eure Gesundheit ist das Wichtigste', ' Ich habe noch nicht an die Zukunft gedacht', ' Es ist meine eigene Entscheidung', ' Ich mache schon Pläne für die Zukunft'],
-      answer_kid: { "A": "&Mama und Papa, Ich schä- \n&tze eure Sorge um mich. \n&Aber ich hoffe, dass die \n&Tatsache, dass ich schwul \n&bin, eure Emotionen nicht \n&zu sehr beeinflusst. Eure \n&Gesundheit und Glück sind \n&das Wichtigste für mich. \n&Macht euch keine Sorgen \n&mehr um meine Zukunft.","B": "&Ich habe auch noch keine  \n&Pläne für meine Zukunft,  \n&und ich weiß nicht, ob ich  \n&eine Familie haben werde  \n&wie alle anderen. Ich habe  \n&auch Angst davor, allein alt  \n&zu werden. Daran möchte  \n&ich jetzt nicht denken.", "C": "&Ich werde mein Leben \n&selbst in die Hand nehmen. \n&Ich kann gut allein leben. \n&Und was ist mit dem Alter? \n&Darum muss ich mich spä- \n&ter in Zukunft kümmern, \n&wenn es soweit ist, werde \n&ich alles schaffen.", "D": "&Keine mehr Sorge, Mama \n&und Papa, ich werde mehr \n&gut arbeiten, um meinen \n&Lebensunterhalt zu verdie- \n&nen und für meinen Ruhe- \n&stand zu planen. Ich werde \n&auch gut auf mich aufpa- \n&ssen und mich um meine \n&körperliche und geistige \n&Gesundheit kümmern."},
-       answer_papa: { "A": "...","B": "Wenn du im Moment nicht \ndarüber nachdenkst, wirst \ndu erst dann Gedanken \nmachen, wenn wir alle nicht \nmehr da sind? Wenn du \neine Familie gründen willst, \nsuche dir eine normale Frau. \nHeiraten, ein Kinder haben \nund ein normales Leben \nführen.", "C": "Du glaubst, du kannst alles \nselbst erledigen? Am Ende \nbrauchst du immer noch \nHilfen von Mama und mir. \nWenn du nicht heiratest, \nwenn wir nicht mehr da \nsind, stellst du dir vor, dass \ndich jemand anderes so \nunterstützt wie wir.", "D": "..."  }}
-    ];
+    options: [' Ich bin mir dieses Themas voll bewusst', ' Das ist euer Vorurteil gegen Homosexualität', ' Ich will mich nicht anstecken', ' Das Risiko ist für alle gleich. Prävention ist \ndas Wichtigste.'],
+    answer_kid: { "A": "&Mama und Papa, ich bin \n&mir dessen voll bewusst: \n&HIV wird sexuell übertra- \n&gen, aber es entsteht nicht \n&ohne Grund. Solange man \n&mit seinem Partner Vor- \n&sichtsmaßnahmen trifft, \n&wird man sich nicht anste- \n&cken, egal wer es ist.","B": "&Es geht nur um eure Vor-\n&urteile gegen Schwule. \n&Homosexualität ist nicht \n&gleich HIV! Ich weiß, wie \n&ich mich schützen kann, \n&macht euch da keine \n&Sorgen.", "C": "&Ich habe auch Angst. Oft \n&denke ich, wenn ich nicht \n&schwul wäre, vielleicht \n&müsste ich mich nicht die- \n&sen Risiken aussetzen, Ich \n&habe Angst, dass ich euch \n&in Schwierigkeiten bringe, \n&und ich weiß nicht, was ich \n&dagegen tun soll.", "D": "&HIV ist nicht ein Problem \n&für eine bestimmte Gruppe \n&von Menschen, sondern \n&ein globales Gesundheits- \n&problem, und jeder kann \n&sich anstecken. Wichtig ist, \n&dass man Infektionen wirk- \n&sam vermeiden kann, wenn \n&man sicherheitsbewusst ist \n&und Vorsichtsmaßnahmen \n&trifft."},
+    answer_papa: { "A": "...", "B": "Wir machen uns Sorgen um \ndeine Gesundheit und du \ngibst uns die Schuld! Du \nglaubst, dass du weißt, wie \ndu dich schützen kannst, \naber du hast keine Ahnung, \nwie gefährlich die Welt da \ndraußen ist.", "C": "Du hast jetzt Angst? Das \nhättest du dir vor langer \nZeit überlegen müssen! Du \nhättest dich nicht für das \nSchwulsein entschieden, \nwenn du wirklich an uns \ngedacht hättest. Ändere \ndich jetzt sofort! ", "D": "..."  }},
+    { text: "Hast du schon darüber \nnachgedacht, was du tun \nwirst, wenn du alt bist? \nMama und Papa haben \ndich bei uns, aber was ist \nmit dir in der Zukunft?",
+    options: [' Eure Gesundheit ist das Wichtigste', ' Ich habe noch nicht an die Zukunft gedacht', ' Es ist meine eigene Entscheidung', ' Ich mache schon Pläne für die Zukunft'],
+    answer_kid: { "A": "&Mama und Papa, Ich schä- \n&tze eure Sorge um mich. \n&Aber ich hoffe, dass die \n&Tatsache, dass ich schwul \n&bin, eure Emotionen nicht \n&zu sehr beeinflusst. Eure \n&Gesundheit und Glück sind \n&das Wichtigste für mich. \n&Macht euch keine Sorgen \n&mehr um meine Zukunft.","B": "&Ich habe auch noch keine  \n&Pläne für meine Zukunft,  \n&und ich weiß nicht, ob ich  \n&eine Familie haben werde  \n&wie alle anderen. Ich habe  \n&auch Angst davor, allein alt  \n&zu werden. Daran möchte  \n&ich jetzt nicht denken.", "C": "&Ich werde mein Leben \n&selbst in die Hand nehmen. \n&Ich kann gut allein leben. \n&Und was ist mit dem Alter? \n&Darum muss ich mich spä- \n&ter in Zukunft kümmern, \n&wenn es soweit ist, werde \n&ich alles schaffen.", "D": "&Keine mehr Sorge, Mama \n&und Papa, ich werde mehr \n&gut arbeiten, um meinen \n&Lebensunterhalt zu verdie- \n&nen und für meinen Ruhe- \n&stand zu planen. Ich werde \n&auch gut auf mich aufpa- \n&ssen und mich um meine \n&körperliche und geistige \n&Gesundheit kümmern."},
+    answer_papa: { "A": "...","B": "Wenn du im Moment nicht \ndarüber nachdenkst, wirst \ndu erst dann Gedanken \nmachen, wenn wir alle nicht \nmehr da sind? Wenn du \neine Familie gründen willst, \nsuche dir eine normale Frau. \nHeiraten, ein Kinder haben \nund ein normales Leben \nführen.", "C": "Du glaubst, du kannst alles \nselbst erledigen? Am Ende \nbrauchst du immer noch \nHilfen von Mama und mir. \nWenn du nicht heiratest, \nwenn wir nicht mehr da \nsind, stellst du dir vor, dass \ndich jemand anderes so \nunterstützt wie wir.", "D": "..."  }}
+];
     
 
 function quit() {
@@ -96,6 +97,8 @@ function quit() {
     currentPartQuestionIndex = 0;
     score = 0;
     part = 1; 
+    total_score = 0;
+    document.getElementById('endQuiz').style.display = 'none';
     displayQuestion();} 
 
 
@@ -244,6 +247,7 @@ function displayQuestion() {
             // 如果part不是1或2
             break;
     };
+    document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", score:"+total_score;
 
     if (currentQuestionIndex<part1Questions.length) {
         question = part1Questions[currentQuestionIndex];
@@ -266,6 +270,7 @@ function displayQuestion() {
         question = current_part[currentPartQuestionIndex];
 
         //显示问题和选
+        show_score();
         disableAnswerButtons();
         show_questions(question.text);
         //document.getElementById('question').innerHTML  = questionHtml;
@@ -296,7 +301,7 @@ function displayQuestion() {
 
     }
     // 隐藏反馈和下一题按钮，直到答案被提交
-    document.getElementById('feedback').textContent = '';
+    //document.getElementById('feedback').textContent = '';
     document.getElementById('next-button').style.display = 'none';
 }
 
@@ -350,15 +355,13 @@ function submitAnswer(answer) {
         question = part1Questions[currentQuestionIndex];
         if (answer === true) {
             score += 1; // 正确答案加 10 分
-            document.getElementById('feedback').textContent = score;
-
-        } else {
-            document.getElementById('feedback').textContent = score;
-        }
+            total_score += 1;
+            document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", score:"+total_score;
+        } 
     show_score();
     nextQuestion();    
     } 
-        
+    
     else {
         button = document.getElementById('button'+answer);
         button.style.backgroundColor = current_part_color;
@@ -370,11 +373,13 @@ function submitAnswer(answer) {
         papa=question.answer_papa[answer];
         if (papa === "...") {
             score += 1; // 正确答案加 10 分
+            total_score += 1;
         }
         show_text(question.text,kid,papa);
 
         
     }
+    document.getElementById('feedback').textContent = "Part:"+part+",Q"+(currentPartQuestionIndex+1)+"score:"+total_score;
    
 }
 
@@ -483,9 +488,11 @@ function nextQuestion() {
     if ((currentQuestionIndex === part1Questions.length) || (currentQuestionIndex === part1Questions.length+part2Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length)) {
         part ++;
         score=0;
-        show_score();
+        //show_score();
         currentPartQuestionIndex=0;
         displayQuestion();
+    } else if ((currentPartQuestionIndex === 3)&&(part === 6)) {
+        showResults();
     } else  {
         displayQuestion();
     } 
@@ -497,10 +504,10 @@ function showResults() {
     let evaluationColor = "black";
 
     // 根据分数给出评价
-    if (score >= 80) {
+    if (total_score >= 15) {
         evaluation = "优秀！你对这些知识掌握得非常好。";
         evaluationColor = "green";
-    } else if (score >= 50) {
+    } else if (score >= 10) {
         evaluation = "良好，但还有提升的空间。";
         evaluationColor = "orange";
     } else {
@@ -511,23 +518,27 @@ function showResults() {
     // 构建显示结果的 HTML
     let resultsHtml = "<div style='color: " + evaluationColor + ";'>" +
                       "<h2>问卷结果</h2>" +
-                      "<p>你的总分是: <strong>" + score + "</strong></p>" +
+                      "<p>你的总分是: <strong>" + total_score+"/19" + "</strong></p>" +
                       "<p>" + evaluation + "</p>" +
-                      "<p>珍爱生命，反对霸凌，构建和谐HON</p>" +
                       "</div>";
 
     // 显示结果
-    document.getElementById('quiz-container').innerHTML = resultsHtml;
+    document.getElementById('question').innerHTML = resultsHtml;
+    document.getElementById('part2-answers').style.display = 'none';
+    document.getElementById('score').style.display = 'none';
+    document.getElementById('endQuiz').style.display = 'block';
+
 }
 
 // 更新 endQuiz 函数
 function endQuiz() {
-    document.getElementById('quiz-container').innerHTML = '<div>第一部分结束，你的总分是: ' + score + '</div><button id="next-part-button">下一部分</button>';
-    document.getElementById('next-part-button').addEventListener('click', function() {
-        part = 2; // 更新部分
-        currentQuestionIndex = part1Questions.length; // 从第二部分的第一题开始
-        displayQuestion();
-    });
+    let currentQuestionIndex = 0;
+    let currentPartQuestionIndex = 0;
+    let score = 0;
+    let part = 1; // 部分 1
+    let total_score = 0;
+    document.getElementById('endQuiz').style.display = 'none';
+    displayQuestion();
 }
 
 // 其他代码保持不变

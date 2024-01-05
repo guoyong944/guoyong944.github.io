@@ -186,6 +186,23 @@ body {
 
 }
 
+#endQuiz {
+    position: absolute;
+    top: 600px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 200px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 120px;
+    height: 51px;
+    font-size: 20px;
+    color: black;
+    background-color: white;
+    margin: auto;
+    border-color: black;
+    border-radius: 25px;
+    border:5px solid black;
+    cursor: pointer;
+    text-align: center;
+    display: none;
+}
 #buttonNextQustion {
     position: absolute;
     top: 600px; /* 距离最近的已定位祖先元素顶部 50px */

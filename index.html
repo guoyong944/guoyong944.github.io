@@ -22,7 +22,7 @@
         </div>
     </div>
     <button id="buttonNextQustion" onclick="nextQuestion()" style="display:none;">Überspringen</button>
-    <button id="NextQustion" onclick="nextQuestion()" style="position: absolute;top:20px;left:260px;width:120px;height:20px;">Überspringen</button>
+    <button id="NextQustion" onclick="nextQuestion()" style="position: absolute;top:20px;left:260px;width:120px;height:20px;z-index:6;">Überspringen</button>
 
     <div id="score">
         <img src="yellow1.png" id="img1" style="position: absolute; top: 382px;left:0;z-index:5;">
@@ -33,7 +33,9 @@
         <img src="yellow5.png" id="img5" style="position: absolute; top: 0px;left:0;z-index:1;display:none;">
 
     </div>
-    <div id="feedback" style="display:none;"></div>
+    <div id="feedback" style="position: absolute;top:20px;left:100px;width:120px;height:20px;z-index:6;display:block;">0</div>
+    <div id="endQuiz" onclick="quit()">End</div>
+
         
     <script src="script.js"></script>
 </body>
