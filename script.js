@@ -1,11 +1,11 @@
 // 全局变量
-let currentQuestionIndex = 0;
+let currentQuestionIndex = -1;
 let currentPartQuestionIndex = 0;
 let score = 0;
-let part = 1; // 部分 1
+let part = 0; // 部分 1
 let total_score = 0;
-
-
+//每部分起始页的标题
+const titels=[{round:"RUNDE1",titel:"SEBLST-\nIDENTIFIKATION"},{round:"RUNDE2",titel:"ABLEHNUNG"},{round:"RUNDE3",titel:"ÄRGER"},{round:"RUNDE4",titel:"VERHANDLUNG"},{round:"RUNDE5",titel:"ENTTÄUSCHUNG"},{round:"RUNDE6",titel:"SORGE"}]
 //第一部分问题 （ja nein frage）
 const part1Questions = [
     {text: "Glauben Sie, dass Sie unab- \nhängig von Ihrer sexuellen \nOrientierung das Recht \nhaben, ein glückliches und \nerfülltes Leben zu führen?", },
@@ -13,10 +13,7 @@ const part1Questions = [
     {text: "Glauben Sie, dass Sie sich \ndurch Ihr Coming-out freier \nund echter in Ihrem Leben \nfühlen?", },
     {text: "Sind Sie bereit, sich der \nHerausforderung zu stellen, \ndie verschiedenen mög- \nlichen Reaktionen und \nErgebnisse Ihres Coming- \nouts zu erkunden?", },
     ]; 
-    
 // 第二部分的问题 （第一组多选），灰色高亮部分为自动导言对话
-const end_text={pass:"Sohn, nachdem wir so viel \nmit dir geredet haben, ist \nuns klar geworden, dass\nwir uns als Mama und Papa \nvorher nicht richtig um dich \ngekümmert haben. Mama \nund Papa wissen nicht viel \nüber Homosexualität und\nes dauert eine Weile, bis\nwir sie verstehen. Wenn du \nvon uns verlangst, dass wir \nes sofort akzeptieren, kön- \nnen wir das nicht tun. Und \nwir hoffe, du kannst Mama \nund Papa verstehen.\n\n&Mama und Papa, ich weiß, \n&wie schwer das ist, und ich \n&werde euch in diesem Pro- \n&zess begleiten. Ich möchte, \n&ihr wisst, dass ich immer \n&noch derselbe bin und sich \n&meine Liebe zu euch nie \n&geändert hat. Mein größter \n&Wunsch ist es, dass wir alle \n&glücklich für immer leben.\n\nSohn, egal was passiert, \nunsere Familie wird immer \ndein Schutz sein. Du wirst \nimmer unser Kind sein, wir \nwerden dich immer lieben. \nLass uns erst einmal hier \nreden. Gib uns noch etwas \nZeit.",
-fail:"Sag das nicht mehr...\nich glaube dir nicht, was du \nda sagst. Wir haben große \nHoffnungen in dich gesetzt, \naber dann so zahlst du es \nuns zurück? Wir sind sehr \nenttäuscht von dir. Wir \nhaben dir so viel gegeben \nund hätten nicht gedacht, \ndass es so enden würde. \nWeißt du, wie schwer es\nfür Mama und Papa ist?\n\n&Mama und Papa...\n&ich hoffe, ihr seid glücklich \n&und fröhlich, auch wenn ich \n&eure ursprünglichen Erwar- \n&tungen nicht erfüllen kann. \n&Aber bitte glaubt mir, dass \n&ich immer noch das Kind \n&bin, das euch liebt. Ich bin \n&immer noch derselbe opti- \n&mistische und hoffnungs-\n&volle Mensch, und mein \n&Coming-out hat nichts an \n&mir geändert. Ich hoffe, \n&dass ihr mich eines Tages \n&verstehen könnt. Sieh mein \n&Glück und teile es mit mir."}
 const part2Questions = [
     { text: "&Papa, Mama... \n&Ich habe euch etwas Wich- \n&tiges zu sagen. Es ist ein \n&Geheimnis, das seit vielen \n&Jahren in meinem Herzen \n&verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unterstüt- \n&zung erinnert, seit ich ein \n&Kind war... Ich bin sehr \n&glücklich, in dieser Familie \n&zu leben. Ich werde euch \n&und unsere Familie immer \n&lieben, und Ich weiß auch, \n&dass ihr wollt, dass ich \n&glücklich bin. Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also, Ich will euch mal was \n&klar machen. Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin \n&habe, wann ich heirate. Ich \n&habe sie mit verschiedenen \n&Ausreden gemieden. Aber \n&ich möchte euren Fragen \n&nicht mehr ausweichen. Es \n&ist wahr, dass ich nun keine \n&Freundin haben werde und \n&ich will nicht heiraten, weil \n&ich schwul bin und Männer \n&mag.\n\n..."},
     {text: "Ich glaube nicht, wie ist das \nmöglich, wie kannst du ein \nSchwuler sein?",
@@ -30,7 +27,7 @@ const part2Questions = [
     { text: "Woher weißt du, dass du \nkeine Frauen magst, wenn \ndu noch niemals mit einer \nzusammen warst?",
     options: [' Ich mag Jungs schon seit der Mittelschule', ' Vielleicht könnte ich auch Frauen mögen?', ' Ich fühle mich nur von Jungs angezogen.?', ' Warum sollte ich Frauen mögen?'],
     answer_kid: { "A": "&Als ich in der Mittelschule \n&war, wurdemir klar, dass  \n&ich Jungs mag. Ich habe \n&keine Gefühle für Mädchen, \n&egal wie hübsch, wie süß \n&sie waren. ","B": "&Vielleicht, vielleicht möge \n&ich auch Mädchen?", "C": "&Seit meiner Kindheit fühle \n&ich mich nur zu Jungs hin- \n&gezogen. Ich interessiere \n&mich nur für hübsche Män- \n&ner, nicht für Mädchen.", "D": "&Ich bin schwul, warum \n&sollte ich mit einer Frau \n&zusammen sein?"},
-    answer_papa: { "A": "...","B": "Ja, das ist die richtige \nDenkweise! Männer sollen \nFrauen mögen.", "C": "…", "D": "Du sagst, du bist schwul, \naber du hast es noch nie \nversucht, woher weißt du, \nob du Frauen magst?"  }}
+    answer_papa: { "A": "...","B": "Ja, das ist die richtige \nDenkweise! Männer sollen \nFrauen mögen.", "C": "...", "D": "Du sagst, du bist schwul, \naber du hast es noch nie \nversucht, woher weißt du, \nob du Frauen magst?"  }}
 ];
 
 //第三部分问题（第二组多选）
@@ -68,7 +65,7 @@ const part5Questions = [
     { text: "Willst du die ganze Familie \nblamieren? Willst du, dass \nalle über uns lachen? Hast \ndu jemals darüber nach- \ngedacht, wie sich Mama \nund Papa fühlen?",
     options: [' Würde hängt nicht von Vorurteilen ab', ' Ich bin eine Witzfigur in euren Augen', ' Es tut mir leid. Es ist meine Schuld', ' Liebe und Glück sind die wichtigsten Dinge'],
     answer_kid: { "A": "&Mama und Papa, unsere \n&Würde wird nicht von den \n&Vorurteilen der anderen \n&bestimmt. Sie kommt eher \n&aus dem Verständnis und \n&der Unterstützung, die sich \n&unsere Familien gegen- \n&seitig geben. Wir sind in \n&uns selbst stark geworden, \n&und das ist es, was zählt.","B": "&Ich verstehe schon, ich bin \n&eine Witzfigur für euch, \n&und egal, was ich tue, es \n&wird euch nie zufrieden- \n&stellen.", "C": "&Mama und Papa, es tut mir \n&sehr leid, ich wollte meine \n&Familie nicht blamieren. Ich \n&will mich nicht mehr verste- \n&cken und habe Angst,  euch \n&zu enttäuschen.", "D": "&Mama und Papa...ich habe \n&mich geoutet, nicht um \n&euch Blamage zu bereiten, \n&sondern um wahre Liebe \n&und echtes Glück zu finden. \n&Ich glaube, wenn wir alle \n&unser Leben mit wahrem \n&Glück und Freude führen \n&können, ist es egal, was \n&andere denken."},
-    answer_papa: { "A": "...","B": "Ist das die Einstellung, mit \nder du mit Mama und Papa \nsprichst? Schämst du dich \nnicht?", "C": "Dachtest du nicht? Dann \ndenke jetzt darüber nach, \ndu musst deinen Fehler \nkorrigieren und mit diesem \nVerhalten aufhören.", "D": " ... " }},
+    answer_papa: { "A": "...","B": "Ist das die Einstellung, mit \nder du mit Mama und Papa \nsprichst? Schämst du dich \nnicht?", "C": "Dachtest du nicht? Dann \ndenke jetzt darüber nach, \ndu musst deinen Fehler \nkorrigieren und mit diesem \nVerhalten aufhören.", "D": "..." }},
     { text: "Es ist alles Mamas Schuld. \nIch bin nicht gut mit dir auf- \ngewachsen und habe dich \nnicht richtig erzogen.",
     options: [' Mama, es ist nicht deine Schuld', ' Du entscheidest nicht über meine Sexualität', ' Du bist die beste Mutter der Welt', ' Mama, es tut mir wirklich leid'],
     answer_kid: { "A": "&Mama, es ist nicht deine \n&Schuld. Ich hoffe, du weißt, \n&dass ich mich geoutet \n&habe, weil ich dir vertraue. \n&Ich weiß, du liebst mich, \n&egal ob ich Männer oder \n&Frauen mag. Wir können \n&zusammen die Homosexu- \n&alität besser verstehen, \n&und ich bin wie immer dein \n&toller Sohn.","B": "&Mama, du kannst nicht ent- \n&scheiden, wen ich mag. \n&Sexuelle Orientierung kann \n&man nicht lernen. Egal, wie \n&sehr du dich selbst fertig- \n&machst, ich bin schwul und \n&das kannst du nicht ändern.", "C": "&Du bist die beste Mutter \n&der Welt! Deine Liebe und \n&Akzeptanz haben es mir \n&ermöglicht, meine wahre \n&Identität gefunden und \n&akzeptiert zu haben. Sich \n&zu outen bedeutet nicht, \n&dass etwas nicht richtig ist, \n&es ist nur ein Weg, damit \n&du mich besser verstehst.", "D": "&Mama, es tut mir sehr leid \n&aber ich weiß nicht, was ich \n&sonst tun soll. mir ist egal, \n&ob mich irgendjemand auf \n&dieser Welt nicht akzep- \n&tiert. Ich will nur, dass du \n&und Papa mich akzeptieren."},
@@ -94,12 +91,15 @@ const part6Questions = [
     answer_papa: { "A": "...","B": "Wenn du im Moment nicht \ndarüber nachdenkst, wirst \ndu erst dann Gedanken \nmachen, wenn wir alle nicht \nmehr da sind? Wenn du \neine Familie gründen willst, \nsuche dir eine normale Frau. \nHeiraten, ein Kinder haben \nund ein normales Leben \nführen.", "C": "Du glaubst, du kannst alles \nselbst erledigen? Am Ende \nbrauchst du immer noch \nHilfen von Mama und mir. \nWenn du nicht heiratest, \nwenn wir nicht mehr da \nsind, stellst du dir vor, dass \ndich jemand anderes so \nunterstützt wie wir.", "D": "..."  }}
 ];
     
+//答题结束后根据分数的最终反馈
+const end_text={pass:"Sohn, nachdem wir so viel \nmit dir geredet haben, ist \nuns klar geworden, dass\nwir uns als Mama und Papa \nvorher nicht richtig um dich \ngekümmert haben. Mama \nund Papa wissen nicht viel \nüber Homosexualität und\nes dauert eine Weile, bis\nwir sie verstehen. Wenn du \nvon uns verlangst, dass wir \nes sofort akzeptieren, kön- \nnen wir das nicht tun. Und \nwir hoffe, du kannst Mama \nund Papa verstehen.\n\n&Mama und Papa, ich weiß, \n&wie schwer das ist, und ich \n&werde euch in diesem Pro- \n&zess begleiten. Ich möchte, \n&ihr wisst, dass ich immer \n&noch derselbe bin und sich \n&meine Liebe zu euch nie \n&geändert hat. Mein größter \n&Wunsch ist es, dass wir alle \n&glücklich für immer leben.\n\nSohn, egal was passiert, \nunsere Familie wird immer \ndein Schutz sein. Du wirst \nimmer unser Kind sein, wir \nwerden dich immer lieben. \nLass uns erst einmal hier \nreden. Gib uns noch etwas \nZeit.",
+fail:"Sag das nicht mehr...\nich glaube dir nicht, was du \nda sagst. Wir haben große \nHoffnungen in dich gesetzt, \naber dann so zahlst du es \nuns zurück? Wir sind sehr \nenttäuscht von dir. Wir \nhaben dir so viel gegeben \nund hätten nicht gedacht, \ndass es so enden würde. \nWeißt du, wie schwer es\nfür Mama und Papa ist?\n\n&Mama und Papa...\n&ich hoffe, ihr seid glücklich \n&und fröhlich, auch wenn ich \n&eure ursprünglichen Erwar- \n&tungen nicht erfüllen kann. \n&Aber bitte glaubt mir, dass \n&ich immer noch das Kind \n&bin, das euch liebt. Ich bin \n&immer noch derselbe opti- \n&mistische und hoffnungs-\n&volle Mensch, und mein \n&Coming-out hat nichts an \n&mir geändert. Ich hoffe, \n&dass ihr mich eines Tages \n&verstehen könnt. Sieh mein \n&Glück und teile es mit mir."};
 
 function quit() {
-    currentQuestionIndex = 0;
+    currentQuestionIndex = -1;
     currentPartQuestionIndex = 0;
     score = 0;
-    part = 1; 
+    part = 0; 
     total_score = 0;
     document.getElementById('endQuiz').style.display = 'none';
     displayQuestion();} 
@@ -265,9 +265,16 @@ function displayQuestion() {
             break;
     };
     document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", score:"+total_score;
-
-    if (currentQuestionIndex<part1Questions.length) {
+    if (currentQuestionIndex === -1) {    
+        show_score();
+        next_part(); 
+        currentQuestionIndex += 1;
+        setTimeout(displayQuestion, 3000);
+    }
+    else if (currentQuestionIndex<part1Questions.length) {
+        document.getElementById('titels').style.display = 'none';
         question = part1Questions[currentQuestionIndex];
+        document.getElementById('question').style.display = 'block';
         document.getElementById('question').textContent = question.text;
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
@@ -275,6 +282,7 @@ function displayQuestion() {
 
     } 
     else if(currentQuestionIndex===part1Questions.length) {
+        document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'none';       
         document.getElementById('buttonNextQustion').style.display = 'block';       
         show_part2_text(part2Questions[0].text); 
@@ -282,10 +290,13 @@ function displayQuestion() {
         document.getElementById('part1-answers').style.display = 'none';
     }
     else {
+        document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'block';       
         document.getElementById('buttonNextQustion').style.display = 'none';       
         document.getElementById('part2_text').style.display = 'none';
         document.getElementById('question').style.display = 'block';
+        document.getElementById('part2-answers').style.display = 'block';
+
         question = current_part[currentPartQuestionIndex];
         document.getElementById('question').style.color = text_color;
 
@@ -295,7 +306,6 @@ function displayQuestion() {
         disableAnswerButtons();
         show_questions(question.text);
         //document.getElementById('question').innerHTML  = questionHtml;
-
         document.getElementById('part2-answers').style.display = 'block';
         set_button_color();
         document.getElementById('buttonA').textContent = question.options[0];
@@ -500,18 +510,52 @@ function enableAnswerButtons() {
         buttons[i].disabled = false
     }}
 
+function next_part() {        
+    part ++;
+    score=0;
+    currentPartQuestionIndex=0;
+    show_score();
+    document.getElementById('titels').style.display = 'block';
+    document.getElementById('question').style.display = 'none';
+    document.getElementById('part1-answers').style.display = 'none';
+    document.getElementById('part2-answers').style.display = 'none';
+    let titel_color;
+    switch (part) {
+        case 1:
+            titel_color = '#503A00';
+            break;
+        case 2:
+            titel_color = '#002E50';
+            break;
+        case 3:
+            titel_color = '#500000';
+            break;
+        case 4:
+            titel_color = '#012D17';
+            break;        
+        case 5:
+            titel_color = '#29002F';
+            break;
+        case 6:
+            titel_color = '#4F2400';
+            break;
+        // 添加更多的case语句
+        default:
+            titel_color = '#503A00';
 
+            // 如果part不是1或2
+            break;
+    };
+    document.getElementById('titels').style.color = titel_color;
+    document.getElementById('titels').innerHTML = "<span style='font-size: 14px;'>"+titels[part-1].round+"</span><br><span style='font-size: 30px;'>"+titels[part-1].titel+"</span>";
+    setTimeout(displayQuestion, 3000);
+}
 // 进入下一题的函数
-
 function nextQuestion() {
     currentQuestionIndex++;
     currentPartQuestionIndex++;
     if ((currentQuestionIndex === part1Questions.length) || (currentQuestionIndex === part1Questions.length+part2Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length)) {
-        part ++;
-        score=0;
-        //show_score();
-        currentPartQuestionIndex=0;
-        displayQuestion();
+        next_part();
     } else if ((currentPartQuestionIndex === 3)&&(part === 6)) {
         showResults();
     } else  {
@@ -538,10 +582,10 @@ function showResults() {
 
 // 更新 endQuiz 函数
 function endQuiz() {
-    let currentQuestionIndex = 0;
+    let currentQuestionIndex = -1;
     let currentPartQuestionIndex = 0;
     let score = 0;
-    let part = 1; // 部分 1
+    let part = 0; // 部分 1
     let total_score = 0;
     document.getElementById('endQuiz').style.display = 'none';
     document.getElementById('part2_text').style.display = 'none';
@@ -551,3 +595,4 @@ function endQuiz() {
 
 // 其他代码保持不变
 
+displayQuestion();
