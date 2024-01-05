@@ -15,21 +15,24 @@ const part1Questions = [
     ]; 
     
 // 第二部分的问题 （第一组多选），灰色高亮部分为自动导言对话
+const end_text={pass:"Sohn, nachdem wir so viel \nmit dir geredet haben, ist \nuns klar geworden, dass\nwir uns als Mama und Papa \nvorher nicht richtig um dich \ngekümmert haben. Mama \nund Papa wissen nicht viel \nüber Homosexualität und\nes dauert eine Weile, bis\nwir sie verstehen. Wenn du \nvon uns verlangst, dass wir \nes sofort akzeptieren, kön- \nnen wir das nicht tun. Und \nwir hoffe, du kannst Mama \nund Papa verstehen.\n\n&Mama und Papa, ich weiß, \n&wie schwer das ist, und ich \n&werde euch in diesem Pro- \n&zess begleiten. Ich möchte, \n&ihr wisst, dass ich immer \n&noch derselbe bin und sich \n&meine Liebe zu euch nie \n&geändert hat. Mein größter \n&Wunsch ist es, dass wir alle \n&glücklich für immer leben.\n\nSohn, egal was passiert, \nunsere Familie wird immer \ndein Schutz sein. Du wirst \nimmer unser Kind sein, wir \nwerden dich immer lieben. \nLass uns erst einmal hier \nreden. Gib uns noch etwas \nZeit.",
+fail:"Sag das nicht mehr...\nich glaube dir nicht, was du \nda sagst. Wir haben große \nHoffnungen in dich gesetzt, \naber dann so zahlst du es \nuns zurück? Wir sind sehr \nenttäuscht von dir. Wir \nhaben dir so viel gegeben \nund hätten nicht gedacht, \ndass es so enden würde. \nWeißt du, wie schwer es\nfür Mama und Papa ist?\n\n&Mama und Papa...\n&ich hoffe, ihr seid glücklich \n&und fröhlich, auch wenn ich \n&eure ursprünglichen Erwar- \n&tungen nicht erfüllen kann. \n&Aber bitte glaubt mir, dass \n&ich immer noch das Kind \n&bin, das euch liebt. Ich bin \n&immer noch derselbe opti- \n&mistische und hoffnungs-\n&volle Mensch, und mein \n&Coming-out hat nichts an \n&mir geändert. Ich hoffe, \n&dass ihr mich eines Tages \n&verstehen könnt. Sieh mein \n&Glück und teile es mit mir."}
 const part2Questions = [
     { text: "&Papa, Mama... \n&Ich habe euch etwas Wich- \n&tiges zu sagen. Es ist ein \n&Geheimnis, das seit vielen \n&Jahren in meinem Herzen \n&verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unterstüt- \n&zung erinnert, seit ich ein \n&Kind war... Ich bin sehr \n&glücklich, in dieser Familie \n&zu leben. Ich werde euch \n&und unsere Familie immer \n&lieben, und Ich weiß auch, \n&dass ihr wollt, dass ich \n&glücklich bin. Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also, Ich will euch mal was \n&klar machen. Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin \n&habe, wann ich heirate. Ich \n&habe sie mit verschiedenen \n&Ausreden gemieden. Aber \n&ich möchte euren Fragen \n&nicht mehr ausweichen. Es \n&ist wahr, dass ich nun keine \n&Freundin haben werde und \n&ich will nicht heiraten, weil \n&ich schwul bin und Männer \n&mag.\n\n..."},
     {text: "Ich glaube nicht, wie ist das \nmöglich, wie kannst du ein \nSchwuler sein?",
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'],
-    answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
-    answer_papa: { "A": "...","B": "Wie sprichst du mit Mama \nund Papa! Ich glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir eigent- \nlich? Willst du uns  \nverarschen?"  }},
-    { text: "Wie kann es Liebe zwischen \nMännern geben? Hast du \ndich geirrt?",
+  answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
+  answer_papa: { "A": "...","B": "Wie sprichst du mit Mama \nund Papa! Ich glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir eigent- \nlich dabei? Willst du uns  \nverarschen?"  }},
+   { text: "Wie kann es Liebe zwischen \nMännern geben? Hast du \ndich geirrt?",
     options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde. ', ' Ich kann unterscheiden zwischen Liebe \nund Freundschaft.'],
     answer_kid: { "A": "&Ich weiß nicht, ob das \n&Liebe oder Freundschaft  \n&ist, und ich bin verwirrt...","B": "&Ich bin mir sicher, dass es \n&Liebe ist. Es ist das Gefühl, \n&mein Herzschlag setzte für \n&einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht es \n&nur um eine Freundschaft.", "D": "&Mama und Papa, ich bin ein \n&Erwachsener, ich kann zwi- \n&schen Liebe und Freund- \n&schaft unterscheiden."},
     answer_papa: { "A": "Glaub Mama, du musst \ndich irren!","B": "...", "C": "Glaub Papa, du musst \ndich irren!", "D": "..."  }},  
-    { text: "Woher weißt du, dass du \nkeine Frauen magst, wenn \ndu noch nie mit einer \nzusammen warst?",
+    { text: "Woher weißt du, dass du \nkeine Frauen magst, wenn \ndu noch niemals mit einer \nzusammen warst?",
     options: [' Ich mag Jungs schon seit der Mittelschule', ' Vielleicht könnte ich auch Frauen mögen?', ' Ich fühle mich nur von Jungs angezogen.?', ' Warum sollte ich Frauen mögen?'],
     answer_kid: { "A": "&Als ich in der Mittelschule \n&war, wurdemir klar, dass  \n&ich Jungs mag. Ich habe \n&keine Gefühle für Mädchen, \n&egal wie hübsch, wie süß \n&sie waren. ","B": "&Vielleicht, vielleicht möge \n&ich auch Mädchen?", "C": "&Seit meiner Kindheit fühle \n&ich mich nur zu Jungs hin- \n&gezogen. Ich interessiere \n&mich nur für hübsche Män- \n&ner, nicht für Mädchen.", "D": "&Ich bin schwul, warum \n&sollte ich mit einer Frau \n&zusammen sein?"},
     answer_papa: { "A": "...","B": "Ja, das ist die richtige \nDenkweise! Männer sollen \nFrauen mögen.", "C": "…", "D": "Du sagst, du bist schwul, \naber du hast es noch nie \nversucht, woher weißt du, \nob du Frauen magst?"  }}
 ];
+
 //第三部分问题（第二组多选）
 const part3Questions = [
     { text: "Du bist schwul, du wirst \nuns keine Nachkommen in \ndieser Familie hinterlassen. \nDu darfst nicht so egois- \ntisch sein!",
@@ -56,7 +59,7 @@ const part4Questions = [
     answer_kid: { "A": "&Mama, ich will dich nicht \n&enttäuschen, also ich kann \n&es versuchen, mehr Mäd- \n&chen zu kennen, wenn dich \n&das wirklich zufrieden \n&macht.","B": "&Mama, würdest du dich in \n&deine weiblichen Freunde \n&und weiblichen Kolleginnen \n&verlieben? Wenn du das \n&nicht wollen, weil du hete- \n&rosexuell bist, dann magst \n&du das gleiche Geschlecht \n&nicht. Das ist genauso bei \n&mir: ich mag keine Frauen \n&und will mit einem Mann \n&zusammen.", "C": "&Ich werde mich nicht \n&ändern, um dir zu gefallen. \n&Wer ich bin und wen ich \n&mag, ist meine Sache und \n&nicht etwas, das ihr ändern \n&könnt, wenn ihr wollt.", "D": "&Mama, nach so vielen \n&Jahren bin ich mir ganz \n&sicher, was meine sexuelle \n&Orientierung angeht. Das \n&ist keine Alternative, die \n&man durch andere Ver-\n&suche ändern kann. Sonst \n&würde ich nicht mit euch \n&reden."},
     answer_papa: { "A": "Das stimmt, es ist ganz \nnatürlich, dass sich Männer \nund Frauen aneinander- \nbinden. Ich bin sicher, du \nkannst dich ändern, mein \nSohn. ","B": "...", "C": "Wir tun das alles nur zu \ndeinem Besten! Denkst du, \ndu verstehst die Liebe? Wie \nkennst du, dass du keine \nFrauen magst, wenn du es \nnicht einmal versucht hast?", "D": "..."  }},
     { text: "Aber wer kümmert sich \ndenn um das Familienleben, \nwenn keine Frau zu Hause \nist? Warum würdest du so \nmüde leben.",
-    options: [' Ich kann gut unabhängig leben', ' Ich bin wirklich müde. Ich weiß auch nicht', ' Das ist keine geschlechtsspezifische Aufgabe', ' Ich brauche eure Sorge um eigenen Angele- \ngenheiten nicht'],
+    options: [' Ich kann gut unabhängig leben', ' Ich bin wirklich müde. Ich weiß auch nicht', ' Dies ist kein frauenspezifisches Aufgabe', ' Ich brauche eure Sorge um eigenen Angele- \ngenheiten nicht'],
     answer_kid: { "A": "&Mama, ich lebe schon seit \n&so vielen Jahren allein, dass \n&ich gut selbstständig leben \n&kann. Keine Sorge, ich kann \n&selbst auf mich aufpassen.","B": "&Ich bin sehr müde, und ich \n&weiß nicht, wie mein zu- \n&künftiges Leben aussehen \n&wird, und Ich bezweifle, ob \n&ich das überhaupt schaffen \n&kann.", "C": "&Mama, für die Familie zu \n&sorgen, ist die Aufgabe \n&von allem, nicht nur der \n&Frauen. In Zukunft werden \n&mein Partner und ich die \n&Verantwortung für die \n&Familie gleichmäßig auf- \n&teilen. Fürsorge und Liebe \n&können von jedem Gesch- \n&lecht kommen.", "D": "&Ich brauche keine Frau, die \n&sich um mich kümmert, und \n&ihr brauchen euch nicht um \n&meine persönlichen Ange- \n&legenheiten zu kümmern. \n&Ich werde ein gutes Leben \n&führen."},
     answer_papa: { "A": "...","B": "Hör zu, es muss immer noch \neine Frau in der Familie sein. \nSo ist das Leben für alle.", "C": "...", "D": "Brauchen wir uns nicht \ndarum zu sorgen? Wenn \ndu krank wirst und Hilfe \nbrauchst, merkst du, wie \nwichtig die Familie ist und \nwie wichtig die Pflege \ndurch eine Frau ist."  }}
 ];
@@ -127,7 +130,7 @@ function show_part2_text(text) {
         if (i < text.length) {
             if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";i++;}
             currentText += text.charAt(i);
-            currentText=currentText.split("\n").slice(-18).join("\n");
+            currentText=currentText.split("\n").slice(-16).join("\n");
             var currentText_list=currentText.split("\n\n");
             var para_num=currentText_list.length;
             if (para_num>1){
@@ -151,6 +154,7 @@ function show_part2_text(text) {
 
     //showNextChar();
 }
+
 function show_text(question, kid, papa) {
     var fullText = question + kid + papa.charAt(0)+papa; // 组合整个文本
     var num_q = question.length; // question文本的长度
@@ -500,33 +504,18 @@ function nextQuestion() {
 
 // 显示结果的函数
 function showResults() {
-    let evaluation = "";
-    let evaluationColor = "black";
 
-    // 根据分数给出评价
-    if (total_score >= 15) {
-        evaluation = "优秀！你对这些知识掌握得非常好。";
-        evaluationColor = "green";
-    } else if (score >= 10) {
-        evaluation = "良好，但还有提升的空间。";
-        evaluationColor = "orange";
-    } else {
-        evaluation = "需要努力。继续加油！";
-        evaluationColor = "red";
-    }
-
-    // 构建显示结果的 HTML
-    let resultsHtml = "<div style='color: " + evaluationColor + ";'>" +
-                      "<h2>问卷结果</h2>" +
-                      "<p>你的总分是: <strong>" + total_score+"/19" + "</strong></p>" +
-                      "<p>" + evaluation + "</p>" +
-                      "</div>";
-
-    // 显示结果
-    document.getElementById('question').innerHTML = resultsHtml;
+    document.getElementById('score').style.display = 'none';       
     document.getElementById('part2-answers').style.display = 'none';
-    document.getElementById('score').style.display = 'none';
     document.getElementById('endQuiz').style.display = 'block';
+    // 根据分数给出评价
+    if (total_score >= 10) {
+        show_part2_text(end_text.pass); 
+    } else {
+        show_part2_text(end_text.fail); 
+    }
+    // 显示结果
+
 
 }
 
@@ -538,6 +527,8 @@ function endQuiz() {
     let part = 1; // 部分 1
     let total_score = 0;
     document.getElementById('endQuiz').style.display = 'none';
+    document.getElementById('part2_text').style.display = 'none';
+
     displayQuestion();
 }
 
