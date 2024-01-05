@@ -211,36 +211,47 @@ function displayQuestion() {
             current_part_color = '#FFC300';
             shadow_color_nein='0px 2px 6px 0px rgba(191, 139, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_yellow.png';
+            text_color = '#503A00';
             break;
         case 2:
             current_part = part2Questions;
             current_part_color = '#33A9FF';
             shadow_color_nein='0px 1px 5px 0px rgba(0, 111, 193, 0.1)';
             document.getElementById('quit').src = 'arrow_blue.png';
+            text_color = '#002E50';
+
             break;
         case 3:
             current_part = part3Questions;
             current_part_color = '#FF3333';
             shadow_color_nein='0px 1px 5px 0px rgba(189, 0, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_red.png';
+            text_color = '#500000';
+
             break;
         case 4:
             current_part = part4Questions;
             current_part_color = '#00A351';
             shadow_color_nein='0px 1px 5px 0px rgba(0, 140, 70, 0.1)';
             document.getElementById('quit').src = 'arrow_green.png';
+            text_color = '#012D17';
+
             break;        
         case 5:
             current_part = part5Questions;
             current_part_color = '#770088';
             shadow_color_nein='0px 1px 5px 0px rgba(96, 0, 110, 0.1)';
             document.getElementById('quit').src = 'arrow_lila.png';
+            text_color = '#29002F';
+
             break;
         case 6:
             current_part = part6Questions;
             current_part_color = '#FF7400';
             shadow_color_nein='0px 1px 5px 0px rgba(140, 64, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_orange.png';
+            text_color = '#4F2400';
+
             break;
         // 添加更多的case语句
         default:
@@ -248,6 +259,8 @@ function displayQuestion() {
             current_part_color = '#FFC300';
             shadow_color_nein='0px 2px 6px 0px rgba(191, 139, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_yellow.png';
+            text_color = '#503A00';
+
             // 如果part不是1或2
             break;
     };
@@ -258,6 +271,8 @@ function displayQuestion() {
         document.getElementById('question').textContent = question.text;
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
+        document.getElementById('question').style.color = text_color;
+
     } 
     else if(currentQuestionIndex===part1Questions.length) {
         document.getElementById('score').style.display = 'none';       
@@ -272,6 +287,8 @@ function displayQuestion() {
         document.getElementById('part2_text').style.display = 'none';
         document.getElementById('question').style.display = 'block';
         question = current_part[currentPartQuestionIndex];
+        document.getElementById('question').style.color = text_color;
+
 
         //显示问题和选
         show_score();
