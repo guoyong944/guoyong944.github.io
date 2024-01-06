@@ -2,11 +2,13 @@
 let currentQuestionIndex = -1;
 let currentPartQuestionIndex = 0;
 let score = 0;
-let part = 0; // 部分 1
+let part = 1; // 部分 1
 let total_score = 0;
+let interupted = false;
 //每部分起始页的标题
 const titels=[{round:"RUNDE1",titel:"SEBLST-\nIDENTIFIKATION"},{round:"RUNDE2",titel:"ABLEHNUNG"},{round:"RUNDE3",titel:"ÄRGER"},{round:"RUNDE4",titel:"VERHANDLUNG"},{round:"RUNDE5",titel:"ENTTÄUSCHUNG"},{round:"RUNDE6",titel:"SORGE"}]
 //第一部分问题 （ja nein frage）
+const introduction= "&Papa, Mama... \n&Ich habe euch etwas Wich- \n&tiges zu sagen. Es ist ein \n&Geheimnis, das seit vielen \n&Jahren in meinem Herzen \n&verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unterstüt- \n&zung erinnert, seit ich ein \n&Kind war... Ich bin sehr \n&glücklich, in dieser Familie \n&zu leben. Ich werde euch \n&und unsere Familie immer \n&lieben, und Ich weiß auch, \n&dass ihr wollt, dass ich \n&glücklich bin. Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also, Ich will euch mal was \n&klar machen. Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin \n&habe, wann ich heirate. Ich \n&habe sie mit verschiedenen \n&Ausreden gemieden. Aber \n&ich möchte euren Fragen \n&nicht mehr ausweichen. Es \n&ist wahr, dass ich nun keine \n&Freundin haben werde und \n&ich will nicht heiraten, weil \n&ich schwul bin und Männer \n&mag.\n\n...";
 const part1Questions = [
     {text: "Glauben Sie, dass Sie unab- \nhängig von Ihrer sexuellen \nOrientierung das Recht \nhaben, ein glückliches und \nerfülltes Leben zu führen?", },
     {text: "Glauben Sie, dass es für die \npersönliche Entwicklung \nwichtig ist, seine sexuelle \nOrientierung zu kennen \nund zu akzeptieren?", },
@@ -15,7 +17,6 @@ const part1Questions = [
     ]; 
 // 第二部分的问题 （第一组多选），灰色高亮部分为自动导言对话
 const part2Questions = [
-    { text: "&Papa, Mama... \n&Ich habe euch etwas Wich- \n&tiges zu sagen. Es ist ein \n&Geheimnis, das seit vielen \n&Jahren in meinem Herzen \n&verborgen ist...\n\nWas ist denn los, \nmein Sohn?\n\n&Ich habe mich immer an \n&eure Liebe und Unterstüt- \n&zung erinnert, seit ich ein \n&Kind war... Ich bin sehr \n&glücklich, in dieser Familie \n&zu leben. Ich werde euch \n&und unsere Familie immer \n&lieben, und Ich weiß auch, \n&dass ihr wollt, dass ich \n&glücklich bin. Also...\n\nNa und? Mach dir keine \nSorgen, mein Sohn, sprich \nmit Mama und Papa.\n\n&Also, Ich will euch mal was \n&klar machen. Ihr habt euch \n&immer Sorgen gemacht, \n&wann ich eine Freundin \n&habe, wann ich heirate. Ich \n&habe sie mit verschiedenen \n&Ausreden gemieden. Aber \n&ich möchte euren Fragen \n&nicht mehr ausweichen. Es \n&ist wahr, dass ich nun keine \n&Freundin haben werde und \n&ich will nicht heiraten, weil \n&ich schwul bin und Männer \n&mag.\n\n..."},
     {text: "Ich glaube nicht, wie ist das \nmöglich, wie kannst du ein \nSchwuler sein?",
     options: [' Ich bin seit langem schwul', ' Warum kann ich nicht schwul sein?', ' Es ist wahr, ich bin schwul. Es ist kein Witz', ' Ich weiß nicht, warum...'],
   answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
@@ -124,7 +125,10 @@ function show_part2_text(text) {
     var i = 0;
     var currentText = '';
     document.getElementById('part2_text').style.display = 'block';
-    document.getElementById('question').style.display = 'none';
+    document.getElementById('quit').style.display = 'none';
+    document.body.style.backgroundColor = '#FFFFFF';
+    interupted = true;
+
 
     function showNextChar() {
         if (i < text.length) {
@@ -143,10 +147,13 @@ function show_part2_text(text) {
             i++;
             //setTimeout(showNextChar, 50); // 调整速度
         }
+        else if (interupted) {
+            clearInterval (done);
+        }
         else { // 如果已经显示了所有文本
             clearInterval (done);
-            if(currentQuestionIndex===part1Questions.length) {
-            setTimeout(nextQuestion, 3000); }  
+            if(currentQuestionIndex===part1Questions.length-1) {
+            setTimeout(start_part, 3000); }  
 
         }
     }
@@ -204,6 +211,8 @@ function displayQuestion() {
     let questionHtml = "";
     let current_part_color;
     let shadow_color_nein;
+    document.getElementById('quit').style.display = 'block';
+
 
     switch (part) {
         case 1:
@@ -264,16 +273,17 @@ function displayQuestion() {
             // 如果part不是1或2
             break;
     };
-    document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", score:"+total_score;
+    document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", score:"+total_score;
+    question = current_part[currentPartQuestionIndex];
     if (currentQuestionIndex === -1) {    
         show_score();
-        next_part(); 
-        currentQuestionIndex += 1;
-        setTimeout(displayQuestion, 3000);
+        start_part();  
+        document.getElementById('part1-answers').style.display = 'none';
+
     }
     else if (currentQuestionIndex<part1Questions.length) {
         document.getElementById('titels').style.display = 'none';
-        question = part1Questions[currentQuestionIndex];
+        //question = part1Questions[currentQuestionIndex];
         document.getElementById('question').style.display = 'block';
         document.getElementById('question').textContent = question.text;
         document.getElementById('part1-answers').style.display = 'block';
@@ -281,14 +291,6 @@ function displayQuestion() {
         document.getElementById('question').style.color = text_color;
 
     } 
-    else if(currentQuestionIndex===part1Questions.length) {
-        document.getElementById('titels').style.display = 'none';
-        document.getElementById('score').style.display = 'none';       
-        document.getElementById('buttonNextQustion').style.display = 'block';       
-        show_part2_text(part2Questions[0].text); 
-        document.getElementById('question').style.display = 'none';       
-        document.getElementById('part1-answers').style.display = 'none';
-    }
     else {
         document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'block';       
@@ -297,7 +299,7 @@ function displayQuestion() {
         document.getElementById('question').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'block';
 
-        question = current_part[currentPartQuestionIndex];
+        //question = current_part[currentPartQuestionIndex];
         document.getElementById('question').style.color = text_color;
 
 
@@ -332,7 +334,6 @@ function displayQuestion() {
 
     }
     // 隐藏反馈和下一题按钮，直到答案被提交
-    //document.getElementById('feedback').textContent = '';
     document.getElementById('next-button').style.display = 'none';
 }
 
@@ -387,7 +388,7 @@ function submitAnswer(answer) {
         if (answer === true) {
             score += 1; // 正确答案加 10 分
             total_score += 1;
-            document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", score:"+total_score;
+            document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", score:"+total_score;
         } 
     show_score();
     nextQuestion();    
@@ -410,12 +411,13 @@ function submitAnswer(answer) {
 
         
     }
-    document.getElementById('feedback').textContent = "Part:"+part+",Q"+(currentPartQuestionIndex+1)+"score:"+total_score;
+    document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", score:"+total_score;
    
 }
 
 function show_score() {    
-    if (part === 1) {
+    document.getElementById('score').style.display = 'block';
+    if ((part === 1)||(part === 0)) {
     document.getElementById('img1').src = 'yellow1.png';
     document.getElementById('img2').src = 'yellow2.png';
     document.getElementById('img3').src = 'yellow3.png';
@@ -510,15 +512,49 @@ function enableAnswerButtons() {
         buttons[i].disabled = false
     }}
 
-function next_part() {        
-    part ++;
-    score=0;
-    currentPartQuestionIndex=0;
-    show_score();
-    document.getElementById('titels').style.display = 'block';
+
+function finish_part() {
     document.getElementById('question').style.display = 'none';
     document.getElementById('part1-answers').style.display = 'none';
     document.getElementById('part2-answers').style.display = 'none';
+    document.getElementById('score').style.display = 'none';
+    //document.getElementById('continue').style.display = 'block';
+    document.getElementById('continue_text').style.display = 'block';
+    let finish_background_color;
+    switch (part) {
+        case 1:
+            finish_background_color = '#FFCE00';
+            break;
+        case 2:
+            finish_background_color = '#002E50';
+            break;
+        case 3:
+            finish_background_color = '#500000';
+            break;
+        case 4:
+            finish_background_color = '#012D17';
+            break;        
+        case 5:
+            finish_background_color = '#29002F';
+            break;
+        case 6:
+            finish_background_color = '#4F2400';
+            break;
+        // 添加更多的case语句
+        default:
+            finish_background_color = '#FFCE00';
+            // 如果part不是1或2
+            break;
+    };
+    //set the background color of this website to the color of the current part
+    //document.getElementById('continue').color = finish_background_color;
+    document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \nRot im Regenbogen!";
+    document.body.style.backgroundColor = finish_background_color;
+
+
+    setTimeout(next_part, 3000);
+}
+function start_part() {    
     let titel_color;
     switch (part) {
         case 1:
@@ -542,23 +578,102 @@ function next_part() {
         // 添加更多的case语句
         default:
             titel_color = '#503A00';
-
             // 如果part不是1或2
             break;
     };
+    show_score();
+    currentQuestionIndex++;
+    document.getElementById('part2_text').style.display = 'none';
+    document.getElementById('titels').style.display = 'block';
     document.getElementById('titels').style.color = titel_color;
     document.getElementById('titels').innerHTML = "<span style='font-size: 14px;'>"+titels[part-1].round+"</span><br><span style='font-size: 30px;'>"+titels[part-1].titel+"</span>";
     setTimeout(displayQuestion, 3000);
 }
+function next_part() {        
+    part ++;
+    score=0;
+    currentPartQuestionIndex=0;
+    document.body.style.backgroundColor = '#FFFFFF';
+    document.getElementById('continue').style.display = 'none';
+    document.getElementById('continue_text').style.display = 'none';   
+    document.getElementById('part1-answers').style.display = 'none';    
+ 
+    if(currentQuestionIndex===part1Questions.length-1) {
+        document.getElementById('titels').style.display = 'none';
+        document.getElementById('score').style.display = 'none';       
+        //document.getElementById('buttonNextQustion').style.display = 'block';       
+        show_part2_text(introduction); 
+
+    }
+    else if ((currentPartQuestionIndex === 3)&&(part === 6)) {
+        showResults();
+    }
+    else {
+        start_part();
+
+}
+
+
+}
 // 进入下一题的函数
+function skip() {
+    
+    if (currentQuestionIndex === part1Questions.length-1){
+        part=2;
+        score=0;
+        currentPartQuestionIndex=0;
+        interupted = true;
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('part1-answers').style.display = 'none';
+        document.getElementById('part2-answers').style.display = 'none';
+        start_part();
+    }
+    else if (currentQuestionIndex === part1Questions.length+part2Questions.length-1){
+        part=3;
+        score=0;
+        currentPartQuestionIndex=0;
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('part1-answers').style.display = 'none';
+        document.getElementById('part2-answers').style.display = 'none';
+        start_part();
+    }
+    else if (currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length-1){
+        part=4;
+        score=0;
+        currentPartQuestionIndex=0;
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('part1-answers').style.display = 'none';
+        document.getElementById('part2-answers').style.display = 'none';
+        start_part();
+    }
+    else if (currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length-1){
+        part=5;
+        score=0;
+        currentPartQuestionIndex=0;
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('part1-answers').style.display = 'none';
+        document.getElementById('part2-answers').style.display = 'none';
+        start_part();
+    }
+    else if (currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length-1){
+        part=6;
+        score=0;
+        currentPartQuestionIndex=0;
+        currentQuestionIndex++;
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('part1-answers').style.display = 'none';
+        document.getElementById('part2-answers').style.display = 'none';
+        start_part();
+    }
+    else {nextQuestion();}}
+
 function nextQuestion() {
     currentQuestionIndex++;
     currentPartQuestionIndex++;
-    if ((currentQuestionIndex === part1Questions.length) || (currentQuestionIndex === part1Questions.length+part2Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length)) {
-        next_part();
-    } else if ((currentPartQuestionIndex === 3)&&(part === 6)) {
-        showResults();
-    } else  {
+    if ((currentQuestionIndex === part1Questions.length) || (currentQuestionIndex === part1Questions.length+part2Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length)||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length+part6Questions.length)) {
+        currentQuestionIndex--;
+        finish_part();
+    }  else  {
         displayQuestion();
     } 
 }
