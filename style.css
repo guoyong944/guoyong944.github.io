@@ -27,13 +27,14 @@ body {
     font-size: 30px;
     font-weight: 800;
     line-height: 35px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0em;
     text-align: center;
     color: "black";
     white-space: pre-line;
-
-   
+    font-weight: heavy;
 }
+
+
 #question {
     position: absolute;
     top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
