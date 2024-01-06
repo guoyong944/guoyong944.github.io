@@ -124,10 +124,11 @@ function show_part2_text(text) {
     var container = document.getElementById('part2_text');
     var i = 0;
     var currentText = '';
+    document.getElementById('skip').style.display = 'block';
     document.getElementById('part2_text').style.display = 'block';
     document.getElementById('quit').style.display = 'none';
     document.body.style.backgroundColor = '#FFFFFF';
-    interupted = true;
+    interupted = false;
 
 
     function showNextChar() {
@@ -212,6 +213,8 @@ function displayQuestion() {
     let current_part_color;
     let shadow_color_nein;
     document.getElementById('quit').style.display = 'block';
+    document.getElementById('skip').style.display = 'block';
+
 
 
     switch (part) {
@@ -514,6 +517,7 @@ function enableAnswerButtons() {
 
 
 function finish_part() {
+    document.getElementById('skip').style.display = 'none';
     document.getElementById('question').style.display = 'none';
     document.getElementById('part1-answers').style.display = 'none';
     document.getElementById('part2-answers').style.display = 'none';
@@ -582,6 +586,7 @@ function start_part() {
             break;
     };
     show_score();
+    document.getElementById('skip').style.display = 'none';
     currentQuestionIndex++;
     document.getElementById('part2_text').style.display = 'none';
     document.getElementById('titels').style.display = 'block';
