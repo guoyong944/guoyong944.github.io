@@ -5,6 +5,16 @@ let score = 0;
 let part = 1; // 部分 1
 let total_score = 0;
 let interupted = false;
+let part_passed=0;
+let current_part_color;
+let shadow_color_ja;
+let shadow_color_nein;
+let current_part_questions;
+let titel_color;
+let finish_background_color;
+let text_color;
+let question;
+let color_name
 //每部分起始页的标题
 const titels=[{round:"RUNDE1",titel:"SEBLST-\nIDENTIFIKATION"},{round:"RUNDE2",titel:"ABLEHNUNG"},{round:"RUNDE3",titel:"ÄRGER"},{round:"RUNDE4",titel:"VERHANDLUNG"},{round:"RUNDE5",titel:"ENTTÄUSCHUNG"},{round:"RUNDE6",titel:"SORGE"}]
 //第一部分问题 （ja nein frage）
@@ -91,7 +101,8 @@ const part6Questions = [
     answer_kid: { "A": "&Mama und Papa, Ich schä- \n&tze eure Sorge um mich. \n&Aber ich hoffe, dass die \n&Tatsache, dass ich schwul \n&bin, eure Emotionen nicht \n&zu sehr beeinflusst. Eure \n&Gesundheit und Glück sind \n&das Wichtigste für mich. \n&Macht euch keine Sorgen \n&mehr um meine Zukunft.","B": "&Ich habe auch noch keine  \n&Pläne für meine Zukunft,  \n&und ich weiß nicht, ob ich  \n&eine Familie haben werde  \n&wie alle anderen. Ich habe  \n&auch Angst davor, allein alt  \n&zu werden. Daran möchte  \n&ich jetzt nicht denken.", "C": "&Ich werde mein Leben \n&selbst in die Hand nehmen. \n&Ich kann gut allein leben. \n&Und was ist mit dem Alter? \n&Darum muss ich mich spä- \n&ter in Zukunft kümmern, \n&wenn es soweit ist, werde \n&ich alles schaffen.", "D": "&Keine mehr Sorge, Mama \n&und Papa, ich werde mehr \n&gut arbeiten, um meinen \n&Lebensunterhalt zu verdie- \n&nen und für meinen Ruhe- \n&stand zu planen. Ich werde \n&auch gut auf mich aufpa- \n&ssen und mich um meine \n&körperliche und geistige \n&Gesundheit kümmern."},
     answer_papa: { "A": "...","B": "Wenn du im Moment nicht \ndarüber nachdenkst, wirst \ndu erst dann Gedanken \nmachen, wenn wir alle nicht \nmehr da sind? Wenn du \neine Familie gründen willst, \nsuche dir eine normale Frau. \nHeiraten, ein Kinder haben \nund ein normales Leben \nführen.", "C": "Du glaubst, du kannst alles \nselbst erledigen? Am Ende \nbrauchst du immer noch \nHilfen von Mama und mir. \nWenn du nicht heiratest, \nwenn wir nicht mehr da \nsind, stellst du dir vor, dass \ndich jemand anderes so \nunterstützt wie wir.", "D": "..."  }}
 ];
-    
+
+const all_questions=[part1Questions,part2Questions,part3Questions,part4Questions,part5Questions,part6Questions];
 //答题结束后根据分数的最终反馈
 const end_text={pass:"Sohn, nachdem wir so viel \nmit dir geredet haben, ist \nuns klar geworden, dass\nwir uns als Mama und Papa \nvorher nicht richtig um dich \ngekümmert haben. Mama \nund Papa wissen nicht viel \nüber Homosexualität und\nes dauert eine Weile, bis\nwir sie verstehen. Wenn du \nvon uns verlangst, dass wir \nes sofort akzeptieren, kön- \nnen wir das nicht tun. Und \nwir hoffe, du kannst Mama \nund Papa verstehen.\n\n&Mama und Papa, ich weiß, \n&wie schwer das ist, und ich \n&werde euch in diesem Pro- \n&zess begleiten. Ich möchte, \n&ihr wisst, dass ich immer \n&noch derselbe bin und sich \n&meine Liebe zu euch nie \n&geändert hat. Mein größter \n&Wunsch ist es, dass wir alle \n&glücklich für immer leben.\n\nSohn, egal was passiert, \nunsere Familie wird immer \ndein Schutz sein. Du wirst \nimmer unser Kind sein, wir \nwerden dich immer lieben. \nLass uns erst einmal hier \nreden. Gib uns noch etwas \nZeit.",
 fail:"Sag das nicht mehr...\nich glaube dir nicht, was du \nda sagst. Wir haben große \nHoffnungen in dich gesetzt, \naber dann so zahlst du es \nuns zurück? Wir sind sehr \nenttäuscht von dir. Wir \nhaben dir so viel gegeben \nund hätten nicht gedacht, \ndass es so enden würde. \nWeißt du, wie schwer es\nfür Mama und Papa ist?\n\n&Mama und Papa...\n&ich hoffe, ihr seid glücklich \n&und fröhlich, auch wenn ich \n&eure ursprünglichen Erwar- \n&tungen nicht erfüllen kann. \n&Aber bitte glaubt mir, dass \n&ich immer noch das Kind \n&bin, das euch liebt. Ich bin \n&immer noch derselbe opti- \n&mistische und hoffnungs-\n&volle Mensch, und mein \n&Coming-out hat nichts an \n&mir geändert. Ich hoffe, \n&dass ihr mich eines Tages \n&verstehen könnt. Sieh mein \n&Glück und teile es mit mir."};
@@ -206,85 +217,129 @@ function show_text(question, kid, papa) {
     done = setInterval(show, 30); // 每30毫秒显示下一个字符
 }
 
-// 显示问题的函数
-function displayQuestion() {
-    let question;
-    let questionHtml = "";
-    let current_part_color;
-    let shadow_color_nein;
-    document.getElementById('quit').style.display = 'block';
-    document.getElementById('skip').style.display = 'block';
 
-
-
+function get_part_color() {
     switch (part) {
         case 1:
-            current_part = part1Questions;
-            current_part_color = '#FFC300';
+            titel_color = '#503A00';
+            current_part_color = '#FFC300';      
+            text_color = '#503A00';
+            color_name = 'Gelb';
+            shadow_color_ja='0px 2px 6px 0px rgba(103, 75, 0, 0.3)';
             shadow_color_nein='0px 2px 6px 0px rgba(191, 139, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_yellow.png';
-            text_color = '#503A00';
+            document.getElementById('img1').src = 'yellow1.png';
+            document.getElementById('img2').src = 'yellow2.png';
+            document.getElementById('img3').src = 'yellow3.png';
+            document.getElementById('img3b').src = 'yellow3b.png';
+            document.getElementById('img4').src = 'yellow4.png';
+            document.getElementById('img5').src = 'yellow5.png';
+            finish_background_color = '#FFCE00';
             break;
         case 2:
-            current_part = part2Questions;
-            current_part_color = '#33A9FF';
+            titel_color = '#002E50';
+            current_part_color = '#33A9FF';  
+            text_color = '#002E50';
+            color_name = 'Blau';
+            shadow_color_ja='0px 1px 4px 0px rgba(26, 93, 142, 0.25)';
             shadow_color_nein='0px 1px 5px 0px rgba(0, 111, 193, 0.1)';
             document.getElementById('quit').src = 'arrow_blue.png';
-            text_color = '#002E50';
-
+            document.getElementById('img1').src = 'blue1.png';
+            document.getElementById('img2').src = 'blue2.png';
+            document.getElementById('img3').src = 'blue3.png';
+            document.getElementById('img3b').src = 'blue3b.png';
+            document.getElementById('img4').src = 'blue4.png';
+            document.getElementById('img5').src = 'blue5.png';
+            finish_background_color = '#33A9FF';
             break;
         case 3:
-            current_part = part3Questions;
-            current_part_color = '#FF3333';
+            titel_color = '#500000';
+            current_part_color = '#FF3333';  
+            text_color = '#500000';
+            color_name = 'Rot';
+            shadow_color_ja='0px 1px 5px 0px rgba(80, 0, 0, 0.25)';
             shadow_color_nein='0px 1px 5px 0px rgba(189, 0, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_red.png';
-            text_color = '#500000';
-
+            document.getElementById('img1').src = 'red1.png';
+            document.getElementById('img2').src = 'red2.png';
+            document.getElementById('img3').src = 'red3.png';
+            document.getElementById('img3b').src = 'red3b.png';
+            document.getElementById('img4').src = 'red4.png';
+            document.getElementById('img5').src = 'red5.png';
+            finish_background_color = '#FF3333';
             break;
         case 4:
-            current_part = part4Questions;
-            current_part_color = '#00A351';
+            titel_color = '#012D17';
+            current_part_color = '#00A351';                
+            text_color = '#012D17';
+            color_name = 'Grün';
+            shadow_color_ja='0px 1px 5px 0px rgba(1, 45, 23, 0.25)';
             shadow_color_nein='0px 1px 5px 0px rgba(0, 140, 70, 0.1)';
             document.getElementById('quit').src = 'arrow_green.png';
-            text_color = '#012D17';
-
+            document.getElementById('img1').src = 'green1.png';
+            document.getElementById('img2').src = 'green2.png';
+            document.getElementById('img3').src = 'green3.png';
+            document.getElementById('img3b').src = 'green3b.png';
+            document.getElementById('img4').src = 'green4.png';
+            document.getElementById('img5').src = 'green5.png';
+            finish_background_color = '#00A854';
             break;        
         case 5:
-            current_part = part5Questions;
-            current_part_color = '#770088';
+            titel_color = '#29002F';
+            current_part_color = '#770088';               
+            text_color = '#29002F';
+            color_name = 'Lila';
+            shadow_color_ja='0px 1px 5px 0px rgba(41, 0, 47, 0.3)';
             shadow_color_nein='0px 1px 5px 0px rgba(96, 0, 110, 0.1)';
             document.getElementById('quit').src = 'arrow_lila.png';
-            text_color = '#29002F';
-
+            document.getElementById('img1').src = 'lila1.png';
+            document.getElementById('img2').src = 'lila2.png';
+            document.getElementById('img3').src = 'lila3.png';
+            document.getElementById('img3b').src = 'lila3b.png';
+            document.getElementById('img4').src = 'lila4.png';
+            document.getElementById('img5').src = 'lila5.png';
+            finish_background_color = '#770088';
             break;
         case 6:
-            current_part = part6Questions;
-            current_part_color = '#FF7400';
+            titel_color = '#4F2400';
+            current_part_color = '#FF7400';            
+            text_color = '#4F2400';
+            color_name = 'Orange';
+            shadow_color_ja='0px 1px 5px 0px rgba(107, 49, 0, 0.3)';
             shadow_color_nein='0px 1px 5px 0px rgba(140, 64, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_orange.png';
-            text_color = '#4F2400';
-
+            document.getElementById('img1').src = 'orange1.png';
+            document.getElementById('img2').src = 'orange2.png';
+            document.getElementById('img3').src = 'orange3.png';
+            document.getElementById('img3b').src = 'orange3b.png';
+            document.getElementById('img4').src = 'orange4.png';
+            document.getElementById('img5').src = 'orange5.png';
+            finish_background_color = '#FF7400';
             break;
         // 添加更多的case语句
         default:
-            current_part = part1Questions;
             current_part_color = '#FFC300';
             shadow_color_nein='0px 2px 6px 0px rgba(191, 139, 0, 0.1)';
             document.getElementById('quit').src = 'arrow_yellow.png';
             text_color = '#503A00';
 
-            // 如果part不是1或2
             break;
-    };
-    document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", score:"+total_score;
-    question = current_part[currentPartQuestionIndex];
+    };}
+// 显示问题的函数
+function displayQuestion() {
+    let questionHtml = "";
+    document.getElementById('quit').style.display = 'block';
+    document.getElementById('skip').style.display = 'block';
+    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed+", score:"+total_score;
     if (currentQuestionIndex === -1) {    
         show_score();
         start_part();  
         document.getElementById('part1-answers').style.display = 'none';
 
     }
-    else if (currentQuestionIndex<part1Questions.length) {
+    else if (
+        currentQuestionIndex<part1Questions.length) {
+        question = current_part_questions[currentPartQuestionIndex];
         document.getElementById('titels').style.display = 'none';
         //question = part1Questions[currentQuestionIndex];
         document.getElementById('question').style.display = 'block';
@@ -295,6 +350,7 @@ function displayQuestion() {
 
     } 
     else {
+        question = current_part_questions[currentPartQuestionIndex];
         document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'block';       
         document.getElementById('buttonNextQustion').style.display = 'none';       
@@ -342,56 +398,14 @@ function displayQuestion() {
 
 // 提交答案的函数
 function submitAnswer(answer) {
-    let question;
-    let current_part;
-    let current_part_color;
-    let shadow_color_ja;
 
-    switch (part) {
-        case 1:
-            current_part = part1Questions;
-            current_part_color = '#FFC300';
-            shadow_color_ja='0px 2px 6px 0px rgba(103, 75, 0, 0.3)';
-            break;
-        case 2:
-            current_part = part2Questions;
-            current_part_color = '#33A9FF';
-            shadow_color_ja='0px 1px 4px 0px rgba(26, 93, 142, 0.25)';
-            break;
-        case 3:
-            current_part = part3Questions;
-            current_part_color = '#FF3333';
-            shadow_color_ja='0px 1px 5px 0px rgba(80, 0, 0, 0.25)';
-            break;
-        case 4:
-            current_part = part4Questions;
-            current_part_color = '#00A351';
-            shadow_color_ja='0px 1px 5px 0px rgba(1, 45, 23, 0.25)';
-            break;        
-        case 5:
-            current_part = part5Questions;
-            current_part_color = '#770088';
-            shadow_color_ja='0px 1px 5px 0px rgba(41, 0, 47, 0.3)';
-            break;
-        case 6:
-            current_part = part6Questions;
-            current_part_color = '#FF7400';
-            shadow_color_ja='0px 1px 5px 0px rgba(107, 49, 0, 0.3)';
-            break;
-        // 添加更多的case语句
-        default:
-            current_part = part1Questions;
-            current_part_color = '#FFC300';
-            shadow_color_ja='0px 2px 6px 0px rgba(103, 75, 0, 0.3)';
-            // 如果part不是1或2
-            break;
-    };
+    question = current_part_questions[currentPartQuestionIndex];
+
     if (part === 1) {
-        question = part1Questions[currentQuestionIndex];
         if (answer === true) {
             score += 1; // 正确答案加 10 分
             total_score += 1;
-            document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", score:"+total_score;
+            document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed+", score:"+total_score;
         } 
     show_score();
     nextQuestion();    
@@ -403,7 +417,6 @@ function submitAnswer(answer) {
         button.style.boxShadow = shadow_color_ja;
         button.style.color = '#FFFFFF';
         disableAnswerButtons();
-        question = current_part[currentPartQuestionIndex];
         kid=question.answer_kid[answer];
         papa=question.answer_papa[answer];
         if (papa === "...") {
@@ -414,78 +427,30 @@ function submitAnswer(answer) {
 
         
     }
-    document.getElementById('feedback').textContent = "Part:"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", score:"+total_score;
+    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed+", score:"+total_score;
    
 }
 
 function show_score() {    
     document.getElementById('score').style.display = 'block';
-    if ((part === 1)||(part === 0)) {
-    document.getElementById('img1').src = 'yellow1.png';
-    document.getElementById('img2').src = 'yellow2.png';
-    document.getElementById('img3').src = 'yellow3.png';
-    document.getElementById('img3b').src = 'yellow3b.png';
-    document.getElementById('img4').src = 'yellow4.png';
-    document.getElementById('img5').src = 'yellow5.png';
+    if (score === 0) {
+        document.getElementById('img1').style.display = 'block';
+        document.getElementById('img2').style.display = 'none';
+        document.getElementById('img3').style.display = 'none';
+        document.getElementById('img3b').style.display = 'none';
+        document.getElementById('img4').style.display = 'none';
+        document.getElementById('img5').style.display = 'none';
+    } else if (score === 1) {
+        document.getElementById('img2').style.display = 'block';
+    } else if (score === 2) {
+        document.getElementById('img3').style.display = 'block';
+    } else {
+        document.getElementById('img3').style.display = 'none';
+        document.getElementById('img3b').style.display = 'block';
+        document.getElementById('img4').style.display = 'block';
+        document.getElementById('img5').style.display = 'block';
 
-
-} else if (part === 2) {
-    document.getElementById('img1').src = 'blue1.png';
-    document.getElementById('img2').src = 'blue2.png';
-    document.getElementById('img3').src = 'blue3.png';
-    document.getElementById('img3b').src = 'blue3b.png';
-    document.getElementById('img4').src = 'blue4.png';
-    document.getElementById('img5').src = 'blue5.png';} 
- else if (part === 3) {
-    document.getElementById('img1').src = 'red1.png';
-    document.getElementById('img2').src = 'red2.png';
-    document.getElementById('img3').src = 'red3.png';
-    document.getElementById('img3b').src = 'red3b.png';
-    document.getElementById('img4').src = 'red4.png';
-    document.getElementById('img5').src = 'red5.png';} 
-else if (part === 4) {
-    document.getElementById('img1').src = 'green1.png';
-    document.getElementById('img2').src = 'green2.png';
-    document.getElementById('img3').src = 'green3.png';
-    document.getElementById('img3b').src = 'green3b.png';
-    document.getElementById('img4').src = 'green4.png';
-    document.getElementById('img5').src = 'green5.png';}
-else if (part === 5) {
-    document.getElementById('img1').src = 'lila1.png';
-    document.getElementById('img2').src = 'lila2.png';
-    document.getElementById('img3').src = 'lila3.png';
-    document.getElementById('img3b').src = 'lila3b.png';
-    document.getElementById('img4').src = 'lila4.png';
-    document.getElementById('img5').src = 'lila5.png';}
-else {
-    document.getElementById('img1').src = 'orange1.png';
-    document.getElementById('img2').src = 'orange2.png';
-    document.getElementById('img3').src = 'orange3.png';
-    document.getElementById('img3b').src = 'orange3b.png';
-    document.getElementById('img4').src = 'orange4.png';
-    document.getElementById('img5').src = 'orange5.png';
-
-    };
-
-if (score === 0) {
-    document.getElementById('img1').style.display = 'block';
-    document.getElementById('img2').style.display = 'none';
-    document.getElementById('img3').style.display = 'none';
-    document.getElementById('img3b').style.display = 'none';
-    document.getElementById('img4').style.display = 'none';
-    document.getElementById('img5').style.display = 'none';
-
-} else if (score === 1) {
-    document.getElementById('img2').style.display = 'block';
-} else if (score === 2) {
-    document.getElementById('img3').style.display = 'block';
-} else {
-    document.getElementById('img3').style.display = 'none';
-    document.getElementById('img3b').style.display = 'block';
-    document.getElementById('img4').style.display = 'block';
-    document.getElementById('img5').style.display = 'block';
-
-} }
+    } }
 
 function set_button_color() {
     var part2ButtonsContainer = document.getElementById("part2_button");
@@ -521,70 +486,20 @@ function finish_part() {
     document.getElementById('question').style.display = 'none';
     document.getElementById('part1-answers').style.display = 'none';
     document.getElementById('part2-answers').style.display = 'none';
-    document.getElementById('score').style.display = 'none';
-    //document.getElementById('continue').style.display = 'block';
-    document.getElementById('continue_text').style.display = 'block';
-    let finish_background_color;
-    switch (part) {
-        case 1:
-            finish_background_color = '#FFCE00';
-            break;
-        case 2:
-            finish_background_color = '#002E50';
-            break;
-        case 3:
-            finish_background_color = '#500000';
-            break;
-        case 4:
-            finish_background_color = '#012D17';
-            break;        
-        case 5:
-            finish_background_color = '#29002F';
-            break;
-        case 6:
-            finish_background_color = '#4F2400';
-            break;
-        // 添加更多的case语句
-        default:
-            finish_background_color = '#FFCE00';
-            // 如果part不是1或2
-            break;
-    };
-    //set the background color of this website to the color of the current part
-    //document.getElementById('continue').color = finish_background_color;
-    document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \nRot im Regenbogen!";
-    document.body.style.backgroundColor = finish_background_color;
-
-
-    setTimeout(next_part, 3000);
+    if (score>1) {
+        part_passed++;
+        document.getElementById('continue_text').style.display = 'block';
+        document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \n"+color_name+" im Regenbogen!";
+        score=0;
+        show_score();
+        document.body.style.backgroundColor = finish_background_color;
+        setTimeout(next_part, 3000);}
+        else {next_part();}
 }
 function start_part() {    
-    let titel_color;
-    switch (part) {
-        case 1:
-            titel_color = '#503A00';
-            break;
-        case 2:
-            titel_color = '#002E50';
-            break;
-        case 3:
-            titel_color = '#500000';
-            break;
-        case 4:
-            titel_color = '#012D17';
-            break;        
-        case 5:
-            titel_color = '#29002F';
-            break;
-        case 6:
-            titel_color = '#4F2400';
-            break;
-        // 添加更多的case语句
-        default:
-            titel_color = '#503A00';
-            // 如果part不是1或2
-            break;
-    };
+    document.getElementById('score').style.display = 'block';
+    current_part_questions=all_questions[part-1];
+    get_part_color();
     show_score();
     document.getElementById('skip').style.display = 'none';
     currentQuestionIndex++;
@@ -599,14 +514,10 @@ function next_part() {
     score=0;
     currentPartQuestionIndex=0;
     document.body.style.backgroundColor = '#FFFFFF';
-    document.getElementById('continue').style.display = 'none';
     document.getElementById('continue_text').style.display = 'none';   
-    document.getElementById('part1-answers').style.display = 'none';    
- 
     if(currentQuestionIndex===part1Questions.length-1) {
         document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'none';       
-        //document.getElementById('buttonNextQustion').style.display = 'block';       
         show_part2_text(introduction); 
 
     }
