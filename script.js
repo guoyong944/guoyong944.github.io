@@ -494,6 +494,7 @@ function finish_part() {
     document.getElementById('part2-answers').style.display = 'none';
     if (score>1) {
         part_passed++;
+        document.getElementById('continue_text').style.color = text_color;
         document.getElementById('continue_text').style.display = 'block';
         document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \n"+color_name+" im Regenbogen!";
         score=0;
