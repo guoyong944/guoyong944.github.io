@@ -32,7 +32,7 @@ const part2Questions = [
   answer_kid: { "A": "&Ich bin immer schwul, ich \n&habe es euch nur vorher \n&nicht gesagt.","B": "&Warum kann ich nicht \n&schwul sein? Ist es falsch, \n&schwul zu sein?", "C": "&Mama und Papa, ich meine \n&es ernst. Ich bin schwul. Ich \n&lüge nicht.", "D": "&Ich weiß selber nicht, \n&warum ich Männer mag."},
   answer_papa: { "A": "...","B": "Wie sprichst du mit Mama \nund Papa! Ich glaube, du \nbist echt krank!", "C": "...", "D": "Was denkst du dir eigent- \nlich dabei? Willst du uns  \nverarschen?"  }},
    { text: "Wie kann es Liebe zwischen \nMännern geben? Hast du \ndich geirrt?",
-    options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist?', ' Vielleicht. Vielleicht sind wir nur Freunde', ' Ich kann unterscheiden zwischen Liebe \nund Freundschaft'],
+    options: [' Ich weiß nicht, ob es Liebe ist', ' Ich bin mir sicher, dass es Liebe ist', ' Vielleicht. Vielleicht sind wir nur Freunde', ' Ich kann unterscheiden zwischen Liebe \nund Freundschaft'],
     answer_kid: { "A": "&Ich weiß nicht, ob das \n&Liebe oder Freundschaft  \n&ist, und ich bin verwirrt...","B": "&Ich bin mir sicher, dass es \n&Liebe ist. Es ist das Gefühl, \n&mein Herzschlag setzte für \n&einen Moment aus. ", "C": "&Vielleicht. Vielleicht geht es \n&nur um eine Freundschaft.", "D": "&Mama und Papa, ich bin ein \n&Erwachsener, ich kann zwi- \n&schen Liebe und Freund- \n&schaft unterscheiden."},
     answer_papa: { "A": "Glaub Mama, du musst \ndich irren!","B": "...", "C": "Glaub Papa, du musst \ndich irren!", "D": "..."  }},  
     { text: "Woher weißt du, dass du \nkeine Frauen magst, wenn \ndu noch niemals mit einer \nzusammen warst?",
@@ -512,6 +512,7 @@ function start_part() {
     document.getElementById('part2_text').style.display = 'none';
     document.getElementById('titels').style.display = 'block';
     document.getElementById('titels').style.color = titel_color;
+    document.getElementById ("question").innerHTML = "";
     document.getElementById('titels').innerHTML = "<span style='font-size: 14px;'>"+titels[part-1].round+"</span><br><span style='font-size: 30px;'>"+titels[part-1].titel+"</span>";
     setTimeout(displayQuestion, 1000);
 }
