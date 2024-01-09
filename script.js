@@ -256,7 +256,8 @@ function get_part_color() {
             document.getElementById('img3b').src = 'blue3b.png';
             document.getElementById('img4').src = 'blue4.png';
             document.getElementById('img5').src = 'blue5.png';
-            finish_background_color = '#33A9FF';
+            finish_background_color = '#33A9FFE5';
+
             break;
         case 3:
             titel_color = '#500000';
@@ -272,7 +273,8 @@ function get_part_color() {
             document.getElementById('img3b').src = 'red3b.png';
             document.getElementById('img4').src = 'red4.png';
             document.getElementById('img5').src = 'red5.png';
-            finish_background_color = '#FF3333';
+            finish_background_color = '#FF3333CC';
+
             break;
         case 4:
             titel_color = '#012D17';
@@ -288,7 +290,8 @@ function get_part_color() {
             document.getElementById('img3b').src = 'green3b.png';
             document.getElementById('img4').src = 'green4.png';
             document.getElementById('img5').src = 'green5.png';
-            finish_background_color = '#00A854';
+            finish_background_color = '#00A854E5';
+
             break;        
         case 5:
             titel_color = '#29002F';
@@ -304,7 +307,8 @@ function get_part_color() {
             document.getElementById('img3b').src = 'lila3b.png';
             document.getElementById('img4').src = 'lila4.png';
             document.getElementById('img5').src = 'lila5.png';
-            finish_background_color = '#770088';
+            finish_background_color = '#77008899';
+
             break;
         case 6:
             titel_color = '#4F2400';
@@ -320,7 +324,7 @@ function get_part_color() {
             document.getElementById('img3b').src = 'orange3b.png';
             document.getElementById('img4').src = 'orange4.png';
             document.getElementById('img5').src = 'orange5.png';
-            finish_background_color = '#FF7400';
+            finish_background_color = '#FF7400E5';
             break;
         // 添加更多的case语句
         default:
