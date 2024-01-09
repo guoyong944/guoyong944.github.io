@@ -1,6 +1,6 @@
 
 body {
-    font-family: 'Avenir', sans-serif;
+    font-family: 'Avenir';
     color: #503A00;
     /*background-image: url('pic0.jpg');
     background-size: auto; /* 覆盖整个页面 */
@@ -23,9 +23,9 @@ body {
     left: 15px;
     width: 361px;
     height: 101px;
-    font-family: Avenir;
+    font-family: 'Avenir';
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 35px;
     letter-spacing: 0em;
     text-align: center;
@@ -70,7 +70,7 @@ body {
 #continue_text {
     font-family: Avenir;
     font-size: 25px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 30px;
     letter-spacing: -0.02em;
     text-align: center;
@@ -84,27 +84,7 @@ body {
     z-index: 6;
     display: none
 }
-#continue {
-    font-family: Avenir;
-    font-size: 25px;
-    font-weight: 800;
-    line-height: 40px;
-    letter-spacing: -0.03em;
-    color: #FFFFFF;
-    position: absolute;
-    top: 497px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 118px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 156px;
-    height: 77px;
-    margin: auto;
-    box-shadow: 0px 2px 6px 0px rgba(103, 75, 0, 0.3);
-    text-align: center;
-    border:0;
-    border-radius: 38.5px;
-    z-index: 6;
-    display: none
 
-}
 #buttonJa {
     font-family: Avenir;
     font-size: 25px;
