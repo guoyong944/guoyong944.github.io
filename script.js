@@ -106,7 +106,7 @@ const all_questions=[part1Questions,part2Questions,part3Questions,part4Questions
 //答题结束后根据分数的最终反馈
 //答题结束后根据分数的最终反馈
 const end_text={pass:"Sohn, nachdem wir so viel \nmit dir geredet haben, ist \nuns klar geworden, dass \nwir uns als Mama und Papa \nvorher nicht richtig um dich \ngekümmert haben. Mama \nund Papa wissen nicht viel \nüber Homosexualität und \nes dauert eine Weile, bis\nwir sie verstehen. Wenn du \nvon uns verlangst, dass wir \nes sofort akzeptieren, kön- \nnen wir das nicht tun. Und \nwir hoffe, du kannst Mama \nund Papa verstehen. \n\n&Mama und Papa, ich weiß, \n&wie schwer das ist, und ich \n&werde euch in diesem Pro- \n&zess begleiten. Ich möchte, \n&ihr wisst, dass ich immer \n&noch derselbe bin und sich \n&meine Liebe zu euch nie \n&geändert hat. Mein größter \n&Wunsch ist es, dass wir alle \n&glücklich für immer leben. \n\nSohn, egal was passiert, \nunsere Familie wird immer \ndein Schutz sein. Du wirst \nimmer unser Kind sein, wir \nwerden dich immer lieben. \nLass uns erst einmal hier \nreden. Gib uns noch etwas \nZeit.",
-pass2:" Mein Sohn, du hast so viel \nim Schweigen gelitten, und \nMama und Papa verstehen \ndas erst jetzt. Wir haben \nviel gelesen und viel dar- \nüber nachgedacht, auch \nwenn wir nicht alles über \nHomosexualität verstehen. \nAber Mama und Papa...wir \nhaben gelernt, dass das \nWichtigste nicht die sexu- \nelle Orientierung ist, son- \ndern dein Glück und deine \nGesundheit. Wir hoffen, du \nweißt, egal wie schwer der \nWeg ist, der vor dir liegt, \nsei mutig und strebe nach deinem Glück. Wir werden an deiner Seite sein, um \ndich zu unterstützen und \ndich zu lieben.",
+pass2:" Mein Sohn, du hast so viel \nim Schweigen gelitten, und \nMama und Papa verstehen \ndas erst jetzt. Wir haben \nviel gelesen und viel dar- \nüber nachgedacht, auch \nwenn wir nicht alles über \nHomosexualität verstehen. \nAber Mama und Papa...wir \nhaben gelernt, dass das \nWichtigste nicht die sexu- \nelle Orientierung ist, son- \ndern dein Glück und deine \nGesundheit. Wir hoffen, du \nweißt, egal wie schwer der \nWeg ist, der vor dir liegt, \nsei mutig und strebe nach \ndeinem Glück. Wir werden an \ndeiner Seite sein, um \ndich zu unterstützen und \ndich zu lieben.",
 fail:"Sag das nicht mehr... \nich glaube dir nicht, was du \nda sagst. Wir haben große \nHoffnungen in dich gesetzt, \naber dann so zahlst du es \nuns zurück? Wir sind sehr \nenttäuscht von dir. Wir \nhaben dir so viel gegeben \nund hätten nicht gedacht, \ndass es so enden würde. \nWeißt du, wie schwer es \nfür Mama und Papa ist? \n\n&Mama und Papa...\n&ich hoffe, ihr seid glücklich \n&und fröhlich, auch wenn ich \n&eure ursprünglichen Erwar- \n&tungen nicht erfüllen kann. \n&Aber bitte glaubt mir, dass \n&ich immer noch das Kind \n&bin, das euch liebt. Ich bin \n&immer noch derselbe opti- \n&mistische und hoffnungs-\n&volle Mensch, und mein \n&Coming-out hat nichts an \n&mir geändert. Ich hoffe, \n&dass ihr mich eines Tages \n&verstehen könnt. Sieh mein \n&Glück und teile es mit mir."};
 
 //成功与失败的结束语
@@ -119,6 +119,7 @@ function quit() {
     score = 0;
     part = 0; 
     total_score = 0;
+    part_passed=0;
     document.getElementById('endQuiz').style.display = 'none';
     displayQuestion();} 
 
@@ -178,6 +179,42 @@ function show_part2_text(text,next_function) {
     var done=setInterval (showNextChar,30);
 
     //showNextChar();
+}
+
+function show_full_text(text,next_function) {
+    var container = document.getElementById('part2_text');
+    var i = 0;
+    var currentText = '';
+    document.getElementById('skip').style.display = 'block';
+    document.getElementById('part2_text').style.display = 'block';
+    document.getElementById('quit').style.display = 'none';
+    interupted = false;
+
+    function showNextChar() {
+        if (i < text.length) {
+            if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";i++;}
+            currentText += text.charAt(i);
+            currentText=currentText.split("\n").slice(-16).join("\n");
+            var currentText_list=currentText.split("\n\n");
+            var para_num=currentText_list.length;
+            if (para_num>1){
+            var currentText1=currentText_list.slice(0,para_num-1).join("\n\n");
+            var currentText2=currentText_list.slice(-1).join("\n\n");
+            container.innerHTML=currentText1+"\n\n"+currentText2;
+            }
+            else{container.innerHTML=currentText;}
+            i++;
+            //setTimeout(showNextChar, 50); // 调整速度
+        }
+        else if (interupted) {
+            clearInterval (done);
+        }
+        else { // 如果已经显示了所有文本
+            clearInterval (done);
+            setTimeout(next_function, 2000); 
+        }
+    }
+    var done=setInterval (showNextChar,10);
 }
 
 function show_text(question, kid, papa) {
@@ -338,9 +375,10 @@ function get_part_color() {
 // 显示问题的函数
 function displayQuestion() {
     let questionHtml = "";
+    document.getElementById('submit_right').style.display = 'block';       
     document.getElementById('quit').style.display = 'block';
     document.getElementById('skip').style.display = 'block';
-    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed+", score:"+total_score;
+    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
     if (currentQuestionIndex === -1) {    
         show_score();
         start_part();  
@@ -413,9 +451,8 @@ function submitAnswer(answer) {
 
     if (part === 1) {
         if (answer === true) {
-            score += 1; // 正确答案加 10 分
-            total_score += 1;
-            document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed+", score:"+total_score;
+            score += 1; 
+            document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
         } 
     show_score();
     nextQuestion();    
@@ -429,15 +466,14 @@ function submitAnswer(answer) {
         disableAnswerButtons();
         kid=question.answer_kid[answer];
         papa=question.answer_papa[answer];
-        if (papa === "...") {
-            score += 1; // 正确答案加 10 分
-            total_score += 1;
+        if ((papa === "...")||(answer === true)) {
+            score += 1; 
         }
         show_text(question.text,kid,papa);
 
         
     }
-    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed+", score:"+total_score;
+    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
    
 }
 
@@ -492,20 +528,25 @@ function enableAnswerButtons() {
 
 
 function finish_part() {
+    document.getElementById('submit_right').style.display = 'none';       
     document.getElementById('skip').style.display = 'none';
     document.getElementById('question').style.display = 'none';
     document.getElementById('part1-answers').style.display = 'none';
     document.getElementById('part2-answers').style.display = 'none';
     if (score>1) {
         part_passed++;
+        document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
         document.getElementById('continue_text').style.color = text_color;
         document.getElementById('continue_text').style.display = 'block';
         document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \n"+color_name+" im Regenbogen!";
         score=0;
         show_score();
         document.body.style.backgroundColor = finish_background_color;
-        setTimeout(next_part, 2000);}
-        else {next_part();}
+        if (part_passed===6){
+            setTimeout(showResults, 2000);
+        }
+        else{setTimeout(next_part, 2000);}}
+    else {next_part();}
 }
 function start_part() {    
     document.getElementById('score').style.display = 'block';
@@ -593,7 +634,13 @@ function skip() {
         document.getElementById('part2-answers').style.display = 'none';
         start_part();
     }
-    else {nextQuestion();}}
+    else {nextQuestion();}
+}
+function submit_right(){
+    score += 1; 
+    nextQuestion();
+}
+
 
 function nextQuestion() {
     currentQuestionIndex++;
@@ -608,18 +655,35 @@ function nextQuestion() {
 
 // 显示结果的函数
 function showResults() {
-
+    document.body.style.backgroundColor = "#F6F6F6";
+    document.getElementById('continue_text').style.display = 'none';       
     document.getElementById('score').style.display = 'none';       
     document.getElementById('part2-answers').style.display = 'none';
-    document.getElementById('endQuiz').style.display = 'block';
-    // 根据分数给出评价
-    if (total_score >= 10) {
-        show_part2_text(end_text.pass,show_final); 
-    } else {
-        show_part2_text(end_text.fail,show_final); 
-    }
-    // 显示结果
+    show_full_text(end_text.pass,showResults_passed2); 
+}
 
+function month_later(){
+    document.getElementById('part2_text').innerHTML = "<span style='color:#F6F6F6'>Nach einem Monat...</span>";
+    setTimeout(backgroundcolor_to_white,1000)
+
+}
+function backgroundcolor_to_white(){
+    backgroundColor_transition("#F6F6F6");
+    document.body.style.transition = 'background-color 3s';
+    setTimeout(passed_text2,4000)
+
+}
+function passed_text2(){
+    document.body.style.transition = '';
+    show_full_text(end_text.pass2,show_final); 
+}
+
+function showResults_passed2() {
+    backgroundColor_transition('#121212');
+    //document.getElementById('part2_text').innerHTML = "<span style='color:#D5D5D5'>Nach einem Monat...</span>";
+    setTimeout(month_later,2000)
+    document.getElementById('score').style.display = 'none';       
+    document.getElementById('part2-answers').style.display = 'none';
 
 }
 
@@ -628,24 +692,28 @@ function show_final() {
     document.getElementById('part2-answers').style.display = 'none';
     document.getElementById('endQuiz').style.display = 'block';
     // 根据分数给出评价
-    if (total_score >= 10) {
-        show_part2_text(final_text.pass,quit); 
+    if (part_passed=6) {
+        show_full_text(final_text.pass,quit); 
     } else {
-        show_part2_text(final_text.fail,quit); 
+        show_full_text(final_text.fail,quit); 
     }}
-    // 显示结果
-// 更新 endQuiz 函数
 function endQuiz() {
     let currentQuestionIndex = -1;
     let currentPartQuestionIndex = 0;
     let score = 0;
     let part = 0; // 部分 1
-    let total_score = 0;
     document.getElementById('endQuiz').style.display = 'none';
     document.getElementById('part2_text').style.display = 'none';
 
     displayQuestion();
 }
+
+
+function backgroundColor_transition(target_color){
+    document.body.style.transition = 'background-color 3s';
+    document.body.style.backgroundColor = target_color;
+}
+
 
 // 其他代码保持不变
 

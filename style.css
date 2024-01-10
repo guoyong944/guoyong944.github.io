@@ -2,10 +2,6 @@
 body {
     font-family: 'Avenir';
     color: #503A00;
-    /*background-image: url('pic0.jpg');
-    background-size: auto; /* 覆盖整个页面 */
-    /*background-repeat: no-repeat; /* 不重复背景图像 */
-    /*background-position: center top; /* 图片居中 */
 }
 #quit {
     position: absolute;
