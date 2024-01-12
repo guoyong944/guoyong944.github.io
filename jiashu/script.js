@@ -17,11 +17,14 @@ function click_scroll(part) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+
 window.addEventListener('scroll', function() {
     var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     var windowHeight = window.innerHeight;
+    document.getElementById('quit').style.top = (scrollPosition+40)+'px';
+
     document.getElementById('feedback').textContent = scrollPosition+'/'+windowHeight;
-    document.getElementById('feedback').style.top = (scrollPosition+20)+'px';
+    document.getElementById('feedback').style.top = (scrollPosition+40)+'px';
 
     // 根据滚动的高度改变背景图
     if (scrollPosition < part2_px) {
