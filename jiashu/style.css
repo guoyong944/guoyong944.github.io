@@ -4,7 +4,6 @@ body {
     color: #503A00;
 }
 
-
 #quit {
     position: absolute;
     top: 20px; /* 距离最近的已定位祖先元素顶部 50px */
@@ -33,7 +32,7 @@ body {
 #text {
     position: absolute;
     top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 13px; /* 距离最近的已定位祖先元素右边 30px */
+    left: 15px; /* 距离最近的已定位祖先元素右边 30px */
     width: 367px;
     height: 610px;
     margin: auto;
@@ -52,87 +51,59 @@ body {
 
 #part1_button {
     position: absolute;
-    top: 442px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 100px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 36px; /* 距离最近的已定位祖先元素右边 30px */
     width: 320px;
-    height: 42px;
-    font-size: 14px;
+    height: 100px;
+    font-size: 25px;
     color: black;
-    background-color: white;
-    margin: auto;
+    border: #503A00;
     border-color: black;
     border-radius: 27px;
-    cursor: pointer;
-    text-align: left;
-    z-index: 6;
-    border:0;
-    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
-    padding-left: 21px;
-    padding-right: 0px;
+    text-align: center;
 
 }
 #part2_button {
     position: absolute;
-    top: 493px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 250px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 36px; /* 距离最近的已定位祖先元素右边 30px */
     width: 320px;
-    height: 42px;
-    font-size: 14px;
+    height: 100px;
+    font-size: 25px;
     color: black;
-    background-color: white;
-    margin: auto;
+    border: #503A00;
     border-color: black;
     border-radius: 27px;
-    cursor: pointer;
-    text-align: left;
-    z-index: 6;
-    border:0;
-    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
-    padding-left: 21px;
-    padding-right: 0px;
+    text-align: center;
 
 }
 #part3_button {
     position: absolute;
-    top: 544px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 400px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 36px; /* 距离最近的已定位祖先元素右边 30px */
     width: 320px;
-    height: 42px;
-    font-size: 14px;
+    height: 100px;
+    font-size: 25px;
     color: black;
-    background-color: white;
-    margin: auto;
+    border: #503A00;
     border-color: black;
     border-radius: 27px;
-    cursor: pointer;
-    text-align: left;
-    z-index: 6;
-    border:0;
-    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
-    padding-left: 21px;
-    padding-right: 0px;
+    text-align: center;
+
 
 }
 #part4_button {
     position: absolute;
-    top: 595px; /* 距离最近的已定位祖先元素顶部 50px */
+    top: 550px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 36px; /* 距离最近的已定位祖先元素右边 30px */
     width: 320px;
-    height: 42px;
-    font-size: 14px;
+    height: 100px;
+    font-size: 25px;
     color: black;
-    background-color: white;
-    margin: auto;
+    border: #503A00;
     border-color: black;
     border-radius: 27px;
-    cursor: pointer;
-    text-align: left;
-    z-index: 6;
-    border:0;
-    box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
-    white-space: pre-line;
-    padding-left: 21px;
-    padding-right: 0px;
+    text-align: center;
 
 }
 
