@@ -1,0 +1,66 @@
+
+body {
+    font-family: Avenir;
+    color: #503A00;
+}
+@font-face {
+    font-family: AvenirH;
+    src: url('Avenir Heavy.ttf') 
+  }
+
+@font-face {
+    font-family: Avenir;
+    src: url('Avenir Medium.ttf') 
+  }
+
+
+#uebung {
+width:135px;
+height: 77px;
+position:absolute;
+top:92px;
+left:128px;
+border-radius: 40px;
+background: #FFFFFF ;
+color:#121212;
+box-shadow: 0px 2px 6px 0px rgba(191, 139, 0, 0.1);
+font-family: Avenir;
+font-size: 25px;
+line-height: 77px;
+letter-spacing: 0em;
+text-align: center;
+z-index: 3;
+}
+
+
+
+#jiashu {
+width:135px;
+height:77px;
+position:absolute;
+top:516px;
+left:128px;
+border-radius: 40px;
+background: #121212;
+color:#FFFFFF;
+box-shadow: 0px 1px 5px 0px rgba(0, 111, 193, 0.1);
+font-family: Avenir;
+font-size: 25px;
+line-height: 77px;
+letter-spacing: 0em;
+text-align: center;
+z-index: 2;
+
+}
+
+#svg-container1 {
+    position: absolute;
+    top: -48px; /* 距离顶部的距离 */
+    left: 0px; /* 距离左侧的距离 */
+}
+
+#svg-container2 {
+    position: absolute;
+    top: 382px; /* 距离顶部的距离 */
+    left: 0px; /* 距离左侧的距离 */
+}
