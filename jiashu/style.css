@@ -28,8 +28,9 @@ body {
 
 #bottom_bar {
     position: fixed;
-    top:585px; /* 距离最近的已定位祖先元素顶部 50px */
+    /*top:585px;  距离最近的已定位祖先元素顶部 50px */
     bottom: 0px; /* 距离最近的已定位祖先元素顶部 50px */
+    height: 60px;
     left: 0px; /* 距离最近的已定位祖先元素右边 30px */
     width: 393px;
     z-index: 6;
