@@ -1,5 +1,5 @@
 const rules = [
-    {titel:"Spielhintergrund",rule:"Die Spieler spielen einen\n transparenten Regenbogen.\n    Der Weg des Coming-outs \n    von Schwulen ist wie ein\n transparenter Regenbogen \n    auf der Suche nach seinen\n Farben."},
+    {titel:"Spielhintergrund",rule:"Die Spieler spielen einen\n transparenten Regenbogen.\n    Der Weg des Coming-outs\n von Schwulen ist wie ein\n transparenter Regenbogen \n    auf der Suche nach seinen\n Farben."},
     {titel:"Spielverlauf",rule:"Erste Runde, Ausdruck der\n Selbstidentität. In jeder fol-\n genden Spielrunde müssen \ndie Spieler einen Dialog mit \nden Eltern führen, um mit \n    den verschiedenen Emo-\n    tionen und Fragen umzuge-\nhen, die die Eltern in jeder\n Runde haben könnten."},
     {titel:"Runde und Belohnungen",rule:"Die Spieler erhalten eine be-\n stimmte Farbe des Regen-\n bogens für jede erfolgreiche\n Dialogrunde mit den Eltern."},
     {titel:"Die Siegbedingungen",rule:"Die Spieler sammeln in allen\n Runden alle Farben des Re-\n genbogens und erhalten im \nSpiel das Verständnis und \ndie Zustimmung der Eltern."}

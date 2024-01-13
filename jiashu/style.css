@@ -1,6 +1,6 @@
 
 body {
-    font-family: 'Avenir';
+    font-family: Alibaba;
     color: #503A00;
     background: #F1F1F1;
 
@@ -60,7 +60,7 @@ body {
     letter-spacing: -0.02em;
     white-space: pre-line;
     line-height: 30px;
-    font-family: Avenir;
+    font-family: Alibaba;
     z-index: 6;
 }
 #text {
@@ -78,6 +78,9 @@ body {
     line-height: 25px;
     letter-spacing: -0.02em;
     color: #503A00;
+    padding-left: 0px;
+    padding-right: 20px;
+
     
 }
 

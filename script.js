@@ -214,7 +214,7 @@ function show_full_text(text,next_function) {
             setTimeout(next_function, 2000); 
         }
     }
-    var done=setInterval (showNextChar,10);
+    var done=setInterval (showNextChar,30);
 }
 
 function show_text(question, kid, papa) {
@@ -669,8 +669,8 @@ function month_later(){
 }
 function backgroundcolor_to_white(){
     backgroundColor_transition("#F6F6F6");
-    document.body.style.transition = 'background-color 3s';
-    setTimeout(passed_text2,4000)
+    document.body.style.transition = 'background-color 1s';
+    setTimeout(passed_text2,1000)
 
 }
 function passed_text2(){
@@ -710,7 +710,7 @@ function endQuiz() {
 
 
 function backgroundColor_transition(target_color){
-    document.body.style.transition = 'background-color 3s';
+    document.body.style.transition = 'background-color 1s';
     document.body.style.backgroundColor = target_color;
 }
 
