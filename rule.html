@@ -11,6 +11,7 @@
         <span style='font-size: 14px;'>Vorbereitungsrunde</span><br>
         <span style='font-size: 30px;'>Spielregeln</span>
     </div>
+    <div id="rules" style="display: none;">start</div>
     <div id="text" style="display: none;">
         <span style='font-size: 25px;'>Spielhintergrund</span><br>
         <span style='font-size: 14px;'>Die Spieler spielen als "transparenter Regenbogen".Der Prozess, in dem sich Schwule outen, ist wie ein trans- parenter Regenbogen auf der Suche nach seinen Farben.</span><br><br>
@@ -23,8 +24,25 @@
 
     </div>
     <img src="arrow_yellow.png" id="next" onclick="location.href = 'index.html';" style="display: none;">
+    <div id="buttons" style="display: none;">
+        <div id="next_rule" onclick="next_rule()"></div>
+        <div id="previous_rule" onclick="previous_rule()"></div>
+    </div>
+    <div id="arrows" style="display: none;z-index: 3;">
+        <div id="arrow1" style="z-index: 3;" onclick="previous_rule()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="31" viewBox="0 0 17 31" fill="none">
+                <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(0.689843 0.723959 0.690802 -0.723044 0 15.8125)" fill="#121212"/>
+                <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(0.689843 -0.723959 0.690802 0.723044 0 15.0967)" fill="#121212"/>
+            </svg>
+        </div>
+            <div id="arrow2" style="z-index: 3;" onclick="next_rule()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="31" viewBox="0 0 17 31" fill="none">
+                    <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(-0.689843 -0.723959 -0.690802 0.723044 17 15.0967)" fill="white"/>
+                    <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(-0.689843 0.723959 -0.690802 -0.723044 17 15.8125)" fill="white"/>
+                </svg>
+            </div>
 
-
+    </div>
     <div id="svg-container2">
         <svg xmlns="http://www.w3.org/2000/svg" width="393" height="361" viewBox="0 0 393 361" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M393 221L393 77.0788C352.868 30.8761 280.104 -4.89749e-05 197 -3.44446e-05C113.201 -1.97928e-05 39.9156 31.3948 1.36801e-05 78.2412L3.86409e-05 221L4.16132e-05 238L4.19629e-05 240L5.10549e-05 292L5.7699e-05 330L5.94475e-05 340L6.31192e-05 361L393 361L393 340L393 330L393 292L393 240L393 238L393 221Z" fill="url(#paint0_linear_608_31)"/>
@@ -36,15 +54,7 @@
             </defs>
         </svg>
     </div>
-    <script >
-    function rule() {
-        document.getElementById('text').style.display = 'block';
-        document.getElementById('titel').style.display = 'none';
-        document.getElementById('next').style.display = 'block';
-        document.getElementById('svg-container2').style.display = 'none';
-    }
-    
-    setTimeout(rule, 2000);</script>
+    <script src="rule.js"></script>
 
 </body>
 </html>

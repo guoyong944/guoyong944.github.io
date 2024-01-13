@@ -23,14 +23,29 @@ left:15px;
 font-family: Avenir;
 text-align: center;
 }
+#rules {
+  width:361px;
+  height:459px;
+  position:absolute;
+  top:59px;
+  left:15px;
+  color: #121212;
+  font-family: Avenir;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 30px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  }
 
-
+  
 #text {
 width:361px;
 height:459px;
 position:absolute;
 top:59px;
 left:15px;
+color: #121212;
 font-family: Avenir;
 font-weight: 500;
 line-height: 25px;
@@ -38,17 +53,41 @@ letter-spacing: -0.02em;
 text-align: left;
 }
 
-#next {
-    position: absolute;
-    width: 11px;
-    height: 20px;
-    top: 20px;
-    left: 376px;
-    border-radius: 7px;
-    transform: rotate(180deg);
-    
+#next_rule {
+  width: 135px;
+  height: 77px;
+  position: absolute;
+  top: 497px;
+  left: 221px;
+  border-radius: 40px;
+  background: rgba(18, 18, 18, 1);
+  box-shadow: 0px 2px 6px 0px rgba(100, 100, 100, 0.3);   
+  z-index: 2; 
+}  
+
+#previous_rule {
+width: 135px;
+height: 77px;
+position: absolute;
+top: 497px;
+left: 36px;
+border-radius: 40px;
+background: #FFFFFF;
+box-shadow: 0px 2px 6px 0px rgba(199, 199, 199, 0.1);
+z-index: 2; 
+
 }
 
+#arrow1 {
+  position: absolute;
+  top: 520px; /* 距离顶部的距离 */
+  left: 103px; /* 距离左侧的距离 */
+}
+#arrow2 {
+  position: absolute;
+  top: 520px; /* 距离顶部的距离 */
+  left: 288px; /* 距离左侧的距离 */
+}
 #svg-container2 {
     position: absolute;
     top: 382px; /* 距离顶部的距离 */
