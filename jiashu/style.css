@@ -5,7 +5,7 @@ body {
 }
 
 #quit {
-    position: absolute;
+    position: fixed;
     top: 20px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 15px; /* 距离最近的已定位祖先元素右边 30px */
     width: 11px;

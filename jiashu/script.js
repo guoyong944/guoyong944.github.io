@@ -21,14 +21,11 @@ function click_scroll(part) {
 window.addEventListener('scroll', function() {
     var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     var windowHeight = window.innerHeight;
-    document.getElementById('quit').style.top = (scrollPosition+40)+'px';
 
     document.getElementById('feedback').textContent = scrollPosition+'/'+windowHeight;
-    document.getElementById('feedback').style.top = (scrollPosition+40)+'px';
 
     // 根据滚动的高度改变背景图
     if (scrollPosition < part2_px) {
-        document.getElementById('img1').style.top = (scrollPosition+382)+'px';
         document.getElementById('img1').style.display = 'block';
         document.getElementById('img2').style.display = 'none';
         document.getElementById('img3').style.display = 'none';
@@ -38,9 +35,7 @@ window.addEventListener('scroll', function() {
 
 
     } else if (scrollPosition >= part2_px && scrollPosition < part3_px) {
-        document.getElementById('img1').style.top = (scrollPosition+382)+'px';
         document.getElementById('img1').style.display = 'block';
-        document.getElementById('img2').style.top = (scrollPosition+273)+'px';
         document.getElementById('img2').style.display = 'block';
         document.getElementById('img3').style.display = 'none';
         document.getElementById('img4').style.display = 'none';
@@ -50,11 +45,8 @@ window.addEventListener('scroll', function() {
 
     
     } else if (scrollPosition >= part3_px&& scrollPosition < end_px) {
-        document.getElementById('img1').style.top = (scrollPosition+382)+'px';
         document.getElementById('img1').style.display = 'block';
-        document.getElementById('img2').style.top = (scrollPosition+273)+'px';
         document.getElementById('img2').style.display = 'block';
-        document.getElementById('img3').style.top = (scrollPosition+152)+'px';
         document.getElementById('img3').style.display = 'block';
         document.getElementById('img4').style.display = 'none';
         document.getElementById('img5').style.display = 'none';
@@ -62,15 +54,10 @@ window.addEventListener('scroll', function() {
     }
 
     else {
-        document.getElementById('img1').style.top = (scrollPosition+382)+'px';
         document.getElementById('img1').style.display = 'block';
-        document.getElementById('img2').style.top = (scrollPosition+273)+'px';
         document.getElementById('img2').style.display = 'block';
-        document.getElementById('img3').style.top = (scrollPosition+152)+'px';
         document.getElementById('img3').style.display = 'block';  
-        document.getElementById('img4').style.top = (scrollPosition)+'px';
         document.getElementById('img4').style.display = 'block';  
-        document.getElementById('img5').style.top = (scrollPosition-60)+'px';
         document.getElementById('img5').style.display = 'block';  
     }
     // ...根据需要添加更多条件
