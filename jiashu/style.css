@@ -2,6 +2,8 @@
 body {
     font-family: 'Avenir';
     color: #503A00;
+    background: #F1F1F1;
+
 }
 
 #quit {
@@ -13,6 +15,27 @@ body {
     margin: auto;
     z-index: 7;
 }
+
+#top_bar {
+    position: fixed;
+    top: 0px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 0px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 393px;
+    height: 60px;
+    z-index: 6;
+    background: #F1F1F1;
+}
+
+#bottom_bar {
+    position: fixed;
+    bottom: 80px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 0px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 393px;
+    height: 60px;
+    z-index: 6;
+    background: #F1F1F1;
+}
+
 #part_selection {
     position: absolute;
     top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
