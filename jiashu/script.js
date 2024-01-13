@@ -10,6 +10,7 @@ let end_px=7597;
 
 
 function click_scroll(part) {
+    document.getElementById('score').style.display ='block';
     document.getElementById('text').style.display ='block';
     document.getElementById('part_button').style.display ='none';
     var target = document.getElementById('target'+part);

@@ -26,27 +26,6 @@ body {
     z-index: 7;
 }
 
-#top_bar {
-    position: fixed;
-    top: 0px; /* 距离最近的已定位祖先元素顶部 50px */
-    left: 0px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 393px;
-    height: 60px;
-    z-index: 6;
-    background: #F1F1F1;
-}
-
-#bottom_bar {
-    position: fixed;
-    /*top:585px;  距离最近的已定位祖先元素顶部 50px */
-    bottom: 0px; /* 距离最近的已定位祖先元素顶部 50px */
-    height: 60px;
-    left: 0px; /* 距离最近的已定位祖先元素右边 30px */
-    width: 393px;
-    z-index: 6;
-    background: #F1F1F1;
-}
-
 #part_selection {
     position: absolute;
     top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
@@ -63,6 +42,28 @@ body {
     font-family: Alibaba;
     z-index: 6;
 }
+
+#top_bar {
+    position: fixed;
+    top: 0px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 0px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 393px;
+    height: 60px;
+    z-index: 7;
+    background: #F1F1F1;
+}
+
+#bottom_bar {
+    position: fixed;
+    bottom: 0px; /* 距离最近的已定位祖先元素顶部 50px */
+    height: 60px;
+    left: 0px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 393px;
+    z-index: 7;
+    background: #F1F1F1;
+}
+
+
 #text {
     position: absolute;
     top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
@@ -80,6 +81,7 @@ body {
     color: #503A00;
     padding-left: 0px;
     padding-right: 20px;
+    z-index: 6;
 
     
 }
@@ -116,6 +118,7 @@ body {
 
 
 }
+
 #part3_button {
     position: absolute;
     top: 400px; /* 距离最近的已定位祖先元素顶部 50px */
@@ -129,10 +132,8 @@ body {
     border-radius: 27px;
     text-align: center;
     z-index: 12;
-
-
-
 }
+
 #part4_button {
     position: absolute;
     top: 550px; /* 距离最近的已定位祖先元素顶部 50px */
