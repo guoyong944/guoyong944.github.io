@@ -30,16 +30,28 @@ text-align: center;
   top:59px;
   left:15px;
   color: #121212;
-  font-family: Avenir;
+}
+
+#span1 {
+  font-family: AvenirH;
   font-size: 25px;
-  font-weight: 800;
   line-height: 30px;
   letter-spacing: -0.02em;
   text-align: left;
   white-space: pre-line;
+
+}
+#span2 {
+  font-family: Avenir;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  white-space: pre-line;
+  white-space: pre-line;
+
 }
 
-  
 #text {
 width:361px;
 height:459px;
@@ -53,7 +65,6 @@ line-height: 25px;
 letter-spacing: -0.02em;
 text-align: left;
 white-space: pre-line;
-
 }
 
 #next_rule {
@@ -63,11 +74,20 @@ white-space: pre-line;
   top: 497px;
   left: 221px;
   border-radius: 40px;
-  background: rgba(18, 18, 18, 1);
+  background: #FFFFFF;
   box-shadow: 0px 2px 6px 0px rgba(100, 100, 100, 0.3);   
   z-index: 2; 
 }  
+#arrows_next {
+  position: absolute;
+  top: 520px; /* 距离顶部的距离 */
+  left: 281px; /* 距离左侧的距离 */
+  transform: rotate(180deg);
+  width: 17px;
+  height: 30.91px;  
+  z-index: 3;
 
+}
 #previous_rule {
 width: 135px;
 height: 77px;
@@ -76,21 +96,19 @@ top: 497px;
 left: 36px;
 border-radius: 40px;
 background: #FFFFFF;
-box-shadow: 0px 2px 6px 0px rgba(199, 199, 199, 0.1);
+box-shadow: 0px 2px 6px 0px rgba(100, 100, 100, 0.3);   
 z-index: 2; 
-
 }
 
-#arrow1 {
+#arrows_previous {
   position: absolute;
   top: 520px; /* 距离顶部的距离 */
-  left: 103px; /* 距离左侧的距离 */
+  left: 94px; /* 距离左侧的距离 */
+  width: 17px;
+  height: 30.91px;
+  z-index: 3;
 }
-#arrow2 {
-  position: absolute;
-  top: 520px; /* 距离顶部的距离 */
-  left: 288px; /* 距离左侧的距离 */
-}
+
 #svg-container2 {
     position: absolute;
     top: 382px; /* 距离顶部的距离 */

@@ -11,7 +11,10 @@
         <span style='font-size: 14px;'>Vorbereitungsrunde</span><br>
         <span style='font-size: 30px;'>Spielregeln</span>
     </div>
-    <div id="rules" style="display: none;">start</div>
+    <div id="rules" style="display: none;">
+        <span id="span1"></span><br>
+        <span id="span2"></span>
+    </div>
     <div id="text" style="display: none;">
         <span style='font-size: 25px;'>Spielhintergrund</span><br>
         <span style='font-size: 14px;'>Die Spieler spielen als "transparenter Regenbogen".Der Prozess, in dem sich Schwule outen, ist wie ein trans- parenter Regenbogen auf der Suche nach seinen Farben.</span><br><br>
@@ -23,24 +26,14 @@
         <span style='font-size: 14px;'>Der Spieler hat in allen Runden alle Farben des Regenbo- gens gesammelt und das Verständnis und die Akzeptanz seiner Eltern im Spiel gewonnen.</span><br><br>
 
     </div>
-    <img src="arrow_yellow.png" id="next" onclick="location.href = 'index.html';" style="display: none;">
+
     <div id="buttons" style="display: none;">
-        <div id="next_rule" onclick="next_rule()"></div>
-        <div id="previous_rule" onclick="previous_rule()"></div>
+        <div id="next_rule" onclick="submit_step('next')"></div>            
+        <img src="arrow_black.png" id="arrows_next" onclick="submit_step('next')">
+        <div id="previous_rule" onclick="submit_step('previous')"></div>            
+        <img src="arrow_black.png" id="arrows_previous" onclick="submit_step('previous')">
+
     </div>
-    <div id="arrows" style="display: none;z-index: 3;">
-        <div id="arrow1" style="z-index: 3;" onclick="previous_rule()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="31" viewBox="0 0 17 31" fill="none">
-                <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(0.689843 0.723959 0.690802 -0.723044 0 15.8125)" fill="#121212"/>
-                <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(0.689843 -0.723959 0.690802 0.723044 0 15.0967)" fill="#121212"/>
-            </svg>
-        </div>
-            <div id="arrow2" style="z-index: 3;" onclick="next_rule()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="31" viewBox="0 0 17 31" fill="none">
-                    <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(-0.689843 -0.723959 -0.690802 0.723044 17 15.0967)" fill="white"/>
-                    <rect width="20.8532" height="3.78488" rx="1.89244" transform="matrix(-0.689843 0.723959 -0.690802 -0.723044 17 15.8125)" fill="white"/>
-                </svg>
-            </div>
 
     </div>
     <div id="svg-container2">
