@@ -15,7 +15,8 @@ let finish_background_color;
 let background_color;
 let text_color;
 let question;
-let color_name
+let color_name;
+let background_text_color;
 //每部分起始页的标题
 const titels=[{round:"RUNDE1",titel:"SELBST-\nIDENTIFIKATION"},{round:"RUNDE2",titel:"ABLEHNUNG"},{round:"RUNDE3",titel:"ÄRGER"},{round:"RUNDE4",titel:"VERHANDLUNG"},{round:"RUNDE5",titel:"ENTTÄUSCHUNG"},{round:"RUNDE6",titel:"SORGE"}]
 //第一部分问题 （ja nein frage）
@@ -291,7 +292,8 @@ function show_text(question, kid, papa) {
 function get_part_color() {
     switch (part) {
         case 1:
-            background_color = '#F2EFE0';
+            background_color = 'rgba(242, 239, 224, 0.65)';
+            background_text_color= rgba(242, 239, 224);
             titel_color = '#503A00';
             current_part_color = '#FFC300';      
             text_color = '#503A00';
@@ -309,7 +311,8 @@ function get_part_color() {
             finish_background_color = '#FCBC05';
             break;
         case 2:
-            background_color = '#E2EFF3';
+            background_color = 'rgba(226, 239, 243, 0.65)';
+            background_text_color= rgba(226, 239, 243);
             titel_color = '#002E50';
             current_part_color = '#33A9FF';  
             text_color = '#002E50';
@@ -328,7 +331,8 @@ function get_part_color() {
 
             break;
         case 3:
-            background_color = '#F2E6E6';
+            background_color = 'rgba(242, 230, 230, 0.65)';
+            background_text_color= rgba(242, 230, 230);
             titel_color = '#500000';
             current_part_color = '#FF3333';  
             text_color = '#500000';
@@ -347,7 +351,8 @@ function get_part_color() {
 
             break;
         case 4:
-            background_color = '#EAF1EA';
+            background_color = 'rgba(234, 241, 234, 0.65)';
+            background_text_color= rgba(234, 241, 234);
             titel_color = '#012D17';
             current_part_color = '#00A351';                
             text_color = '#012D17';
@@ -366,7 +371,8 @@ function get_part_color() {
 
             break;        
         case 5:
-            background_color = '#F1EAF1';
+            background_color = 'rgba(241, 234, 241, 0.65)';
+            background_text_color= rgba(241, 234, 241);
             titel_color = '#29002F';
             current_part_color = '#770088';               
             text_color = '#29002F';
@@ -385,7 +391,9 @@ function get_part_color() {
 
             break;
         case 6:
-            background_color = '#F2ECE6';
+            background_color = 'rgba(242, 236, 230, 0.65)';
+            background_text_color= rgba(242, 236, 230);
+
             titel_color = '#4F2400';
             current_part_color = '#FF7400';            
             text_color = '#4F2400';
