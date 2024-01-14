@@ -33,7 +33,7 @@ function submit_step(direction){
         document.getElementById("previous_rule").style.background = "#121212";
         document.getElementById("previous_rule").style.shadow = "0px 2px 6px 0px rgba(100, 100, 100, 0.3)";
         document.getElementById("arrows_previous").src = "arrow_white.png";
-        setTimeout(next_rule,1000);;
+        setTimeout(previous_rule,1000);;
     }}
 
 function next_rule(){
