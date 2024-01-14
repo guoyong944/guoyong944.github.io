@@ -69,7 +69,10 @@ letter-spacing: -0.02em;
 text-align: left;
 white-space: pre-line;
 }
-
+#bot {
+  position: absolute;
+  top: 382px;
+  left: 0px;}
 #next_rule {
   width: 135px;
   height: 77px;
@@ -112,8 +115,3 @@ z-index: 2;
   z-index: 3;
 }
 
-#svg-container2 {
-    position: absolute;
-    top: 382px; /* 距离顶部的距离 */
-    left: 0px; /* 距离左侧的距离 */
-}
