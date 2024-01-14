@@ -229,7 +229,7 @@ function show_pass_text(text,next_function) {
             if (para_num>1){
             var currentText1=currentText_list.slice(0,para_num-1).join("\n\n");
             var currentText2=currentText_list.slice(-1).join("\n\n");
-            container.innerHTML="<span style='color:#D5D5D5'>"+currentText1+"</span>"+"\n\n"+currentText2;
+            container.innerHTML=currentText1+"\n\n"+currentText2;
             }
             else{container.innerHTML=currentText;}
             i++;
@@ -437,6 +437,9 @@ function displayQuestion() {
         document.getElementById('buttonJa').style.backgroundColor = "#FFFFFF";
         document.getElementById('buttonJa').style.boxShadow = "0px 2px 6px 0px rgba(191, 139, 0, 0.1)";
         document.getElementById('buttonJa').style.color = "#FFC300";       
+        document.getElementById('buttonNein').style.backgroundColor = "#FFFFFF";
+        document.getElementById('buttonNein').style.boxShadow = "0px 2px 6px 0px rgba(191, 139, 0, 0.1)";
+        document.getElementById('buttonNein').style.color = "#FFC300";   
 
     } 
     else {
