@@ -3,8 +3,9 @@
 
 
 //document.getElementById('text').innerHTML = text;
-let part2_px=2300;
-let part3_px=4500;
+let part1_px=2300;
+let part2_px=4500;
+let part3_px=6800;
 let end_px=7597;
 
 
@@ -26,7 +27,7 @@ window.addEventListener('scroll', function() {
     document.getElementById('feedback').textContent = scrollPosition+'/'+windowHeight;
 
     // 根据滚动的高度改变背景图
-    if (scrollPosition < part2_px) {
+    if (scrollPosition < part1_px) {
         document.getElementById('img1').style.display = 'block';
         document.getElementById('img2').style.display = 'none';
         document.getElementById('img3').style.display = 'none';
@@ -35,7 +36,7 @@ window.addEventListener('scroll', function() {
 
 
 
-    } else if (scrollPosition >= part2_px && scrollPosition < part3_px) {
+    } else if (scrollPosition >= part1_px && scrollPosition < part2_px) {
         document.getElementById('img1').style.display = 'block';
         document.getElementById('img2').style.display = 'block';
         document.getElementById('img3').style.display = 'none';
@@ -45,7 +46,7 @@ window.addEventListener('scroll', function() {
 
 
     
-    } else if (scrollPosition >= part3_px&& scrollPosition < end_px) {
+    } else if (scrollPosition >= part2_px&& scrollPosition < part3_px) {
         document.getElementById('img1').style.display = 'block';
         document.getElementById('img2').style.display = 'block';
         document.getElementById('img3').style.display = 'block';

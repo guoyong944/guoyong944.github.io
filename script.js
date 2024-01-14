@@ -12,6 +12,7 @@ let shadow_color_nein;
 let current_part_questions;
 let titel_color;
 let finish_background_color;
+let background_color;
 let text_color;
 let question;
 let color_name
@@ -264,6 +265,7 @@ function show_text(question, kid, papa) {
 function get_part_color() {
     switch (part) {
         case 1:
+            background_color = '#F2EFE0';
             titel_color = '#503A00';
             current_part_color = '#FFC300';      
             text_color = '#503A00';
@@ -277,9 +279,11 @@ function get_part_color() {
             document.getElementById('img3b').src = 'yellow3b.png';
             document.getElementById('img4').src = 'yellow4.png';
             document.getElementById('img5').src = 'yellow5.png';
-            finish_background_color = '#FFCE00';
+            document.getElementById('img_finish').src = 'finish/yellow.png';
+            finish_background_color = '#FCBC05';
             break;
         case 2:
+            background_color = '#E2EFF3';
             titel_color = '#002E50';
             current_part_color = '#33A9FF';  
             text_color = '#002E50';
@@ -293,10 +297,12 @@ function get_part_color() {
             document.getElementById('img3b').src = 'blue3b.png';
             document.getElementById('img4').src = 'blue4.png';
             document.getElementById('img5').src = 'blue5.png';
-            finish_background_color = '#33A9FFE5';
+            document.getElementById('img_finish').src = 'finish/blue.png';
+            finish_background_color = '#33A9FF';
 
             break;
         case 3:
+            background_color = '#F2E6E6';
             titel_color = '#500000';
             current_part_color = '#FF3333';  
             text_color = '#500000';
@@ -310,10 +316,12 @@ function get_part_color() {
             document.getElementById('img3b').src = 'red3b.png';
             document.getElementById('img4').src = 'red4.png';
             document.getElementById('img5').src = 'red5.png';
-            finish_background_color = '#FF3333CC';
+            document.getElementById('img_finish').src = 'finish/red.png';
+            finish_background_color = '#E74639';
 
             break;
         case 4:
+            background_color = '#EAF1EA';
             titel_color = '#012D17';
             current_part_color = '#00A351';                
             text_color = '#012D17';
@@ -327,10 +335,12 @@ function get_part_color() {
             document.getElementById('img3b').src = 'green3b.png';
             document.getElementById('img4').src = 'green4.png';
             document.getElementById('img5').src = 'green5.png';
-            finish_background_color = '#00A854E5';
+            document.getElementById('img_finish').src = 'finish/Green.png';
+            finish_background_color = '#34A854';
 
             break;        
         case 5:
+            background_color = '#F1EAF1';
             titel_color = '#29002F';
             current_part_color = '#770088';               
             text_color = '#29002F';
@@ -344,10 +354,12 @@ function get_part_color() {
             document.getElementById('img3b').src = 'lila3b.png';
             document.getElementById('img4').src = 'lila4.png';
             document.getElementById('img5').src = 'lila5.png';
-            finish_background_color = '#77008899';
+            document.getElementById('img_finish').src = 'finish/Lila.png';
+            finish_background_color = '#770088B2';
 
             break;
         case 6:
+            background_color = '#F2ECE6';
             titel_color = '#4F2400';
             current_part_color = '#FF7400';            
             text_color = '#4F2400';
@@ -361,7 +373,8 @@ function get_part_color() {
             document.getElementById('img3b').src = 'orange3b.png';
             document.getElementById('img4').src = 'orange4.png';
             document.getElementById('img5').src = 'orange5.png';
-            finish_background_color = '#FF7400E5';
+            document.getElementById('img_finish').src = 'finish/orange.png';
+            finish_background_color = '#FF7400';
             break;
         // 添加更多的case语句
         default:
@@ -548,11 +561,12 @@ function finish_part() {
     if (score>1) {
         part_passed++;
         document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
-        document.getElementById('continue_text').style.color = text_color;
+        document.getElementById('continue_text').style.color = background_color;
         document.getElementById('continue_text').style.display = 'block';
         document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \n"+color_name+" im Regenbogen!";
         score=0;
-        show_score();
+        document.getElementById('score').style.display = 'none';
+        document.getElementById('img_finish').style.display = 'block';
         document.body.style.backgroundColor = finish_background_color;
         if (part_passed===6){
             setTimeout(showResults, 2000);
@@ -565,6 +579,7 @@ function start_part() {
     current_part_questions=all_questions[part-1];
     get_part_color();
     show_score();
+    document.body.style.backgroundColor = background_color;
     document.getElementById('skip').style.display = 'none';
     currentQuestionIndex++;
     document.getElementById('part2_text').style.display = 'none';
@@ -580,6 +595,8 @@ function next_part() {
     currentPartQuestionIndex=0;
     document.body.style.backgroundColor = '#FFFFFF';
     document.getElementById('continue_text').style.display = 'none';   
+    document.getElementById('img_finish').style.display = 'none';
+
     if(currentQuestionIndex===part1Questions.length-1) {
         document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'none';       
@@ -669,7 +686,8 @@ function nextQuestion() {
 function showResults() {
     document.body.style.backgroundColor = "#F6F6F6";
     document.getElementById('continue_text').style.display = 'none';       
-    document.getElementById('score').style.display = 'none';       
+    document.getElementById('score').style.display = 'none';     
+    document.getElementById('img_finish').style.display = 'none';  
     document.getElementById('part2-answers').style.display = 'none';
     show_full_text(end_text.pass,showResults_passed2); 
 }
