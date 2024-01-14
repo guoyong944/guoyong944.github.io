@@ -591,7 +591,7 @@ function next_part() {
 
     if(currentQuestionIndex===part1Questions.length-1) {
         document.getElementById('titels').style.display = 'none';
-        document.getElementById('score').style.display = 'none';       
+        document.getElementById('score').style.display = 'none';
         show_part2_text(introduction,start_part); 
     }
     else {
