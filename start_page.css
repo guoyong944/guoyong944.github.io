@@ -16,6 +16,12 @@ body {
   font-family: AlibabaBold;
   src: url('Alibaba-PuHuiTi-Bold.ttf') 
 }
+#bot_grey {
+width: 393px;
+height: 361px;
+position: absolute;
+top: -79px;
+left: 0px;}
 
 #uebung {
 width:135px;
