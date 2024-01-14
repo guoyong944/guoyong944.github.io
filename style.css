@@ -69,6 +69,22 @@ body {
     
 }
 
+#pass_text {
+    position: absolute;
+    top: 60px; /* 距离最近的已定位祖先元素顶部 50px */
+    left: 13px; /* 距离最近的已定位祖先元素右边 30px */
+    width: 400px;
+    height: 610px;
+    margin: auto;
+    text-align: left;
+    white-space: pre-line;
+    font-family: AvenirH;
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
 #continue_text {
     font-family: AvenirH;
     font-size: 25px;

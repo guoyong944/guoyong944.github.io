@@ -115,6 +115,7 @@ const final_text={pass:"In jedem ehrlichen Dialog \nbauen wir Brücken der \nLie
 fail:"Auf dem Weg zu unserem \nComing-out sind wir mögli- \ncherweise auf Unverständ- \nnis und Verzögerungen bei \nder Akzeptanz stoßen. \n\nAber denken Sie daran, \ndass der Coming-out-Pro- \nzess eine Reise der Selbst- \nbestätigung und eine Ver- \ntiefung der Liebe zu Ihrer \nFamilie ist. \n\nEs kann länger dauern, bis \nunsere Eltern es verstehen, \naber es ist unsere Chance, \nMut und Liebe zu zeigen. \nGenauso wie sie uns einst \nbegleiteten, als wir das \nLaufen lernten. Jetzt sind \nwir es, die sie dazu bringen, \neine vielfältigere Welt zu \nverstehen. \n\nWir lieben sie weiterhin, \nwir drücken uns weiterhin \naus. Wir glauben weiterhin \ndaran, dass sie eines Tages \nan unserer Seite gehen \nwerden."};
 
 function quit() {
+    
     window.location.href = 'start_page.html';} 
 
 
@@ -209,7 +210,40 @@ function show_full_text(text,next_function) {
     }
     var done=setInterval (showNextChar,30);
 }
+function show_pass_text(text,next_function) {
+    var container = document.getElementById('pass_text');
+    var i = 0;
+    var currentText = '';
+    document.getElementById('skip').style.display = 'block';
+    container.style.display = 'block';
+    document.getElementById('quit').style.display = 'none';
+    interupted = false;
 
+    function showNextChar() {
+        if (i < text.length) {
+            if(text.charAt(i)==="&"){currentText +="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";i++;}
+            currentText += text.charAt(i);
+            currentText=currentText.split("\n").slice(-16).join("\n");
+            var currentText_list=currentText.split("\n\n");
+            var para_num=currentText_list.length;
+            if (para_num>1){
+            var currentText1=currentText_list.slice(0,para_num-1).join("\n\n");
+            var currentText2=currentText_list.slice(-1).join("\n\n");
+            container.innerHTML="<span style='color:#D5D5D5'>"+currentText1+"</span>"+"\n\n"+currentText2;
+            }
+            else{container.innerHTML=currentText;}
+            i++;
+        }
+        else if (interupted) {
+            clearInterval (done);
+        }
+        else { // 如果已经显示了所有文本
+            clearInterval (done);
+            setTimeout(next_function, 2000); 
+        }
+    }
+    var done=setInterval (showNextChar,30);
+}
 function show_text(question, kid, papa) {
     var fullText = question + kid + papa.charAt(0)+papa; // 组合整个文本
     var num_q = question.length; // question文本的长度
@@ -717,7 +751,9 @@ function show_final() {
     //document.getElementById('endQuiz').style.display = 'block';
     // 根据分数给出评价
     if (part_passed=6) {
-        show_full_text(final_text.pass,quit); 
+        document.getElementById('part2_text').style.display = 'none';
+        document.body.style.backgroundImage="url('pass_background.png')" ;
+        show_pass_text(final_text.pass,quit); 
     } else {
         show_full_text(final_text.fail,quit); 
     }}
