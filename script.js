@@ -293,7 +293,7 @@ function get_part_color() {
     switch (part) {
         case 1:
             background_color = 'rgba(242, 239, 224, 0.65)';
-            background_text_color= rgba(242, 239, 224);
+            background_text_color= 'rgba(242, 239, 224)';
             titel_color = '#503A00';
             current_part_color = '#FFC300';      
             text_color = '#503A00';
@@ -312,7 +312,7 @@ function get_part_color() {
             break;
         case 2:
             background_color = 'rgba(226, 239, 243, 0.65)';
-            background_text_color= rgba(226, 239, 243);
+            background_text_color= 'rgba(226, 239, 243)';
             titel_color = '#002E50';
             current_part_color = '#33A9FF';  
             text_color = '#002E50';
@@ -332,7 +332,7 @@ function get_part_color() {
             break;
         case 3:
             background_color = 'rgba(242, 230, 230, 0.65)';
-            background_text_color= rgba(242, 230, 230);
+            background_text_color= 'rgba(242, 230, 230)';
             titel_color = '#500000';
             current_part_color = '#FF3333';  
             text_color = '#500000';
@@ -352,7 +352,7 @@ function get_part_color() {
             break;
         case 4:
             background_color = 'rgba(234, 241, 234, 0.65)';
-            background_text_color= rgba(234, 241, 234);
+            background_text_color= 'rgba(234, 241, 234)';
             titel_color = '#012D17';
             current_part_color = '#00A351';                
             text_color = '#012D17';
@@ -372,7 +372,7 @@ function get_part_color() {
             break;        
         case 5:
             background_color = 'rgba(241, 234, 241, 0.65)';
-            background_text_color= rgba(241, 234, 241);
+            background_text_color= 'rgba(241, 234, 241)';
             titel_color = '#29002F';
             current_part_color = '#770088';               
             text_color = '#29002F';
@@ -392,7 +392,7 @@ function get_part_color() {
             break;
         case 6:
             background_color = 'rgba(242, 236, 230, 0.65)';
-            background_text_color= rgba(242, 236, 230);
+            background_text_color= 'rgba(242, 236, 230)';
 
             titel_color = '#4F2400';
             current_part_color = '#FF7400';            
@@ -598,7 +598,7 @@ function finish_part() {
     if (score>1) {
         part_passed++;
         document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
-        document.getElementById('continue_text').style.color = background_color;
+        document.getElementById('continue_text').style.color = background_text_color;
         document.getElementById('continue_text').style.display = 'block';
         document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \n"+color_name+" im Regenbogen!";
         score=0;
