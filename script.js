@@ -606,10 +606,13 @@ function finish_part() {
         document.getElementById('img_finish').style.display = 'block';
         document.body.style.backgroundColor = finish_background_color;}
     if (part===6){
-        setTimeout(showResults, 2000);
-    }
-    else {next_part();}
-}
+        if (part_passed===6) {
+            setTimeout(showResults, 2000);
+        } else {
+            showResults(); 
+    }}
+    else {next_part();}}
+
 function start_part() {    
     document.getElementById('score').style.display = 'block';
     current_part_questions=all_questions[part-1];
