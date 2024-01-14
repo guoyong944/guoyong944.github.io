@@ -115,14 +115,7 @@ const final_text={pass:"In jedem ehrlichen Dialog \nbauen wir Brücken der \nLie
 fail:"Auf dem Weg zu unserem \nComing-out sind wir mögli- \ncherweise auf Unverständ- \nnis und Verzögerungen bei \nder Akzeptanz stoßen. \n\nAber denken Sie daran, \ndass der Coming-out-Pro- \nzess eine Reise der Selbst- \nbestätigung und eine Ver- \ntiefung der Liebe zu Ihrer \nFamilie ist. \n\nEs kann länger dauern, bis \nunsere Eltern es verstehen, \naber es ist unsere Chance, \nMut und Liebe zu zeigen. \nGenauso wie sie uns einst \nbegleiteten, als wir das \nLaufen lernten. Jetzt sind \nwir es, die sie dazu bringen, \neine vielfältigere Welt zu \nverstehen. \n\nWir lieben sie weiterhin, \nwir drücken uns weiterhin \naus. Wir glauben weiterhin \ndaran, dass sie eines Tages \nan unserer Seite gehen \nwerden."};
 
 function quit() {
-    currentQuestionIndex = -1;
-    currentPartQuestionIndex = 0;
-    score = 0;
-    part = 0; 
-    total_score = 0;
-    part_passed=0;
-    document.getElementById('endQuiz').style.display = 'none';
-    displayQuestion();} 
+    window.location.href = 'start_page.html';} 
 
 
 function show_questions(text) {
@@ -567,11 +560,10 @@ function finish_part() {
         score=0;
         document.getElementById('score').style.display = 'none';
         document.getElementById('img_finish').style.display = 'block';
-        document.body.style.backgroundColor = finish_background_color;
-        if (part_passed===6){
-            setTimeout(showResults, 2000);
-        }
-        else{setTimeout(next_part, 2000);}}
+        document.body.style.backgroundColor = finish_background_color;}
+    if (part===6){
+        setTimeout(showResults, 2000);
+    }
     else {next_part();}
 }
 function start_part() {    
@@ -601,10 +593,6 @@ function next_part() {
         document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'none';       
         show_part2_text(introduction,start_part); 
-
-    }
-    else if ((currentPartQuestionIndex === 3)&&(part === 6)) {
-        showResults();
     }
     else {
         start_part();
@@ -674,10 +662,14 @@ function submit_right(){
 function nextQuestion() {
     currentQuestionIndex++;
     currentPartQuestionIndex++;
-    if ((currentQuestionIndex === part1Questions.length) || (currentQuestionIndex === part1Questions.length+part2Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length) ||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length)||(currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length+part6Questions.length)) {
+    if (currentQuestionIndex === part1Questions.length) {
         currentQuestionIndex--;
         finish_part();
-    }  else  {
+    }  
+    else if ((part>1)&&(currentPartQuestionIndex === part2Questions.length)) {
+        currentQuestionIndex--;
+        finish_part();}
+    else  {
         displayQuestion();
     } 
 }
@@ -689,8 +681,11 @@ function showResults() {
     document.getElementById('score').style.display = 'none';     
     document.getElementById('img_finish').style.display = 'none';  
     document.getElementById('part2-answers').style.display = 'none';
-    show_full_text(end_text.pass,showResults_passed2); 
-}
+    if (part_passed===6) {
+        show_full_text(end_text.pass,showResults_passed2); 
+    } else {
+        show_full_text(end_text.fail,show_final); 
+}}
 
 function month_later(){
     document.getElementById('part2_text').innerHTML = "<span style='color:#F6F6F6'>Nach einem Monat...</span>";
@@ -720,7 +715,7 @@ function showResults_passed2() {
 function show_final() {
     document.getElementById('score').style.display = 'none';       
     document.getElementById('part2-answers').style.display = 'none';
-    document.getElementById('endQuiz').style.display = 'block';
+    //document.getElementById('endQuiz').style.display = 'block';
     // 根据分数给出评价
     if (part_passed=6) {
         show_full_text(final_text.pass,quit); 
