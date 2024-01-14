@@ -12,9 +12,9 @@ function display_rule(){
     document.getElementById("span1").textContent = rules[i].titel
     document.getElementById("span2").textContent =rules[i].rule;
     document.getElementById("next_rule").style.background = "#FFFFFF";
-    document.getElementById("next_rule").style.shadow = "box-shadow: 0px 2px 6px 0px rgba(199, 199, 199, 0.1);";
+    document.getElementById("next_rule").style.shadow = "0px 2px 6px 0px rgba(199, 199, 199, 0.1);";
     document.getElementById("previous_rule").style.background = "#FFFFFF";
-    document.getElementById("previous_rule").style.shadow = "box-shadow: 0px 2px 6px 0px rgba(199, 199, 199, 0.1);";
+    document.getElementById("previous_rule").style.shadow = "0px 2px 6px 0px rgba(199, 199, 199, 0.1);";
     document.getElementById("arrows_next").src = "arrow_black.png";
     document.getElementById("arrows_previous").src = "arrow_black.png";
 
@@ -25,13 +25,13 @@ setTimeout(display_rule, 2000);
 function submit_step(direction){
     if(direction == "next"){
         document.getElementById("next_rule").style.background = "#121212";
-        document.getElementById("next_rule").style.shadow = "box-shadow: 0px 2px 6px 0px rgba(100, 100, 100, 0.3)";
+        document.getElementById("next_rule").style.shadow = "0px 2px 6px 0px rgba(100, 100, 100, 0.3)";
         document.getElementById("arrows_next").src = "arrow_white.png";
         setTimeout(next_rule,1000);
     }
     else{
         document.getElementById("previous_rule").style.background = "#121212";
-        document.getElementById("previous_rule").style.shadow = "box-shadow: 0px 2px 6px 0px rgba(100, 100, 100, 0.3)";
+        document.getElementById("previous_rule").style.shadow = "0px 2px 6px 0px rgba(100, 100, 100, 0.3)";
         document.getElementById("arrows_previous").src = "arrow_white.png";
         setTimeout(next_rule,1000);;
     }}

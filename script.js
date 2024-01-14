@@ -395,6 +395,9 @@ function displayQuestion() {
         document.getElementById('part1-answers').style.display = 'block';
         document.getElementById('part2-answers').style.display = 'none';
         document.getElementById('question').style.color = text_color;
+        document.getElementById('buttonJa').style.backgroundColor = "#FFFFFF";
+        document.getElementById('buttonJa').style.boxShadow = "0px 2px 6px 0px rgba(191, 139, 0, 0.1)";
+        document.getElementById('buttonJa').style.color = "#FFC300";       
 
     } 
     else {
@@ -452,10 +455,19 @@ function submitAnswer(answer) {
     if (part === 1) {
         if (answer === true) {
             score += 1; 
-            document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
+            document.getElementById('buttonJa').style.backgroundColor = "#FFC300";
+            document.getElementById('buttonJa').style.boxShadow = "0px 2px 6px 0px rgba(103, 75, 0, 0.3)";
+            document.getElementById('buttonJa').style.color = "#FFFFFF";
         } 
-    show_score();
-    nextQuestion();    
+        else {            
+            document.getElementById('buttonNein').style.backgroundColor = "#FFC300";
+            document.getElementById('buttonNein').style.boxShadow = "0px 2px 6px 0px rgba(103, 75, 0, 0.3)";
+            document.getElementById('buttonNein').style.color = "#FFFFFF";}
+                
+        document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
+        setTimeout(show_score,500);
+        setTimeout(nextQuestion,500); 
+
     } 
     
     else {

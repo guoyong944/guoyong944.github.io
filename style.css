@@ -92,15 +92,15 @@ body {
     font-weight: 800;
     line-height: 40px;
     letter-spacing: -0.03em;
-    color: #FFFFFF;
+    color: #FFC300;
     position: absolute;
     top: 497px; /* 距离最近的已定位祖先元素顶部 50px */
     left: 36px; /* 距离最近的已定位祖先元素右边 30px */
     width: 135px;
     height: 77px;
     margin: auto;
-    background: #FFC300;
-    box-shadow: 0px 2px 6px 0px rgba(103, 75, 0, 0.3);
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px 0px rgba(191, 139, 0, 0.1);
     text-align: center;
     border:0;
     border-radius: 40px;
