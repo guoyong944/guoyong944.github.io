@@ -194,11 +194,10 @@ function show_full_text(text,next_function) {
             if (para_num>1){
             var currentText1=currentText_list.slice(0,para_num-1).join("\n\n");
             var currentText2=currentText_list.slice(-1).join("\n\n");
-            container.innerHTML=currentText1+"\n\n"+currentText2;
+            container.innerHTML="<span style='color:#D5D5D5'>"+currentText1+"</span>"+"\n\n"+currentText2;
             }
             else{container.innerHTML=currentText;}
             i++;
-            //setTimeout(showNextChar, 50); // 调整速度
         }
         else if (interupted) {
             clearInterval (done);
