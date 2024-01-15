@@ -425,7 +425,7 @@ function displayQuestion() {
     document.getElementById('submit_right').style.display = 'block';       
     document.getElementById('quit').style.display = 'block';
     document.getElementById('skip').style.display = 'block';
-    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
+    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex)+", Score"+score+", passed :"+part_passed;
     if (currentQuestionIndex === -1) {    
         show_score();
         start_part();  
@@ -514,7 +514,7 @@ function submitAnswer(answer) {
             document.getElementById('buttonNein').style.boxShadow = "0px 2px 6px 0px rgba(103, 75, 0, 0.3)";
             document.getElementById('buttonNein').style.color = "#FFFFFF";}
                 
-        document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
+        document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex)+", Score"+score+", passed :"+part_passed;
         setTimeout(show_score,100);
         setTimeout(nextQuestion,100); 
 
@@ -535,7 +535,7 @@ function submitAnswer(answer) {
 
         
     }
-    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
+    document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", Score"+score+", passed :"+part_passed;
    
 }
 
@@ -590,6 +590,7 @@ function enableAnswerButtons() {
 
 
 function finish_part() {
+    document.getElementById('quit').style.display = 'none';
     document.getElementById('submit_right').style.display = 'none';       
     document.getElementById('skip').style.display = 'none';
     document.getElementById('question').style.display = 'none';
@@ -597,7 +598,7 @@ function finish_part() {
     document.getElementById('part2-answers').style.display = 'none';
     if (score>1) {
         part_passed++;
-        document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex+1)+", TQ"+currentQuestionIndex+", passed :"+part_passed;
+        document.getElementById('feedback').textContent = "P"+part+", Q"+(currentPartQuestionIndex)+", Score"+score+", passed :"+part_passed;
         document.getElementById('continue_text').style.color = background_text_color;
         document.getElementById('continue_text').style.display = 'block';
         document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \n"+color_name+" im Regenbogen!";
@@ -611,9 +612,10 @@ function finish_part() {
         } else {
             showResults(); 
     }}
-    else {next_part();}}
+    else {setTimeout(next_part,2000);}}
 
 function start_part() {    
+    document.getElementById('quit').style.display = 'none';
     document.getElementById('score').style.display = 'block';
     current_part_questions=all_questions[part-1];
     get_part_color();
@@ -709,7 +711,7 @@ function submit_right(){
 function nextQuestion() {
     currentQuestionIndex++;
     currentPartQuestionIndex++;
-    if (currentQuestionIndex === part1Questions.length) {
+    if ((part=1)&&(currentPartQuestionIndex === part1Questions.length)) {
         currentQuestionIndex--;
         finish_part();
     }  
