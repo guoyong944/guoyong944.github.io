@@ -196,7 +196,7 @@ function show_full_text(text,next_function) {
             if (para_num>1){
             var currentText1=currentText_list.slice(0,para_num-1).join("\n\n");
             var currentText2=currentText_list.slice(-1).join("\n\n");
-            container.innerHTML="<span id='grey_text' style='color:#D5D5D5'>"+currentText1+"</span>"+"\n\n"+currentText2;
+            container.innerHTML="<span id='grey_text' style='color:#D5D5D5;'>"+currentText1+"</span>"+"\n\n"+currentText2;
             }
             else{container.innerHTML=currentText;}
             i++;
@@ -796,7 +796,7 @@ function backgroundColor_transition(target_color){
 }
 function TextColor_transition(target_color){
     document.getElementById('grey_text').style.transition = 'color 1s';
-    document.body.style.color = target_color;
+    document.getElementById('grey_text').style.color = target_color;
 }
 
 // 其他代码保持不变
