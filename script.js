@@ -196,7 +196,7 @@ function show_full_text(text,next_function) {
             if (para_num>1){
             var currentText1=currentText_list.slice(0,para_num-1).join("\n\n");
             var currentText2=currentText_list.slice(-1).join("\n\n");
-            container.innerHTML="<span style='color:#D5D5D5'>"+currentText1+"</span>"+"\n\n"+currentText2;
+            container.innerHTML="<span id='grey_text' style='color:#D5D5D5'>"+currentText1+"</span>"+"\n\n"+currentText2;
             }
             else{container.innerHTML=currentText;}
             i++;
@@ -758,12 +758,12 @@ function passed_text2(){
 }
 
 function showResults_passed2() {
+    TextColor_transition('#121212');
     backgroundColor_transition('#121212');
     //document.getElementById('part2_text').innerHTML = "<span style='color:#D5D5D5'>Nach einem Monat...</span>";
     setTimeout(month_later,2000)
     document.getElementById('score').style.display = 'none';       
     document.getElementById('part2-answers').style.display = 'none';
-
 }
 
 function show_final() {
@@ -794,7 +794,10 @@ function backgroundColor_transition(target_color){
     document.body.style.transition = 'background-color 1s';
     document.body.style.backgroundColor = target_color;
 }
-
+function TextColor_transition(target_color){
+    document.getElementById('grey_text').style.transition = 'color 1s';
+    document.body.style.color = target_color;
+}
 
 // 其他代码保持不变
 
