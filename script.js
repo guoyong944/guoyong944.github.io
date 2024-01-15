@@ -366,7 +366,7 @@ function get_part_color() {
             document.getElementById('img3b').src = 'green3b.png';
             document.getElementById('img4').src = 'green4.png';
             document.getElementById('img5').src = 'green5.png';
-            document.getElementById('img_finish').src = 'finish/Green.png';
+            document.getElementById('img_finish').src = 'finish/green.png';
             finish_background_color = '#34A854';
 
             break;        
@@ -386,7 +386,7 @@ function get_part_color() {
             document.getElementById('img3b').src = 'lila3b.png';
             document.getElementById('img4').src = 'lila4.png';
             document.getElementById('img5').src = 'lila5.png';
-            document.getElementById('img_finish').src = 'finish/Lila.png';
+            document.getElementById('img_finish').src = 'finish/lila.png';
             finish_background_color = '#770088B2';
 
             break;
