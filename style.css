@@ -114,7 +114,6 @@ body {
     left: 36px; /* 距离最近的已定位祖先元素右边 30px */
     width: 135px;
     height: 77px;
-    margin: auto;
     background: #FFFFFF;
     box-shadow: 0px 2px 6px 0px rgba(191, 139, 0, 0.1);
     text-align: center;
@@ -135,7 +134,6 @@ body {
     left: 221px; /* 距离最近的已定位祖先元素右边 30px */
     width: 135px;
     height: 77px;
-    margin: auto;
     background: #FFFFFF;
     border-radius: 40px;
     text-align: center;

@@ -605,14 +605,18 @@ function finish_part() {
         score=0;
         document.getElementById('score').style.display = 'none';
         document.getElementById('img_finish').style.display = 'block';
-        document.body.style.backgroundColor = finish_background_color;}
-    if (part===6){
-        if (part_passed===6) {
+        document.body.style.backgroundColor = finish_background_color;
+        if (part===6){
             setTimeout(showResults, 2000);
-        } else {
-            showResults(); 
-    }}
-    else {setTimeout(next_part,2000);}}
+        }
+        else {setTimeout(next_part,2000)}}
+    
+    else {
+        if (part===6){
+            showResults();
+        }   
+        else {
+            next_part()}}}
 
 function start_part() {    
     document.getElementById('quit').style.display = 'none';
