@@ -2,7 +2,7 @@
 let currentQuestionIndex = -1;
 let currentPartQuestionIndex = 0;
 let score = 0;
-let part = 1; // 部分 1
+let part = 0; // 部分 1
 let total_score = 0;
 let interupted = false;
 let part_passed=0;
@@ -167,7 +167,7 @@ function show_part2_text(text,next_function) {
         }
         else { // 如果已经显示了所有文本
             clearInterval (done);
-            if(currentQuestionIndex===part1Questions.length-1) {
+            if((part===1)&&(currentPartQuestionIndex===part1Questions.length-1)) {
             setTimeout(next_function, 2000); }  
 
         }
@@ -421,7 +421,6 @@ function get_part_color() {
     };}
 // 显示问题的函数
 function displayQuestion() {
-    let questionHtml = "";
     document.getElementById('submit_right').style.display = 'block';       
     document.getElementById('quit').style.display = 'block';
     document.getElementById('skip').style.display = 'block';
@@ -433,10 +432,9 @@ function displayQuestion() {
 
     }
     else if (
-        currentQuestionIndex<part1Questions.length) {
+        (part===1)&&(currentPartQuestionIndex<part1Questions.length)) {
         question = current_part_questions[currentPartQuestionIndex];
         document.getElementById('titels').style.display = 'none';
-        //question = part1Questions[currentQuestionIndex];
         document.getElementById('question').style.display = 'block';
         document.getElementById('question').textContent = question.text;
         document.getElementById('part1-answers').style.display = 'block';
@@ -602,7 +600,6 @@ function finish_part() {
         document.getElementById('continue_text').style.color = background_text_color;
         document.getElementById('continue_text').style.display = 'block';
         document.getElementById('continue_text').textContent="Herzlichen Glückwunsch\nzur bestandenen Runde "+part+"\nund zum Erhalt von \n"+color_name+" im Regenbogen!";
-        score=0;
         document.getElementById('score').style.display = 'none';
         document.getElementById('img_finish').style.display = 'block';
         document.body.style.backgroundColor = finish_background_color;
@@ -619,6 +616,9 @@ function finish_part() {
             next_part()}}}
 
 function start_part() {    
+    part ++;
+    score=0;
+    currentPartQuestionIndex=0;
     document.getElementById('quit').style.display = 'none';
     document.getElementById('score').style.display = 'block';
     current_part_questions=all_questions[part-1];
@@ -632,17 +632,14 @@ function start_part() {
     document.getElementById('titels').style.color = titel_color;
     document.getElementById ("question").innerHTML = "";
     document.getElementById('titels').innerHTML = "<span style='font-size: 14px;'>"+titels[part-1].round+"</span><br><span style='font-size: 30px;'>"+titels[part-1].titel+"</span>";
-    setTimeout(displayQuestion, 1000);
+    setTimeout(displayQuestion, 2000);
 }
 function next_part() {        
-    part ++;
-    score=0;
-    currentPartQuestionIndex=0;
     document.body.style.backgroundColor = '#FFFFFF';
     document.getElementById('continue_text').style.display = 'none';   
     document.getElementById('img_finish').style.display = 'none';
 
-    if(currentQuestionIndex===part1Questions.length-1) {
+    if((part===1)&&(currentPartQuestionIndex>part1Questions.length-1)) {
         document.getElementById('titels').style.display = 'none';
         document.getElementById('score').style.display = 'none';
         show_part2_text(introduction,start_part); 
@@ -651,58 +648,63 @@ function next_part() {
         start_part();
 
 }
-
-
 }
+
+function next_part2() {        
+
+    document.body.style.backgroundColor = '#FFFFFF';
+    document.getElementById('continue_text').style.display = 'none';   
+    document.getElementById('img_finish').style.display = 'none';
+    start_part();
+}
+
 // 进入下一题的函数
 function skip() {
     
-    if (currentQuestionIndex === part1Questions.length-1){
-        part=2;
-        score=0;
-        currentPartQuestionIndex=0;
-        interupted = true;
+    if ((part===1)&&(currentPartQuestionIndex >= part1Questions.length-1)){
+        //interupted = true;
         document.getElementById('question').style.display = 'none';
         document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2-answers').style.display = 'none';
-        start_part();
+        next_part2();
     }
-    else if (currentQuestionIndex === part1Questions.length+part2Questions.length-1){
-        part=3;
-        score=0;
+
+    else if ((part===2)&&(currentPartQuestionIndex === 2)){
         currentPartQuestionIndex=0;
         document.getElementById('question').style.display = 'none';
         document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2-answers').style.display = 'none';
-        start_part();
+        finish_part();
     }
-    else if (currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length-1){
-        part=4;
-        score=0;
+    else if ((part===3)&&(currentPartQuestionIndex === 2)){
         currentPartQuestionIndex=0;
         document.getElementById('question').style.display = 'none';
         document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2-answers').style.display = 'none';
-        start_part();
+        finish_part();
     }
-    else if (currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length-1){
-        part=5;
-        score=0;
+    else if ((part===4)&&(currentPartQuestionIndex === 2)){
         currentPartQuestionIndex=0;
         document.getElementById('question').style.display = 'none';
         document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2-answers').style.display = 'none';
-        start_part();
+        finish_part();
     }
-    else if (currentQuestionIndex === part1Questions.length+part2Questions.length+part3Questions.length+part4Questions.length+part5Questions.length-1){
-        part=6;
-        score=0;
+    else if ((part===5)&&(currentPartQuestionIndex === 2)){
         currentPartQuestionIndex=0;
         currentQuestionIndex++;
         document.getElementById('question').style.display = 'none';
         document.getElementById('part1-answers').style.display = 'none';
         document.getElementById('part2-answers').style.display = 'none';
-        start_part();
+        finish_part();
+    }
+    else if ((part===6)&&(currentPartQuestionIndex === 2)){
+        currentPartQuestionIndex=0;
+        currentQuestionIndex++;
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('part1-answers').style.display = 'none';
+        document.getElementById('part2-answers').style.display = 'none';
+        showResults();
     }
     else {nextQuestion();}
 }
@@ -711,11 +713,10 @@ function submit_right(){
     nextQuestion();
 }
 
-
 function nextQuestion() {
     currentQuestionIndex++;
     currentPartQuestionIndex++;
-    if ((part=1)&&(currentPartQuestionIndex === part1Questions.length)) {
+    if ((part===1)&&(currentPartQuestionIndex === part1Questions.length)) {
         currentQuestionIndex--;
         finish_part();
     }  
@@ -770,7 +771,7 @@ function show_final() {
     document.getElementById('part2-answers').style.display = 'none';
     //document.getElementById('endQuiz').style.display = 'block';
     // 根据分数给出评价
-    if (part_passed=6) {
+    if (part_passed===6) {
         document.getElementById('part2_text').style.display = 'none';
         document.body.style.backgroundImage="url('pass_background.png')" ;
         show_pass_text(final_text.pass,quit); 
