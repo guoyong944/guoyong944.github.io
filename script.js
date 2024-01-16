@@ -167,7 +167,7 @@ function show_part2_text(text,next_function) {
         }
         else { // 如果已经显示了所有文本
             clearInterval (done);
-            if((part===1)&&(currentPartQuestionIndex===part1Questions.length-1)) {
+            if((part===1)&&(currentPartQuestionIndex===part1Questions.length)) {
             setTimeout(next_function, 2000); }  
 
         }
