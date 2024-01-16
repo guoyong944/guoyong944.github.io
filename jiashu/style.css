@@ -77,10 +77,9 @@ body {
     font-size: 16px;
     font-weight: 500;
     line-height: 25px;
-    letter-spacing: -0.02em;
     color: #503A00;
     padding-left: 0px;
-    padding-right: 20px;
+    padding-right: 5px;
     z-index: 6;
 }
 
@@ -97,7 +96,6 @@ body {
     font-size: 16px;
     font-weight: 500;
     line-height: 25px;
-    letter-spacing: -0.02em;
     color: #121212;
     padding-left: 0px;
     padding-right: 20px;
