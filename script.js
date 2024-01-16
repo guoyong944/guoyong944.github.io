@@ -744,14 +744,14 @@ function showResults() {
 function month_later(){
     document.getElementById('part2_text').innerHTML = "<span style='color:#F6F6F6'>Nach einem Monat...</span>";
     setTimeout(backgroundcolor_to_white,1000)
-
 }
+
 function backgroundcolor_to_white(){
     backgroundColor_transition("#F6F6F6");
     document.body.style.transition = 'background-color 1s';
     setTimeout(passed_text2,1000)
-
 }
+
 function passed_text2(){
     document.body.style.transition = '';
     show_full_text(end_text.pass2,show_final); 
