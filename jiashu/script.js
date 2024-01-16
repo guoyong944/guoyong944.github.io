@@ -3,17 +3,20 @@
 
 
 //document.getElementById('text').innerHTML = text;
-let part1_px=2300;
-let part2_px=4500;
-let part3_px=6800;
-let end_px=7597;
+let part1_px=0;
+let part2_px=1660;
+let part3_px=3890;
+let end_px=6700;
 
 
 
 function click_scroll(part) {
     document.getElementById('score').style.display ='block';
+    document.getElementById('text1').style.display ='none';
     document.getElementById('text').style.display ='block';
     document.getElementById('part_button').style.display ='none';
+    document.getElementById('bot').style.display ='none';
+
     var target = document.getElementById('target'+part);
     // 使用 scrollIntoView 方法滚动到目标元素
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
