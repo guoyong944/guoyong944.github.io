@@ -761,7 +761,7 @@ function showResults_passed2() {
     TextColor_transition('#121212');
     backgroundColor_transition('#121212');
     //document.getElementById('part2_text').innerHTML = "<span style='color:#D5D5D5'>Nach einem Monat...</span>";
-    setTimeout(month_later,2000)
+    setTimeout(month_later,1000)
     document.getElementById('score').style.display = 'none';       
     document.getElementById('part2-answers').style.display = 'none';
 }
