@@ -103,8 +103,9 @@ body {
 }
 
 #buttonJa {
-    font-family: AvenirH;
+    font-family: Avenir;
     font-size: 25px;
+    font-style: normal;
     font-weight: 800;
     line-height: 40px;
     letter-spacing: -0.03em;
@@ -120,11 +121,10 @@ body {
     border:0;
     border-radius: 40px;
     z-index: 6;
-    font-style: normal;
 }
 
 #buttonNein {
-    font-family: AvenirH;
+    font-family: Avenir;
     font-size: 25px;
     font-weight: 800;
     line-height: 40px;
@@ -151,6 +151,7 @@ body {
     width: 320px;
     height: 42px;
     font-size: 14px;
+    font-family: Avenir;
     color: black;
     background-color: white;
     margin: auto;
@@ -172,6 +173,7 @@ body {
     width: 320px;
     height: 42px;
     font-size: 14px;
+    font-family: Avenir;
     color: black;
     background-color: white;
     margin: auto;
@@ -193,6 +195,7 @@ body {
     width: 320px;
     height: 42px;
     font-size: 14px;
+    font-family: Avenir;
     color: black;
     background-color: white;
     margin: auto;
@@ -214,6 +217,7 @@ body {
     width: 320px;
     height: 42px;
     font-size: 14px;
+    font-family: Avenir;
     color: black;
     background-color: white;
     margin: auto;
