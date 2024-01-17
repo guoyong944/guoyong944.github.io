@@ -4,9 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>向上滚动的文本</title>
     <style>
+        body {
+    font-family: Avenir;
+    color: #503A00;
+    background: #F1F1F1;
+
+}
         @font-face {
-            font-family: AvenirH;
-            src: url('Avenir Heavy.ttf') 
+            font-family: Avenir;
+            src: url('Avenir Medium.ttf') 
         }
         #top {
             position: absolute;
@@ -33,11 +39,11 @@
             position: absolute;
             width: 362px;
             height: 100%;
-            color: #FFF;
-            text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.20);
-            font-family: AvenirH;
+            color: #121212;
+            font-family: Avenir;
             font-size: 25px;
             font-style: normal;
+            font-weight: 500;
             line-height: 30px; /* 120% */
             letter-spacing: -0.5px;
             margin: 0;
@@ -84,10 +90,19 @@
         #line25 { animation-delay: 28s; }
         #line26 { animation-delay: 29s; }
         #line27 { animation-delay: 30s; }
+        #top_bar {
+            position: fixed;
+            top: 0px; /* 距离最近的已定位祖先元素顶部 50px */
+            left: 0px; /* 距离最近的已定位祖先元素右边 30px */
+            width: 393px;
+            height: 60px;
+            z-index: 7;
+            background: #F1F1F1;
+}
     </style>
 </head>
 <body>
-    <img id="top" src="pass_top.png">
+    <div id="top_bar"></div>
 
     <div class="scrolling-text">
         <p>
@@ -117,7 +132,7 @@
         <span id="line24" class="line"> aus. Wir glauben weiterhin  </span>
         <span id="line25" class="line"> daran, dass sie eines Tages</span>
         <span id="line26" class="line">  an unserer Seite gehen </span>
-        <span id="line27" class="line"> werden".</span>
+        <span id="line27" class="line"> werden.</span>
 
         </p>
     </div>
